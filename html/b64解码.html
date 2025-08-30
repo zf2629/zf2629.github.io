@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线 Base64 加密与解密工具</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 95%;
+            height: 120px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            resize: vertical;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .copy-button {
+            background-color: #28a745;
+        }
+        .copy-button:hover {
+            background-color: #218838;
+        }
+        #result {
+            height: auto;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #e9ecef;
+            font-size: 16px;
+            white-space: pre-wrap;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>在线 Base64 加密与解密工具</h1>
+    <textarea id="inputText" placeholder="请输入要加密或解密的文本..."></textarea>
+    <button onclick="encodeBase64()">加密为 Base64</button>
+    <button onclick="decodeBase64()">解密 Base64</button>
+    <button class="copy-button" onclick="copyToClipboard()">复制结果</button>
+    <textarea id="result" readonly placeholder="加密或解密结果将在这里显示..."></textarea>
+</div>
+
+<script>
+    function encodeBase64() {
+        var inputText = document.getElementById("inputText").value;
+        try {
+            var encodedString = utf8ToBase64(inputText);
+            document.getElementById("result").value = encodedString;
+        } catch (e) {
+            document.getElementById("result").value = "输入内容无效，无法加密！";
+        }
+    }
+
+    function decodeBase64() {
+        var inputText = document.getElementById("inputText").value;
+        try {
+            var decodedString = base64ToUtf8(inputText);
+            document.getElementById("result").value = decodedString;
+        } catch (e) {
+            document.getElementById("result").value = "输入内容无效，无法解密！";
+        }
+    }
+
+    function utf8ToBase64(str) {
+        return btoa(unescape(encodeURIComponent(str)));
+    }
+
+    function base64ToUtf8(str) {
+        return decodeURIComponent(escape(atob(str)));
+    }
+
+    function copyToClipboard() {
+        var resultText = document.getElementById("result").value;
+        navigator.clipboard.writeText(resultText).then(() => {
+            alert('结果已复制到剪贴板！');
+        }).catch(err => {
+            alert('复制失败！');
+            console.error('复制失败：', err);
+        });
+    }
+</script>
+
+</body>
+</html>
