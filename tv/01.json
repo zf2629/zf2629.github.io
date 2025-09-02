@@ -22,6 +22,11 @@
         {"key":"斗","name":"斗鱼｜直播","type":3,"api":"./js/drpy2.min.js","ext":"./js/斗.js","style":{"type":"rect","ratio":1.597}},
 
 
+        {"key":"央视大全","name":"央视🔹大全","type":3,"api":"./js/drpy2.min.js","searchable":1,"quickSearch":1,"filterable":1,"order_num":0,"ext":"./js/央视大全.js"},
+        {"key":"央视新闻","name":"央视🔹新闻","type":3,"api":"./js/drpy2.min.js","searchable":1,"quickSearch":1,"filterable":1,"order_num":0,"ext":"./js/央视新闻.js"},
+        {"key":"央视综合","name":"央视🔹综合","type":3,"api":"./js/drpy2.min.js","searchable":1,"quickSearch":1,"filterable":1,"order_num":0,"ext":"./js/央视综合.js"},
+        {"key":"央视少儿","name":"央视🔹少儿","type":3,"api":"./js/drpy2.min.js","searchable":1,"quickSearch":1,"filterable":1,"order_num":0,"ext":"./js/央视少儿.js"},
+
    
 
         //XYQHikerXYQHikerXYQHikerXYQHikerXYQHikerXYQHikerXYQHiker
@@ -240,4 +245,5 @@
             ]
         }
     ]
+
 }
