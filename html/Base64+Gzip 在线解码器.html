@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64+Gzip 在线解码器</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-8 text-blue-600">
+            <i class="fas fa-file-code mr-2"></i>Base64+Gzip 解码器
+        </h1>
+        
+        <div class="bg-white rounded-lg shadow-md p-6 max-w-3xl mx-auto">
+            <div class="mb-6">
+                <label class="block text-gray-700 font-medium mb-2">输入编码数据：</label>
+                <textarea id="inputData" rows="8" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="粘贴Base64编码内容..."></textarea>
+            </div>
+
+            <div class="flex flex-wrap gap-4 mb-6">
+                <button onclick="decodeData()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200">
+                    <i class="fas fa-unlock mr-2"></i>解码数据
+                </button>
+                <button onclick="clearAll()" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded-lg transition duration-200">
+                    <i class="fas fa-trash-alt mr-2"></i>清空
+                </button>
+            </div>
+
+            <div class="mb-4">
+                <div class="flex items-center mb-2">
+                    <span class="text-gray-700 font-medium mr-2">输出格式：</span>
+                    <div class="flex items-center space-x-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="outputType" value="text" checked class="form-radio text-blue-600">
+                            <span class="ml-2">文本</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="outputType" value="json" class="form-radio text-blue-600">
+                            <span class="ml-2">JSON</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="outputType" value="hex" class="form-radio text-blue-600">
+                            <span class="ml-2">十六进制</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font-medium mb-2">解码结果：</label>
+                <pre id="outputResult" class="bg-gray-50 p-4 rounded-lg border overflow-auto max-h-96"></pre>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center text-gray-500 text-sm">
+            <p>支持标准Base64编码的gzip/zlib压缩数据或纯文本解码</p>
+        </div>
+    </div>
+
+    <script>
+        async function decodeData() {
+            const input = document.getElementById('inputData').value.trim();
+            const output = document.getElementById('outputResult');
+            
+            if (!input) {
+                showError('请输入要解码的内容');
+                return;
+            }
+
+            try {
+                output.innerHTML = '<div class="flex justify-center items-center py-4"><i class="fas fa-spinner fa-spin text-blue-500 text-2xl mr-2"></i><span>正在解码...</span></div>';
+                
+                // 主解码逻辑
+                const result = await decodeBase64Gzip(input);
+                displayResult(result);
+            } catch (error) {
+                showError(`解码失败: ${error.message}`);
+            }
+        }
+
+        async function decodeBase64Gzip(encoded) {
+            try {
+                // Base64解码
+                const binaryStr = atob(encoded);
+                const bytes = new Uint8Array(binaryStr.length);
+                for (let i = 0; i < binaryStr.length; i++) {
+                    bytes[i] = binaryStr.charCodeAt(i);
+                }
+
+                // 检测gzip头 (0x1F 0x8B)
+                if (bytes[0] === 0x1F && bytes[1] === 0x8B) {
+                    // 使用浏览器API解压
+                    const ds = new DecompressionStream('gzip');
+                    const stream = new Blob([bytes]).stream().pipeThrough(ds);
+                    const decompressed = await new Response(stream).arrayBuffer();
+                    return {
+                        type: 'gzip',
+                        data: new TextDecoder().decode(decompressed),
+                        originalSize: bytes.length,
+                        decompressedSize: decompressed.byteLength
+                    };
+                } else {
+                    // 直接解码为文本
+                    return {
+                        type: 'plaintext',
+                        data: new TextDecoder().decode(bytes),
+                        size: bytes.length
+                    };
+                }
+            } catch (e) {
+                // 二进制数据回退方案
+                if (e instanceof DOMException) {
+                    const buffer = Uint8Array.from(atob(encoded), c => c.charCodeAt(0));
+                    return {
+                        type: 'binary',
+                        hexPreview: Array.from(buffer).map(b => b.toString(16).padStart(2, '0')).join(' '),
+                        size: buffer.length
+                    };
+                }
+                throw e;
+            }
+        }
+
+        function displayResult(result) {
+            const outputType = document.querySelector('input[name="outputType"]:checked').value;
+            const output = document.getElementById('outputResult');
+            
+            let displayContent;
+            switch(outputType) {
+                case 'json':
+                    displayContent = JSON.stringify(result, null, 2);
+                    break;
+                case 'hex':
+                    displayContent = result.hexPreview || '非二进制数据';
+                    break;
+                default:
+                    displayContent = result.data || result.hexPreview || '无可用数据';
+            }
+
+            output.textContent = displayContent;
+            output.className = output.className.replace('text-red-500', '') + (result.type === 'binary' ? ' text-xs' : '');
+        }
+
+        function showError(message) {
+            const output = document.getElementById('outputResult');
+            output.textContent = message;
+            output.className = 'bg-gray-50 p-4 rounded-lg border overflow-auto max-h-96 text-red-500';
+        }
+
+        function clearAll() {
+            document.getElementById('inputData').value = '';
+            document.getElementById('outputResult').textContent = '';
+            document.getElementById('outputResult').className = 'bg-gray-50 p-4 rounded-lg border overflow-auto max-h-96';
+        }
+    </script>
+</body>
+</html>
