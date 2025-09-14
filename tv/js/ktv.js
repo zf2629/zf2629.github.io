@@ -12,7 +12,7 @@ var rule = {
     mktvUrl: 'http://em.21dtv.com/songs/',
     url: '/searchmv?table=fyclass&pg=fypage#fyfilter',
     searchUrl: '/searchmv?keywords=**&pg=fypage',
-    pic: 'https://zf2629.github.io/tv/img/%E8%A9%B9.png',
+    pic: 'https://zf2629.github.io/tv/img/logo.png',
     searchable: 2,
     quickSearch: 0,
     filterable: 1,
