@@ -28,7 +28,9 @@ var rule = {
 
     url: '/searchmv?table=fyclass&pg=fypage#fyfilter',
     searchUrl: '/searchmv?keywords=**&pg=fypage',
-    pic: 'https://api.paugram.com/wallpaper/?source=sina&category=us',
+    pic: 'zf2629.github.io/img
+/詹.png
+',
     searchable: 2,
     quickSearch: 0,
     filterable: 1,
