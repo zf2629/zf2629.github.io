@@ -28,9 +28,7 @@ var rule = {
 
     url: '/searchmv?table=fyclass&pg=fypage#fyfilter',
     searchUrl: '/searchmv?keywords=**&pg=fypage',
-    pic: 'zf2629.github.io/img
-/詹.png
-',
+    pic: 'https://zf2629.github.io/img/詹.png',
     searchable: 2,
     quickSearch: 0,
     filterable: 1,
