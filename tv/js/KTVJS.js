@@ -16,7 +16,7 @@ var rule = {
     searchable: 2,
     quickSearch: 0,
     filterable: 1,
-    filter: 'H4sIAAAAAAAAA52STU/CMBjHv0vPHATfuerFkwePhgOHSRZhmIEmhJBgBLIIBEgI0/BqAgFEwgYRDbjwZWzpvoUr2tGlXOTW/p+n7a+/Ng4iohQQZOC9jINrIQa8QBYCYlgCLiD5Q4I1hzUN5mbWXJTEqDW3Rnf+4K2wWiKRhnTPfOiRmFQTrvhq4CY7kGq7az5n7NjzF6PPESxodrxLu6sGbFdAwkcKvzxXYTm0plnqc6gMtqZZlj84FNiZcBzLeQoWFcLhc4FIWAowgoJ+xg4eDXEvuebx/BMIqwVrC56parAxxTKbfTbeozLVDhvv027VgHmVrRzQU7M6Gx/SW4/bbHxEYdLT73nFjo/p9v03VHcc7N6hQBPNkdufIa9B7ctRojfG00cKyzx+NHYjOB+/kd368dH7PX7J8a6LCizrnGuUTCK1y7mGqQUa5njX9T4sGZxopJXYbioaKw1UHfOiKzU4y3Ci8eLVHDxtsKy2UL55enZxcr5BtaHjbmb1gxM/8si9TOYDAAA=',
+    filter: '{"singer":[{"key":"region","name":"地区","init":"","value":[{"n":"全部","v":""},{"v":"1","n":"大陆"},{"v":"2","n":"港台"},{"v":"3","n":"国外"}]},{"key":"form","name":"类别","init":"","value":[{"n":"全部","v":""},{"v":"1","n":"男"},{"v":"2","n":"女"},{"v":"3","n":"组合"}]}],"song":[{"key":"lan","name":"语言","init":"2","value":[{"n":"全部","v":""},{"v":"1","n":"藏语"},{"v":"2","n":"国语"},{"v":"3","n":"韩语"},{"v":"4","n":"日语"},{"v":"5","n":"闽南语"},{"v":"6","n":"英语"},{"v":"7","n":"粤语"},{"v":"8","n":"其他"},{"v":"9","n":"马来语"},{"v":"10","n":"泰语"},{"v":"11","n":"印尼语"},{"v":"12","n":"越南语"}]},{"key":"type","name":"类型","init":"","value":[{"n":"全部","v":""},{"v":"1","n":"流行"},{"v":"2","n":"合唱"},{"v":"3","n":"怀旧"},{"v":"4","n":"儿歌"},{"v":"5","n":"革命"},{"v":"6","n":"民歌"},{"v":"7","n":"舞曲"},{"v":"8","n":"喜庆"},{"v":"9","n":"迪高"},{"v":"10","n":"无损DISCO"},{"v":"11","n":"影视"}]}]}',
     filter_url: '{{fl}}',
     headers: {
         'User-Agent': 'MOBILE_UA',
