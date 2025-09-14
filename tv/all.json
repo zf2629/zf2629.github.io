@@ -9,72 +9,9 @@
         },
        
        
-       
-     
         {
-            "url": "https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json",
-            "name": "南风线路"
-        },
-        {
-            "url": "https://fmbox.cc",
-            "name": "☀️多多┃星辰线路"
-        },
-        {
-            "url": "http://tvbox.稳定接口.com",
-            "name": "☀️多多┃盒子线路"
-        },
-        {
-            "url": "http://meowtv.cn/tv",
-            "name": "☀️多多┃喵影视"
-        },
-        {
-            "url": "http://itvbox.cc/云星日记",
-            "name": "☀️多多┃云星日记"
-        },
-        {
-            "url": "http://ztha.top/TVBox/thdjk.json",
-            "name": "☀️多多┃挺好线路"
-        },
-        {
-            "url": "https://gitee.com/xmbjmjk/omg/raw/master/omg.json",
-            "name": "☀️多多┃拾光线路"
-        },
-        {
-            "url": "https://gitee.com/tv888/tv/raw/master/svip.json",
-            "name": "☀️多多┃天微线路"
-        },
-        {
-            "url": "http://ygbh.live/box.php",
-            "name": "☀️多多┃月光线路"
-        },
-        {
-            "url": "https://www.xn--rgv465a.top/无界线路禁止贩卖",
-            "name": "☀️多多┃无界线路"
-        },
-        {
-            "url": "http://52pan.top:81/api/v3/file/get/174964/%E5%90%BE%E7%88%B1%E8%AF%84%E6%B5%8B.m3u?sign=rPssLoffquDXszCARt6UNF8MobSa1FA27XomzOluJBY%3D%3A0",
-            "name": "☀️多多┃吾爱线路"
-        },
-        {
-            "url": "https://notabug.org/qizhen15800/My9394/raw/master/%e4%b8%8d%e8%89%af%e5%b8%85.json",
-            "name": "🌙多多┃不良帅线路"
-        },
-        {
-            "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/liu673cn/box/main/m.json",
-            "name": "🌙多多┃老刘备线路"
-        },
-        {
-            "url": "https://ghproxy.net/https://raw.githubusercontent.com/yyfxz/qqtv/main/夜猫子.json",
-            "name": "🌙多多┃夜猫子线路"
-        },
-        {
-            "name": "🌙多多┃运输车线路",
-            "url": "https://weixine.net/ysc.json"
-        },
-  
-        {
-            "url": "https://szyyds.cn/tv/x.json",
-            "name": "🌙多多┃小马线路"
+            "url": "https://zf2629.github.io/tv",
+            "name": "ZF2629"
         }
     ]
 }
