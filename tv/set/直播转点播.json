@@ -2,7 +2,7 @@
     {
       "name": "电视台",
       "url": "https://zf2629.github.io/tv/live/cctv.json",
-      "img": "./img/01.png"
+      "img": "https://zf2629.github.io/tv/img/詹.png"
     },
     {
       "name": "直播01",
@@ -16,5 +16,6 @@
     }
 
   ]
+
 
 
