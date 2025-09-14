@@ -7,15 +7,16 @@
     {
       "name": "直播01",
       "url": "./live/01.json",
-      "img": "http://www.weibomn.com/uploadfile/image/20240622/5bf3ad336af04dc36b49ecd4a909882c.jpg"
+      "img": "https://zf2629.github.io/tv/img/詹.png"
     },
     {
       "name": "直播02",
       "url": "./live/02.json",
-      "img": ""
+      "img": "https://zf2629.github.io/tv/img/詹.png"
     }
 
   ]
+
 
 
 
