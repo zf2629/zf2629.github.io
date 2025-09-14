@@ -136,42 +136,7 @@
             "name": "🌙多多┃运输车线路",
             "url": "https://weixine.net/ysc.json"
         },
-        {
-            "url": "https://gitee.com/hyxuan_admin/xnf/raw/master/xnf.json",
-            "name": "🌙多多┃环宇轩线路"
-        },
-        {
-            "url": "https://www.gitlink.org.cn/api/kvymin/TVRule/raw/config.json?ref=master",
-            "name": "🌙多多┃茶余线路"
-        },
-        {
-            "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/gaotianliuyun/gao/master/js.json",
-            "name": "🌙多多┃高天流云"
-        },
-        {
-            "url": "https://龙伊.top",
-            "name": "🌙多多┃龙伊线路"
-        },
-        {
-            "url": "https://yydf.540734621.xyz/QQ/yydf2024.json",
-            "name": "🌙多多┃业余线路"
-        },
-        {
-            "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/2hacc/TVBox/main/tvbox.json",
-            "name": "🌙多多┃二哈线路"
-        },
-        {
-            "url": "http://cdn.qiaoji8.com/tvbox.json",
-            "name": "🌙多多┃巧技线路"
-        },
-        {
-            "url": "https://tv.xn--yhqu5zs87a.top",
-            "name": "🌙多多┃菜妮丝线路"
-        },
-        {
-            "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/xyq254245/xyqonlinerule/main/XYQTVBox.json",
-            "name": "🌙多多┃香雅情线路"
-        },
+  
         {
             "url": "https://szyyds.cn/tv/x.json",
             "name": "🌙多多┃小马线路"
