@@ -89,9 +89,10 @@ let guid = info[0].replaceAll('https://api.cntv.cn/lanmu/', '');
             vod_content: info[7],
         vod_play_from: '央视频',
         //https://hls.cntv.myalicdn.com//asp/hls/2000/0303000a/3/default/https://api.cntv.cn/lanmu/1a01871d6d5f4d4bbe82b9c62650f100/2000.m3u8
-        vod_play_url: '立即播放$https://hls.cntv.myhwcdn.cn/asp/hls/850/0303000a/3/default/' + guid + '/850.m3u8'
+        vod_play_url: '立即播放$https://hls.cntv.lxdns.com/asp/hls/850/0303000a/3/default/' + guid + '/850.m3u8'
     };
 
 }),
     搜索:'',
+
 }
