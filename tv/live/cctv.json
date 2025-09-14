@@ -10,8 +10,12 @@ CCTV13-新闻,http://110.42.37.69:6688/live/live.php?token=8O3reADW&id=cctv13#.m
 湖北卫视,http://110.42.37.69:6688/live/live.php?token=8O3reADW&id=hubws#.m3u8
 CCTV5-体育,http://110.42.37.69:6688/live/live.php?token=8O3reADW&id=cctv5#.m3u8
 CCTV5+-体育,http://110.42.37.69:6688/live/live.php?token=8O3reADW&id=cctv5p#.m3u8
-经视直播,http://122.191.50.135/PLTV/88888888/224/3221225684/10000100000000060000000000404037_0.smil/index.m3u8?fmt=ts2hls&icpid=SSPID&accounttype=1&limitflux=-1&limitdur=-1&accountinfo=kvRdRtVqokVkeXk3U8psVAsuTY+OgflQt4BiPWWLXbQ0ybcLSP/natFUZeRalHAgMhvmI/+aUOyzA9F/Z2JAiMB2HEYus4VibWE88qwjH9Cf/PCITiD2Rew7Db5iXv2DlNeZN7RdO3z3PzG324I1q4kFTbj4rCw14DRUTelHCiM=:20220106103026,1#isVideo=true
-经视直播,http://swtyc.f3322.org:8880/udp/239.69.1.41:9886#isVideo=true
+经视直播1,http://122.191.50.135/PLTV/88888888/224/3221225684/10000100000000060000000000404037_0.smil/index.m3u8?fmt=ts2hls&icpid=SSPID&accounttype=1&limitflux=-1&limitdur=-1&accountinfo=kvRdRtVqokVkeXk3U8psVAsuTY+OgflQt4BiPWWLXbQ0ybcLSP/natFUZeRalHAgMhvmI/+aUOyzA9F/Z2JAiMB2HEYus4VibWE88qwjH9Cf/PCITiD2Rew7Db5iXv2DlNeZN7RdO3z3PzG324I1q4kFTbj4rCw14DRUTelHCiM=:20220106103026,1#isVideo=true
+经视直播2,http://swtyc.f3322.org:8880/udp/239.69.1.41:9886#isVideo=true
+经视直播3,http://www.dwphic.com:9999/udp/239.69.1.41:9886#isVideo=true
+
+湖南卫视-线路1,http://swtyc.f3322.org:8880/udp/239.253.157.139:8908#isVideo=true
+湖南卫视-线路2,http://60.223.72.93:8002/udp/226.0.2.143:9056#isVideo=true
 ⬇️⬇️免费观看⬇️⬇️,#genre# 
 
 免费观看01,http://lxajh.top/tv/douyu.php?id=1226741 
