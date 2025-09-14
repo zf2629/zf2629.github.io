@@ -1,17 +1,3 @@
-/*!
- * Copyright © 2025 Taoist
- * Licensed under LGPL3 (https://github.com/hjdhnx/drpy-node/blob/main/LICENSE)
- */
-/*
-@header({
-  searchable: 2,
-  filterable: 1,
-  quickSearch: 0,
-  title: 'KTV歌厅[听]',
-  lang: 'dr2'
-})
-*/
-
 globalThis.post2 = function (_url, _data) {
     // let data = buildUrl(_url,_data).split('?')[1];
     // return post(_url,{body:encodeURIComponent(data),headers:rule.headers});
@@ -23,12 +9,10 @@ var rule = {
     // host: 'https://vpsdn.leuse.top',
     host: 'https://api.cloudflare.com',
     root: 'https://api.cloudflare.com/client/v4/accounts/1ecc4a947c5a518427141f4a68c86ea1/d1/database/4f1385ab-f952-404a-870a-e4cfef4bd9fd/query',
-    //mktvUrl: 'http://txysong.mysoto.cc/songs/',
-   mktvUrl: 'http://em.21dtv.com/songs/',
-
+    mktvUrl: 'http://txysong.mysoto.cc/songs/',
     url: '/searchmv?table=fyclass&pg=fypage#fyfilter',
     searchUrl: '/searchmv?keywords=**&pg=fypage',
-    pic: 'https://zf2629.github.io/img/詹.png',
+    pic: 'https://api.paugram.com/wallpaper/?source=sina&category=us',
     searchable: 2,
     quickSearch: 0,
     filterable: 1,
@@ -105,14 +89,14 @@ var rule = {
         if (id.endsWith('.mkv')) {
             VOD = {
                 vod_name: name,
-                vod_play_from: 'ZF2629',
-                vod_content: 'ZF2629',
+                vod_play_from: '道长在线',
+                vod_content: '道长在线',
             }
         } else {
             VOD = {
                 vod_name: id,
-                vod_play_from: 'ZF2629',
-                vod_content: 'ZF2629',
+                vod_play_from: '道长在线',
+                vod_content: '道长在线',
             }
         }
         if (id.endsWith('.mkv')) {
