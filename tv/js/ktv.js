@@ -12,7 +12,7 @@ var rule = {
     mktvUrl: 'http://em.21dtv.com/songs/',
     url: '/searchmv?table=fyclass&pg=fypage#fyfilter',
     searchUrl: '/searchmv?keywords=**&pg=fypage',
-    pic: 'https://api.paugram.com/wallpaper/?source=sina&category=us',
+    pic: 'https://zf2629.github.io/tv/img/%E8%A9%B9.png',
     searchable: 2,
     quickSearch: 0,
     filterable: 1,
@@ -89,14 +89,14 @@ var rule = {
         if (id.endsWith('.mkv')) {
             VOD = {
                 vod_name: name,
-                vod_play_from: '道长在线',
-                vod_content: '道长在线',
+                vod_play_from: 'ZF2629',
+                vod_content: 'ZF2629',
             }
         } else {
             VOD = {
                 vod_name: id,
-                vod_play_from: '道长在线',
-                vod_content: '道长在线',
+                vod_play_from: 'ZF2629',
+                vod_content: 'ZF2629',
             }
         }
         if (id.endsWith('.mkv')) {
