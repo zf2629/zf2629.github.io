@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编码解码工具箱</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 8px 16px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            min-height: 100px;
+            position: relative;
+        }
+        .copy-btn {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            padding: 4px 8px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .copy-notice {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            color: green;
+            font-size: 12px;
+            display: none;
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+            width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .btn-group button {
+            margin-bottom: 8px;
+        }
+        .section-title {
+            margin-top: 20px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <h1>编码解码工具箱</h1>
+    
+    <div>
+        <h2>输入文本</h2>
+        <textarea id="inputText" placeholder="在此输入需要处理的文本..."></textarea>
+        
+    <div class="btn-group">
+            <button onclick="base64Encode()">Base64编码</button>
+            <button onclick="base64Decode()">Base64解码</button>
+            <button onclick="gzipCompress()">Gzip压缩</button>
+            <button onclick="gzipDecompress()">Gzip解压</button>
+            <button onclick="urlEncode()">URL编码</button>
+            <button onclick="urlDecode()">URL解码</button>
+            <button onclick="copyResult()">复制结果</button>
+        </div>
+    </div>
+    
+    <div class="result">
+        <h2>结果</h2>
+        <span class="copy-notice" id="copyNotice">已复制!</span>
+        <pre id="outputResult"></pre>
+    </div>
+
+    <script>
+        // Base64操作
+        function base64Encode() {
+            try {
+                const input = document.getElementById('inputText').value;
+                const encoded = btoa(unescape(encodeURIComponent(input)));
+                document.getElementById('outputResult').textContent = encoded;
+            } catch (e) {
+                document.getElementById('outputResult').textContent = '错误: ' + e.message;
+            }
+        }
+
+        function base64Decode() {
+            try {
+                const input = document.getElementById('inputText').value;
+                const decoded = decodeURIComponent(escape(atob(input)));
+                document.getElementById('outputResult').textContent = decoded;
+            } catch (e) {
+                document.getElementById('outputResult').textContent = '错误: ' + e.message;
+            }
+        }
+
+        // Gzip操作
+        function gzipCompress() {
+            try {
+                const input = document.getElementById('inputText').value;
+                const compressed = pako.gzip(input);
+                const base64Compressed = btoa(String.fromCharCode.apply(null, compressed));
+                document.getElementById('outputResult').textContent = base64Compressed;
+            } catch (e) {
+                document.getElementById('outputResult').textContent = '错误: ' + e.message;
+            }
+        }
+
+        function gzipDecompress() {
+            try {
+                const input = document.getElementById('inputText').value;
+                const binaryString = atob(input);
+                const bytes = new Uint8Array(binaryString.length);
+                for (let i = 0; i < binaryString.length; i++) {
+                    bytes[i] = binaryString.charCodeAt(i);
+                }
+                const decompressed = pako.inflate(bytes, { to: 'string' });
+                document.getElementById('outputResult').textContent = decompressed;
+            } catch (e) {
+                document.getElementById('outputResult').textContent = '错误: ' + e.message;
+            }
+        }
+
+        // URL操作
+        function urlEncode() {
+            try {
+                const input = document.getElementById('inputText').value;
+                const encoded = encodeURIComponent(input);
+                document.getElementById('outputResult').textContent = encoded;
+            } catch (e) {
+                document.getElementById('outputResult').textContent = '错误: ' + e.message;
+            }
+        }
+
+        function urlDecode() {
+            try {
+                const input = document.getElementById('inputText').value;
+                const decoded = decodeURIComponent(input);
+                document.getElementById('outputResult').textContent = decoded;
+            } catch (e) {
+                document.getElementById('outputResult').textContent = '错误: ' + e.message;
+            }
+        }
+
+        // 复制功能
+        function copyResult() {
+            const resultText = document.getElementById('outputResult').textContent;
+            if (resultText) {
+                navigator.clipboard.writeText(resultText)
+                    .then(() => {
+                        const notice = document.getElementById('copyNotice');
+                        notice.style.display = 'inline';
+                        setTimeout(() => {
+                            notice.style.display = 'none';
+                        }, 2000);
+                    })
+                    .catch(err => {
+                        alert('复制失败: ' + err);
+                    });
+            } else {
+                alert('没有可复制的内容');
+            }
+        }
+    </script>
+</body>
+</html>
