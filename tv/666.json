@@ -123,7 +123,7 @@
 
 
 
-  {"key":"KTV","name":"KTV","type":3,"api": "./drpy_libs/drpy2.min.js","ext":"./js/ktv.js"},
+  {"key":"KTV","name":"KTV","type":3,"api": "./js/drpy2.min.js","ext":"./js/ktv.js"},
 
 
  {"key":"戏曲","name":"戏曲","type":3,"api": "./drpy_libs/drpy2.min.js","ext":"./js/戏曲.js"},
