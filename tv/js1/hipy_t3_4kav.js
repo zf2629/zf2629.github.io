@@ -22,7 +22,7 @@ var rule = {
   // 分类解析的选择器和正则表达式，用于提取分类信息
   class_parse: '#cate_list&&li;a&&title;a&&href;/(\\w+)/', 
   // 要排除的分类（此处是“成人视频”分类）
-  cate_exclude: '', 
+  cate_exclude: '成人视频', 
   // 播放解析设置
   play_parse: true, 
   // 懒加载的 JavaScript 函数
