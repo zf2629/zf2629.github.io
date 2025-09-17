@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON格式化校验工具</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="mb-8 text-center">
+            <h1 class="text-3xl font-bold text-indigo-700">JSON格式化校验工具</h1>
+            <p class="text-gray-600 mt-2">实时校验JSON格式并美化输出</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800">输入JSON</h2>
+                    <div class="space-x-2">
+                        <button id="clear-btn" class="px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition">
+                            <i class="fas fa-trash-alt mr-1"></i>清空
+                        </button>
+                        <button id="example-btn" class="px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition">
+                            <i class="fas fa-lightbulb mr-1"></i>示例
+                        </button>
+                    </div>
+                </div>
+                <textarea id="json-input" class="w-full h-96 p-4 border border-gray-300 rounded-md font-mono text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder='输入JSON内容，例如：{"name":"John","age":30}'></textarea>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800">校验结果</h2>
+                    <div class="space-x-2">
+                        <button id="format-btn" class="px-3 py-1 bg-green-100 text-green-700 rounded hover:bg-green-200 transition">
+                            <i class="fas fa-align-left mr-1"></i>格式化
+                        </button>
+                        <button id="minify-btn" class="px-3 py-1 bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition">
+                            <i class="fas fa-compress-alt mr-1"></i>压缩
+                        </button>
+                        <button id="copy-btn" class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded hover:bg-yellow-200 transition">
+                            <i class="fas fa-copy mr-1"></i>复制
+                        </button>
+                    </div>
+                </div>
+                <div id="validation-result" class="mb-4 p-3 rounded hidden"></div>
+                <pre id="json-output" class="w-full h-96 p-4 border border-gray-300 rounded-md overflow-auto bg-gray-50 hidden"><code id="json-highlight"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const jsonInput = document.getElementById('json-input');
+            const jsonOutput = document.getElementById('json-output');
+            const jsonHighlight = document.getElementById('json-highlight');
+            const validationResult = document.getElementById('validation-result');
+            const formatBtn = document.getElementById('format-btn');
+            const minifyBtn = document.getElementById('minify-btn');
+            const copyBtn = document.getElementById('copy-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const exampleBtn = document.getElementById('example-btn');
+
+            // 实时校验JSON
+            jsonInput.addEventListener('input', function() {
+                validateJSON(this.value);
+            });
+
+            // 格式化JSON
+            formatBtn.addEventListener('click', function() {
+                const json = jsonInput.value.trim();
+                if (!json) return;
+                
+                try {
+                    const obj = JSON.parse(json);
+                    const formatted = JSON.stringify(obj, null, 4);
+                    jsonHighlight.textContent = formatted;
+                    hljs.highlightElement(jsonHighlight);
+                    jsonOutput.classList.remove('hidden');
+                    showValidationResult('JSON格式正确', 'success');
+                } catch (e) {
+                    showValidationResult(`格式错误: ${e.message}`, 'error');
+                    jsonOutput.classList.add('hidden');
+                }
+            });
+
+            // 压缩JSON
+            minifyBtn.addEventListener('click', function() {
+                const json = jsonInput.value.trim();
+                if (!json) return;
+                
+                try {
+                    const obj = JSON.parse(json);
+                    const minified = JSON.stringify(obj);
+                    jsonHighlight.textContent = minified;
+                    hljs.highlightElement(jsonHighlight);
+                    jsonOutput.classList.remove('hidden');
+                    showValidationResult('JSON格式正确', 'success');
+                } catch (e) {
+                    showValidationResult(`格式错误: ${e.message}`, 'error');
+                    jsonOutput.classList.add('hidden');
+                }
+            });
+
+            // 复制JSON
+            copyBtn.addEventListener('click', function() {
+                if (jsonOutput.classList.contains('hidden')) return;
+                
+                navigator.clipboard.writeText(jsonHighlight.textContent)
+                    .then(() => {
+                        const originalText = copyBtn.innerHTML;
+                        copyBtn.innerHTML = '<i class="fas fa-check mr-1"></i>已复制';
+                        setTimeout(() => {
+                            copyBtn.innerHTML = originalText;
+                        }, 2000);
+                    });
+            });
+
+            // 清空输入
+            clearBtn.addEventListener('click', function() {
+                jsonInput.value = '';
+                jsonOutput.classList.add('hidden');
+                validationResult.classList.add('hidden');
+            });
+
+            // 加载示例
+            exampleBtn.addEventListener('click', function() {
+                const example = `{
+    "name": "JSON格式化工具",
+    "version": "1.0.0",
+    "description": "一个简单的JSON校验和格式化工具",
+    "features": ["格式化", "压缩", "校验", "语法高亮"],
+    "author": {
+        "name": "开发者",
+        "email": "dev@example.com"
+    },
+    "dependencies": {
+        "highlight.js": ".7.0",
+        "tailwindcss": ".3.0"
+    }
+}`;
+                jsonInput.value = example;
+                validateJSON(example);
+            });
+
+            // 校验JSON函数
+            function validateJSON(json) {
+                if (!json.trim()) {
+                    validationResult.classList.add('hidden');
+                    jsonOutput.classList.add('hidden');
+                    return;
+                }
+
+                try {
+                    JSON.parse(json);
+                    showValidationResult('JSON格式正确', 'success');
+                } catch (e) {
+                    showValidationResult(`格式错误: ${e.message}`, 'error');
+                    jsonOutput.classList.add('hidden');
+                }
+            }
+
+            // 显示校验结果
+            function showValidationResult(message, type) {
+                validationResult.textContent = message;
+                validationResult.className = 'mb-4 p-3 rounded';
+                
+                if (type === 'success') {
+                    validationResult.classList.add('bg-green-100', 'text-green-800');
+                } else {
+                    validationResult.classList.add('bg-red-100', 'text-red-800');
+                }
+                
+                validationResult.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
