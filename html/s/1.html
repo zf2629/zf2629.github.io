@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>响应式电子时钟</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #e74c3c;
+            --bg-gradient: linear-gradient(135deg, #2c3e50, #4ca1af);
+        }
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--bg-gradient);
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+            transition: background 30s ease;
+        }
+        .clock-container {
+            width: 90vw;
+            max-width: 800px;
+            text-align: center;
+        }
+        .time {
+            font-size: clamp(3rem, 15vw, 8rem);
+            color: white;
+            text-shadow: 0 0 10px rgba(0,0,0,0.3);
+            margin-bottom: 0.5em;
+        }
+        .date {
+            font-size: clamp(1rem, 5vw, 2rem);
+            color: rgba(255,255,255,0.8);
+        }
+        .colon {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0.3; }
+        }
+        @media (max-width: 600px) {
+            .time { font-size: 4rem; }
+        }
+        @media (orientation: portrait) {
+            .clock-container { padding: 5vh 0; }
+            .time { font-size: 10vh; }
+            .date { font-size: 3vh; }
+        }
+        @media (orientation: landscape) {
+            .clock-container { padding: 5vw 0; }
+            .time { font-size: 10vw; }
+            .date { font-size: 3vw; }
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-container">
+        <div class="time" id="time"></div>
+        <div class="date" id="date"></div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            
+            document.getElementById('time').innerHTML = `
+                ${hours}<span class="colon">:</span>${minutes}<span class="colon">:</span>${seconds}
+            `;
+            
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('date').textContent = now.toLocaleDateString('zh-CN', options);
+            
+            const hue = (now.getHours() * 15 + now.getMinutes() * 0.25) % 360;
+            document.body.style.background = `
+                linear-gradient(135deg, 
+                hsl(${hue}, 70%, 30%), 
+                hsl(${(hue + 120) % 360}, 70%, 50%))`;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        window.addEventListener('resize', () => {
+            const clock = document.querySelector('.clock-container');
+            clock.style.transform = `scale(${Math.min(window.innerWidth / 800, 1)})`;
+        });
+    </script>
+</body>
+</html>

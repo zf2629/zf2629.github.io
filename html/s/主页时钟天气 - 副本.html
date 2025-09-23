@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>主页时钟天气</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp;no-transform">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" href="https://cdn.jsdmirror.com/npm/layuicdns@1.6.2/layui-v2.5.7/css/layui.css" media="all">
+    <script src="https://cdn.jsdmirror.com/npm/layuicdns@1.6.2/layui-v2.5.7/layui.js" charset="utf-8"></script>
+    <script src="https://cdn.jsdmirror.com/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+</head>
+
+<body style="text-align: center">
+<div id="home-clock-weather" style="max-height: 210px;overflow: hidden">
+    <div id='home-clock' style="width:45%;float:left;z-index: 999;">
+        <div id="clock_iframe_set">
+            <iframe id='clock_iframe' scrolling="no" frameborder="0" src="file:///D:/%E6%88%91%E7%9A%84%E8%B5%84%E6%96%99%E5%BA%93/Documents/Downloads/clock-weather-main/static/html/%E6%97%B6%E9%92%9F1.html" width="100%" height="80%"
+                    allowtransparency="true"></iframe>
+            <div style="position:absolute; top:0; left:0; width:100%; height:60%;"></div>
+        </div>
+        <div id="showHistory" style="margin-bottom: 0;">
+            <div id="clockText" style="color: #34b1ff;font-size: 0.8em;letter-spacing: 0px;"></div>
+            <div id="workdayText" style="color: #ff9044;font-size: 0.9em;letter-spacing: 1px;"></div>
+        </div>
+    </div>
+    <div id='home-weather' style="width:55%;float:right;position:relative;">
+        <div id="weather_iframe_set">
+            <iframe id='weather_iframe' scrolling="no" frameborder="0" src="https://widget.tianqiapi.com/?style=ts&skin=durian&color=597e82&city=" width="100%" height="100%"
+                    allowtransparency="true"></iframe>
+            <div style="position:absolute; top:0; left:0; width:100%; height:100%;"></div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
