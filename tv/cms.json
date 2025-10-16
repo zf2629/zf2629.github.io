@@ -12,9 +12,7 @@
 {"key":"csp_XBPQ_看戏影视","name":"♻️看戏影视","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{"副标题":"right\">&&</span>","搜索url": "http://www.kanxis.com/search/{wd}----------{pg}---.html","搜索副标题":"right\">&&</span>","搜索后缀":"/post/","线路数组":"stui-vodlist__head&&</div>","线路标题":"<h4>&&</h4>","播放数组":"stui-content__playlist clearfix&&</ul>","免嗅":"1","分类":"电视剧$2#电影$1#动漫$4#综艺$3","分类url":"http://www.kanxis.com/tags/{cateId}-{area}-{by}--{lang}----{catePg}---{year}.html","筛选":"1"}},
 {"key":"XBPQ_4k影视","name":"♻️4K影视","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{"主演":"主演：&&</div>","数组":"<a&&/div></div></a>","免嗅":"1","副标题":"note\">&&<","搜索url":"/index.php/vod/search.html?wd={wd}","搜索数组":"module-card-item-class\">&&</a>","搜索副标题":"note\">&&</div>","线路数组":"data-dropdown-value=&&</div>[不包含:线路1]","线路标题":"ZF2629+<span>&&</small>[替换:</span><small>>>💕共]+集💕","播放数组":"<div class=\"module-play-list-content&&</div>","分类url":"https://4k4k.live/vodshow/{cateId}--{by}------{catePg}---{year}.html","分类":"电影$1#电视剧$2#综艺$3#动漫$4","筛选":"1"}},
 {"key": "csp_APP影视","name": "♻️APP影视","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 1,"filterable": 1,"ext": {"免嗅": "1","副标题": "class=\"pic-text text-right\">&&</span>","播放数组": "class=\"stui-content__playlist clearfix&&</ul>","分类": "电影$1#电视剧$2#综艺$3#动漫$4#国产电视剧$13","分类url": "https://app.movie/index.php/vod/type/id/{cateId}/page/{catePg}.html"}},
-{"key":"csp_XBPQ_剧迷线上看","name":"♻️剧迷线上","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{"线路数组":"<div class=\"module-tab-item tab-item\"&&</div>","线路标题":"ZF2629接口♡","免嗅":"1","分类":"电视剧$tvseries#电影$movies#动漫$ani#综艺$tvshow","分类url":"https://gimy.video/genre/{cateId}-{area}-{year}-{catePg}/by/{by}.html","筛选":"1"}},
-{"key":"csp_XBPQ_348","name":"♻️348秒播","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":0,"ext":{"主演":"主演：&&</li>","数组":"class=\"pack-packcover returl list-top-b\">&&</a>","副标题":"class=\"pack-prb hidden\">&&</span>","搜索数组":"img lazy eclazy br\"&&</a>","搜索副标题":"list-remarks hidden\">&&</span>","线路数组":"channelname swiper-slide&&</a>[不包含:超清资源#MY][排序:极速2]","线路标题":"ZF2629接口💕","播放数组":"class=\"content_playlist cf\"&&</ul>","分类url":"https://348z.com/vodshow/area/{area}/id/{cateId}/page/{catePg}/year/{year}.html","分类":"电影$1#电视剧$2#综艺$3#动漫$4#4K专区$37#直播$4","免嗅":"1"}},
-{"key":"csp_XX","name":"♻️思古影视","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{"数组":"class=\"vod-item-img\"&&</h3>","标题":"<a href=*>&&</a>","图片":"data-original=\"&&\"","副标题":"text-row-1\">&&</span>","线路二次截取":"box-head clearfix\">&&</div>","线路数组":"data-target=&&</li>[不包含:思古高清][排序:思古]","线路标题":"💕+javascript:;\"&&</a>+💕","播放数组":"id=\"ewave-playlist&&</ul>","播放标题":"href=*>&&</a>","播放列表":"<li&&</li>","分类url":"https://xxmsrj.com/index.php/vod/type/id/{cateId}.html","分类":"电影$1#电视剧$2#综艺$3#动漫$4","筛选":"1","免嗅":"1"}},
+
 
 
 //采集资源
@@ -40,9 +38,6 @@
 
 
 
-{"key":"t42直播转点播","name":"♥️直播转点播","type":4,"api":"http://120.53.102.254/dsp999","searchable":1,"quickSearch":1,"filterable":0},
-{"key": "抖音小姐姐","name": "♥️抖音小姐姐", "type": 4,"api": "http://120.53.102.254/xjj","searchable": 1,"quickSearch": 0,"filterable": 1 },
-
 
 {"key":"push_agent","name":"♎推送","type":3,"api":"csp_Push","searchable":0,"quickSearch":0,"filterable":0,"ext":"http://127.0.0.1:9978/file/tvfan/token.txt+4k|auto|fhd"}
 ],
@@ -55,4 +50,4 @@
 {"name":"live","type":0,"url":"http://tot.totalh.net/tttt.txt","logo": "https://epg.112114.free.hr/logo/{name}.png","epg":"http://epg.112114.xyz/?ch={name}&date={date}"}],
 "flags":[
 "youku","优酷","优酷","优酷视频","qq","腾讯","腾讯","腾讯视频","iqiyi","qiyi","奇艺","爱奇艺","爱奇艺","m1905","xigua","letv","leshi","乐视","乐视","sohu","搜狐","搜狐","搜狐视频","tudou","pptv","mgtv","芒果","imgo","芒果TV","芒果TV","bilibili","哔哩","哔哩哔哩"],
-"spider":"./spider.txt"}
+"spider": "https://zf2629.github.io/tv/jar/zf2629.jar"}
