@@ -67,7 +67,7 @@
 
 
 
-  {"key":"直播转点播[合]","name":"直播转点播[合]","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./set/直播转点播.js?type=url&params=./set/直播转点播.json"},
+  {"key":"直播转点播","name":"直播转点播","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./set/zb.js?type=url&params=./set/zb.json"},
 
   {"key":"KTV","name":"KTV","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/ktv.js"},
   {"key":"戏曲","name":"戏曲","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/戏曲.js"},
