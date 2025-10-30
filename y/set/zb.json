@@ -1,0 +1,22 @@
+[
+    {
+      "name": "电视台",
+      "url": "https://zf2629.github.io/tv/live/cctv.json",
+      "img": "https://zf2629.github.io/tv/img/詹.png"
+    },
+    {
+      "name": "直播01",
+      "url": "./live/01.json",
+      "img": "https://zf2629.github.io/tv/img/詹.png"
+    },
+    {
+      "name": "直播02",
+      "url": "./live/02.json",
+      "img": "https://zf2629.github.io/tv/img/詹.png"
+    }
+
+  ]
+
+
+
+
