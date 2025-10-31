@@ -20,7 +20,7 @@
     
 
 
-        {"key":"演唱会[B]","name":"演唱会[B]","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/B[官].js?type=url&params=./b/演唱会.json"},
+        
 
 
         {"key":"csp_XBPQ_6V","name":"6V","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":"./XBPQ/6v.json"},
