@@ -1,0 +1,191 @@
+{
+    
+    "spider": "https://zf2629.github.io/tv/jar/zf2629.jar", 
+
+    //"spider": "https://zf2629.github.io/tv/jar/zf2629.jar",
+    "wallpaper": "https://zf2629.github.io/tv/jar/logo.png",
+    "logo": "https://zf2629.github.io/tv/jar/logo.png",
+    "sites": [
+        {"key":"豆瓣","name":"ZF2629","type":3,"api":"csp_Douban","searchable":0},
+        {"key":"配置中心","name":"配置｜中心","type":3,"api":"csp_Config","searchable":0,"changeable":0,"indexs":0,"style":{"type":"rect","ratio":1.597}},
+        {"key":"[官]","name":"腾[官]","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/腾[官].js"},
+        {"key":"优[官]","name":"优[官]","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/优[官].js"},
+        {"key":"芒[官]","name":"芒[官]","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/芒[官].js"},
+        {"key":"爱[官]","name":"爱[官]","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/爱[官].js"},
+        {"key":"360[官]","name":"360[官]","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/360[官].js"},
+        {"key":"菜[官]","name":"菜[官]","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/菜[官].js"},
+        {"key":"虎牙[官]","name":"虎牙[官]","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/虎[官].js","style":{"type":"rect","ratio":1.597}},
+        {"key":"斗鱼[官]","name":"斗鱼[官]","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/斗[官].js","style":{"type":"rect","ratio":1.597}},
+
+    
+
+
+        {"key":"演唱会[B]","name":"演唱会[B]","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/B[官].js?type=url&params=./b/演唱会.json"},
+
+
+        {"key":"csp_XBPQ_6V","name":"6V","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":"./XBPQ/6v.json"},
+
+
+	
+
+
+
+
+
+
+
+       
+
+ 
+
+
+    {
+      "key": "TV",
+      "name": "TV直播",
+      "type": 3,
+      "api": "./set/sdtv.js",
+      "ext": "./set/sdtv.txt",
+      "jar": "./jar/sdtv.jar"
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {"key":"央视大全[央]","name":"央视大全[央]","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/央视大全[央].js"},
+        {"key":"央视新闻[央]","name":"央视新闻[央]","type":3,"api":"./drpy_libs/drpy2.min.js","searchable":1,"quickSearch":1,"filterable":1,"order_num":0,"ext":"./js/央视新闻[央].js"},
+        {"key":"央视综合[央]","name":"央视综合[央]","type":3,"api":"./drpy_libs/drpy2.min.js","searchable":1,"quickSearch":1,"filterable":1,"order_num":0,"ext":"./js/央视综合[央].js"},
+        {"key":"央视少儿[央]","name":"央视少儿[央]","type":3,"api":"./drpy_libs/drpy2.min.js","searchable":1,"quickSearch":1,"filterable":1,"order_num":0,"ext":"./js/央视少儿[央].js"},
+
+
+
+
+
+  {"key":"直播转点播","name":"直播转点播","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/zb.js?type=url&params=./set/zb.json"},
+
+  //{"key":"KTV","name":"KTV","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/ktv.js"},
+  {"key":"戏曲","name":"戏曲","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/戏曲.js"},
+
+  //{"key":"演唱会","name":"演唱会[B]","type":3,"api":"csp_Bili","searchable":0,"quickSearch":0,"filterable":1,"jar":"https://zf2629.github.io/tv/jar/b.jar","ext":{"json":"https://zf2629.github.io/tv/b/演唱会.json","cookie":"http://127.0.0.1:9978/file/ZF2629/bili_cookie.txt"},"style":{"type":"rect","ratio":1.597}},
+  {"key":"应用商店","name":"应用｜商店","type":3,"api":"csp_Market","searchable":0,"changeable":0,"indexs":0,"ext":"./set/Market.json"},
+     
+//{"key":"量子","name":"量子🔹秒播","type":1,"api":"http://cj.lziapi.com/api.php/provide/vod/","searchable":1,"quickSearch":1,"filterable":0,"playurl":"json:https://lziplayer.com/?url=","categories":["国产剧","国产动漫","泰国剧","台湾剧","香港剧","欧美剧","韩国剧","日本剧","动漫","体育","剧情片","动作片","爱情片","喜剧片"]},
+// {"key":"索尼","name":"索尼🔹影视","type":1,"api":"https://suoniapi.com/api.php/provide/vod"},    
+{"key":"采集之王","name":"采集之王","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js/采集之王.js?type=url&params=./set/采集之王.json"},       
+{"key":"ss2","name":"ss2","type":3,"api":"./drpy_libs/drpy2.min.js","ext":"./js2/ss2.js"}, 
+
+ 
+
+        {"key":"本地","name":"本地｜视频","type":3,"api":"csp_LocalFile"},
+        {"key":"push_agent","name":"推送","type":3,"api":"csp_Push","searchable":0,"filterable":0,"changeable":0}
+    ],
+
+
+    "doh":[
+        {"name":"Google","url":"https://dns.google/dns-query","ips":["8.8.4.4","8.8.8.8"]},
+        {"name":"Cloudflare","url":"https://cloudflare-dns.com/dns-query","ips":["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"]},
+        {"name":"AdGuard","url":"https://dns.adguard.com/dns-query","ips":["94.140.14.140","94.140.14.141"]},
+        {"name":"DNSWatch","url":"https://resolver2.dns.watch/dns-query","ips":["84.200.69.80","84.200.70.40"]},
+        {"name":"Quad9","url":"https://dns.quad9.net/dns-quer","ips":["9.9.9.9","149.112.112.112"]}
+          ],
+
+
+     "lives":[
+          {"name":"ZF2629","type":0,"url":"https://zf2629.github.io/tv/live/cctv.json","playerType":2,"timeout":10},
+          {"name":"01","type":0,"url":"https://zf2629.github.io/tv/live/01.json","timeout":10}
+             ],
+
+
+
+       "parses":[
+        {"name":"ZF2629","type":1,"url":"https://zy.qiaoji8.com/neibu.php?url=","ext":{"flag":["qq","腾讯","qiyi","爱奇艺","奇艺","youku","优酷","sohu","搜狐","letv","乐视","mgtv","芒果","tnmb","seven","bilibili","1905"],"header":{"User-Agent":"okhttp/4.9.1"}}},
+        {"name":"解析1","type":0,"url":"https://jx.m3u8.tv/jiexi/?url="},
+        {"name":"解析2","type":0,"url":"https://t2.qlplayer.cyou/player/analysis.php?v="},
+        {"name":"解析3","type":0,"url":"https://jx.xmflv.com/?url=","ext":{"flag":["qq","腾讯","qiyi","爱奇艺","奇艺","youku","优酷","sohu","搜狐","letv","乐视","mgtv","芒果","芒果TV","tnmb","seven","bilibili","1905"],"header":{"user-agent":"Mozilla/5.0 (Windows NT 10.0;Win64;x64) AppleWebKit/537.36 (KHTML,like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57"}}},
+        {"name":"解析4","type":0,"url":"https://www.ckplayer.vip/jiexi/?url="},
+        {"name":"解析5","type":0,"url":"https://nm.xxxc137.top/static/player/artplayer.html?url="},       
+        {"name":"解析6","type":0,"url":"https://jx.aidouer.net/?url=","ext":{"header":{"user-agent":"Mozilla/5.0 (Linux;Android 13;V2049A Build/TP1A.220624.014;wv) AppleWebKit/537.36 (KHTML,like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36","referer":"https://jiejie.uk/"}}}
+                ],
+
+ "ads": [
+    "mimg.0c1q0l.cn",
+    "www.googletagmanager.com",
+    "www.google-analytics.com",
+    "mc.usihnbcq.cn",
+    "mg.g1mm3d.cn",
+    "mscs.svaeuzh.cn",
+    "cnzz.hhttm.top",
+    "tp.vinuxhome.com",
+    "cnzz.mmstat.com",
+    "www.baihuillq.com",
+    "s23.cnzz.com",
+    "z3.cnzz.com",
+    "c.cnzz.com",
+    "stj.v1vo.top",
+    "z12.cnzz.com",
+    "img.mosflower.cn",
+    "tips.gamevvip.com",
+    "ehwe.yhdtns.com",
+    "xdn.cqqc3.com",
+    "www.jixunkyy.cn",
+    "sp.chemacid.cn",
+    "hm.baidu.com",
+    "s9.cnzz.com",
+    "z6.cnzz.com",
+    "um.cavuc.com",
+    "mav.mavuz.com",
+    "wofwk.aoidf3.com",
+    "z5.cnzz.com",
+    "xc.hubeijieshikj.cn",
+    "tj.tianwenhu.com",
+    "xg.gars57.cn",
+    "k.jinxiuzhilv.com",
+    "cdn.bootcss.com",
+    "ppl.xunzhuo123.com",
+    "xomk.jiangjunmh.top",
+    "img.xunzhuo123.com",
+    "z1.cnzz.com",
+    "s13.cnzz.com",
+    "xg.huataisangao.cn",
+    "z7.cnzz.com",
+    "xg.huataisangao.cn",
+    "z2.cnzz.com",
+    "s96.cnzz.com",
+    "q11.cnzz.com",
+    "thy.dacedsfa.cn",
+    "xg.whsbpw.cn",
+    "s19.cnzz.com",
+    "z8.cnzz.com",
+    "s4.cnzz.com",
+    "f5w.as12df.top",
+    "ae01.alicdn.com",
+    "www.92424.cn",
+    "k.wudejia.com",
+    "vivovip.mmszxc.top",
+    "qiu.xixiqiu.com",
+    "cdnjs.hnfenxun.com",
+    "cms.qdwght.com"
+  ],
+
+    "hosts": [
+        "cache.ott.*.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com",
+        "cache.ott.ystenlive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com",
+        "cache.ott.bestlive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com",
+        "cache.ott.wasulive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com",
+        "cache.ott.fifalive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com",
+        "cache.ott.hnbblive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com"
+    ],
+   "ijk":[{"group":"软解码","options":[{"category":4,"name":"opensles","value":"0"},{"category":4,"name":"overlay-format","value":"842225234"},{"category":4,"name":"framedrop","value":"1"},{"category":4,"name":"soundtouch","value":"1"},{"category":4,"name":"start-on-prepared","value":"1"},{"category":1,"name":"http-detect-range-support","value":"0"},{"category":1,"name":"fflags","value":"fastseek"},{"category":2,"name":"skip_loop_filter","value":"48"},{"category":4,"name":"reconnect","value":"1"},{"category":4,"name":"enable-accurate-seek","value":"0"},{"category":4,"name":"mediacodec","value":"0"},{"category":4,"name":"mediacodec-auto-rotate","value":"0"},{"category":4,"name":"mediacodec-handle-resolution-change","value":"0"},{"category":4,"name":"mediacodec-hevc","value":"0"},{"category":1,"name":"dns_cache_timeout","value":"600000000"}]},{"group":"硬解码","options":[{"category":4,"name":"opensles","value":"0"},{"category":4,"name":"overlay-format","value":"842225234"},{"category":4,"name":"framedrop","value":"1"},{"category":4,"name":"soundtouch","value":"1"},{"category":4,"name":"start-on-prepared","value":"1"},{"category":1,"name":"http-detect-range-support","value":"0"},{"category":1,"name":"fflags","value":"fastseek"},{"category":2,"name":"skip_loop_filter","value":"48"},{"category":4,"name":"reconnect","value":"1"},{"category":4,"name":"enable-accurate-seek","value":"0"},{"category":4,"name":"mediacodec","value":"1"},{"category":4,"name":"mediacodec-auto-rotate","value":"1"},{"category":4,"name":"mediacodec-handle-resolution-change","value":"1"},{"category":4,"name":"mediacodec-hevc","value":"1"},{"category":1,"name":"dns_cache_timeout","value":"600000000"}]}]}
