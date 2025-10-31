@@ -9,12 +9,13 @@
       "url": "https://develop202.github.io/migu_video/interface.txt",
       "img": "https://zf2629.github.io/tv/img/詹.png"
     },
-{"name":"猫TV直播","url":"https://zf2629.github.io/y/live/001.json&&&https://zf2629.github.io/tv/img/詹.png"}
+{"name":"ZFTV直播","url":"https://zf2629.github.io/y/live/001.json&&&https://zf2629.github.io/tv/img/詹.png"}
 
 
 
 
 ]
+
 
 
 
