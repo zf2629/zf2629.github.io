@@ -1,6 +1,16 @@
 [
-
+ {
+      "name": "电视台",
+      "url": "https://zf2629.github.io/live/live.txt",
+      "img": "https://zf2629.github.io/tv/img/詹.png"
+    },
+    {
+      "name": "直播01",
+      "url": "https://develop202.github.io/migu_video/interface.txt",
+      "img": "https://zf2629.github.io/tv/img/詹.png"
+    },
 {"name":"猫TV直播","url":"http://rihou.cc:555/gggg.nzk&&&https://tuapi.eees.cc/api.php?category=meinv&type=302"}
+
 
 
 
