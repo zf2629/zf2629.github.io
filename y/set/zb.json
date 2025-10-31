@@ -1,7 +1,7 @@
 [
     {
       "name": "电视台",
-      "url": "https://zf2629.github.io/live/live.json",
+      "url": "https://zf2629.github.io/live/live.txt",
       "img": "https://zf2629.github.io/tv/img/詹.png"
     },
     {
@@ -16,6 +16,7 @@
     }
 
   ]
+
 
 
 
