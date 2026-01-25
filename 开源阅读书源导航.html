@@ -1,0 +1,615 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="开源阅读书源导航 - 一键导入最新书源合集">
+    <title>开源阅读书源导航</title>
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --hover-color: #e3f2fd;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+        }
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        .search-box {
+            margin: 30px auto;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+        }
+        #search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            outline: none;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+        #search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 8px rgba(66, 133, 244, 0.3);
+        }
+        .category {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+        .category-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .category-title i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        .source-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+        }
+        .source-item {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .source-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--primary-color);
+        }
+        .source-name {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            color: #222;
+        }
+        .source-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .source-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #999;
+        }
+        .source-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .action-btn {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+        .copy-btn {
+            background: #f1f1f1;
+            color: #333;
+        }
+        .import-btn {
+            background: var(--primary-color);
+            color: white;
+        }
+        .favorite-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #ccc;
+            transition: all 0.2s;
+        }
+        .favorite-btn.active {
+            color: #ff5252;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #999;
+            font-size: 0.9rem;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+        }
+        .import-guide {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .no-results {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            display: none;
+        }
+        .live-time {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        @media (max-width: 768px) {
+            .source-list {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 开源阅读书源导航</h1>
+            <p class="subtitle">一键导入最新书源合集 · 每日自动更新</p>
+        </header>
+
+        <div class="import-guide">
+            <strong>使用说明：</strong> 
+            <ul>
+                <li>点击"一键导入"直接导入书源到阅读APP</li>
+                <li>或点击"复制链接"手动到APP中网络导入</li>
+            </ul>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="搜索书源名称或描述...">
+        </div>
+
+        <div id="no-results" class="no-results">
+            <p>没有找到匹配的书源，请尝试其他关键词</p>
+        </div>
+
+        <div class="category">
+            <div class="category-title"><i>🔥</i> 热门书源合集</div>
+            <div class="source-list" id="hot-sources"></div>
+        </div>
+
+        <div class="category">
+            <div class="category-title"><i>📖</i> 小说书源</div>
+            <div class="source-list" id="novel-sources"></div>
+        </div>
+
+        <div class="category">
+            <div class="category-title"><i>🎬</i> 影视/短剧书源</div>
+            <div class="source-list" id="drama-sources"></div>
+        </div>
+        
+        <div class="category">
+            <div class="category-title"><i>📱</i> 软件/APP下载</div>
+            <div class="source-list" id="app-sources"></div>
+        </div>
+        
+        <div class="category">
+            <div class="category-title"><i>⭐</i> 我的收藏</div>
+            <div class="source-list" id="favorite-sources"></div>
+        </div>
+
+        <div class="footer">
+            <p>数据每日自动更新 | 当前时间：<span id="update-time" class="live-time"></span></p>
+            <p>©2025 开源阅读书源导航 | 仅供学习交流使用</p>
+        </div>
+    </div>
+
+    <script>
+        // 环境检测 - 判断是否在阅读APP内打开
+        const isInLegadoApp = () => {
+            return navigator.userAgent.includes('Legado') || 
+                   document.referrer.includes('legado://') ||
+                   window.location.href.startsWith('http://localhost');
+        };
+
+        // 书源数据库
+        const sourceDatabase = {
+            hot: [
+                 {
+                    name: "大灰狼书源", 
+                    url: "https://legado.aoaostar.com/sources/e29e19ee.json",
+                    desc: "精选优质书源，覆盖全网主流平台",
+                    date: "实时更新"
+                },
+                {
+                    name: "三舞书源", 
+                    url: "https://legado.aoaostar.com/sources/2a1f129b.json",
+                    desc: "精选优质书源，覆盖全网主流平台",
+                    date: "实时更新"
+                },
+                {
+                    name: "破冰书源", 
+                    url: "https://legado.aoaostar.com/sources/4dc410d1.json",
+                    desc: "精选优质书源，覆盖全网主流平台",
+                    date: "实时更新"
+                },
+                {
+                    name: "XIU书源", 
+                    url: "https://legado.aoaostar.com/sources/71e56d4f.json",
+                    desc: "精选优质书源，覆盖全网主流平台",
+                    date: "实时更新"
+                },
+                {
+                    name: "酷安书源", 
+                    url: "https://legado.aoaostar.com/sources/3bb7b751.json",
+                    desc: "精选优质书源，覆盖全网主流平台",
+                    date: "实时更新"
+                },
+                {
+                    name: "源仓库书源大全", 
+                    url: "http://www.yckceo.com/yuedu/shuyuan/index.html",
+                    desc: "专业书源收录平台，分类清晰",
+                    date: "实时更新"
+                },
+                {
+                    name: "阅读3.0官方书源", 
+                    url: "https://gitee.com/ThomasYou/yd/raw/master/sy/3.0.json",
+                    desc: "官方维护的稳定书源",
+                    date: "实时更新"
+                }
+            ],
+            novel: [
+                {
+                    name: "茄番小说全站书源", 
+                    url: "https://cdn.jsdelivr.net/gh/yuedu520/yuedu@main/2503061.json",
+                    desc: "包含番茄小说所有书源",
+                    date: "实时更新"
+                },
+                {
+                    name: "某点/某卢书源合集", 
+                    url: "https://cdn.jsdelivr.net/gh/yuedu520/yuedu@main/250315.json",
+                    desc: "主流付费小说平台书源",
+                    date: "实时更新"
+                },
+                {
+                    name: "笔趣阁镜像源合集", 
+                    url: "https://cdn.jsdelivr.net/gh/yuedu520/yuedu@main/250401.json",
+                    desc: "多个笔趣阁镜像站点书源",
+                    date: "实时更新"
+                }
+            ],
+            drama: [
+                {
+                    name: "热门短剧书源合集", 
+                    url: "https://cdn.jsdelivr.net/gh/yuedu520/yuedu@main/2503153.json",
+                    desc: "包含最新短剧资源",
+                    date: "实时更新"
+                },
+                {
+                    name: "喵公子影视书源", 
+                    url: "https://namofree.coding.net/p/yuedu/d/legado/git/raw/master/legadoNamo.json",
+                    desc: "影视类资源丰富",
+                    date: "实时更新"
+                }
+            ],
+            app: [
+                {
+                    name: "夸克网盘下载", 
+                    url: "https://pan.quark.cn/s/7a39190ec0a2",
+                    desc: "包含很多类型小说APP",
+                    date: "实时更新"
+                },
+                {
+                    name: "本地书源+主题+字体", 
+                    url: "https://pan.quark.cn/s/170c3744af6a",
+                    desc: "主题包大全",
+                    date: "实时更新"
+                }
+            ]
+        };
+
+        // 更新实时时间函数
+        function updateLiveTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString('zh-CN', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+            document.getElementById('update-time').textContent = timeString;
+        }
+
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置初始时间并启动定时器
+            updateLiveTime();
+            setInterval(updateLiveTime, 1000);
+            
+            // 如果是APP内打开，修改UI提示
+            if (isInLegadoApp()) {
+                document.querySelector('.subtitle').textContent += ' (APP内打开)';
+                document.querySelector('.import-guide li:first-child').textContent = 
+                    '点击"一键导入"直接导入书源到当前APP';
+            }
+            
+            // 渲染所有书源
+            renderAllSources();
+            
+            // 初始化搜索功能
+            initSearch();
+            
+            // 加载收藏
+            renderFavorites();
+        });
+
+        // 渲染所有书源分类
+        function renderAllSources() {
+            renderSourceCategory('hot', 'hot-sources');
+            renderSourceCategory('novel', 'novel-sources');
+            renderSourceCategory('drama', 'drama-sources');
+            renderSourceCategory('app', 'app-sources');
+            
+            // 添加点击事件
+            addSourceClickEvents();
+        }
+
+        // 渲染单个分类书源
+        function renderSourceCategory(category, elementId) {
+            const container = document.getElementById(elementId);
+            const sources = sourceDatabase[category];
+            
+            container.innerHTML = sources.map((source, index) => {
+                const isFavorite = checkIsFavorite(source.url);
+                const importUrl = `legado://import/bookSource?src=${encodeURIComponent(source.url)}`;
+                return `
+                    <div class="source-item" data-url="${source.url}" data-name="${source.name}">
+                        <button class="favorite-btn ${isFavorite ? 'active' : ''}" data-url="${source.url}">❤</button>
+                        <div class="source-name">${source.name}</div>
+                        <div class="source-desc">${source.desc}</div>
+                        <div class="source-meta">
+                            <span>${source.date}</span>
+                            <span>${category === 'hot' ? '推荐' : ''}</span>
+                        </div>
+                        <div class="source-actions">
+                            <button class="action-btn import-btn" data-import="${importUrl}" data-url="${source.url}">一键导入</button>
+                            <button class="action-btn copy-btn" data-url="${source.url}">复制链接</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 添加书源点击事件
+        function addSourceClickEvents() {
+            // 一键导入按钮
+            document.querySelectorAll('.import-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const importUrl = this.getAttribute('data-import');
+                    const sourceUrl = this.getAttribute('data-url');
+                    
+                    if (isInLegadoApp()) {
+                        // 在APP内直接使用JS API导入
+                        try {
+                            if (typeof app !== 'undefined' && app.importBookSource) {
+                                app.importBookSource(sourceUrl);
+                                showToast('书源导入中...');
+                            } else {
+                                window.location.href = importUrl;
+                            }
+                        } catch (error) {
+                            window.location.href = importUrl;
+                        }
+                    } else {
+                        // 外部浏览器打开
+                        window.location.href = importUrl;
+                        
+                        // 添加备用方案
+                        setTimeout(() => {
+                            if (!document.hidden) {
+                                copyToClipboard(sourceUrl);
+                                showToast('未检测到阅读APP，已复制链接，请手动导入');
+                            }
+                        }, 500);
+                    }
+                });
+            });
+            
+            // 复制链接按钮
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const url = this.getAttribute('data-url');
+                    copyToClipboard(url);
+                    showToast('已复制书源链接到剪贴板');
+                });
+            });
+            
+            // 收藏按钮点击
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const url = this.getAttribute('data-url');
+                    toggleFavorite(url);
+                    this.classList.toggle('active');
+                    renderFavorites();
+                });
+            });
+        }
+
+        // 初始化搜索功能
+        function initSearch() {
+            const searchInput = document.getElementById('search-input');
+            const noResults = document.getElementById('no-results');
+            
+            searchInput.addEventListener('input', function() {
+                const keyword = this.value.trim().toLowerCase();
+                let hasResults = false;
+                
+                if (keyword === '') {
+                    document.querySelectorAll('.source-item').forEach(item => {
+                        item.style.display = 'block';
+                    });
+                    noResults.style.display = 'none';
+                    return;
+                }
+                
+                document.querySelectorAll('.source-item').forEach(item => {
+                    const name = item.getAttribute('data-name').toLowerCase();
+                    const desc = item.querySelector('.source-desc').textContent.toLowerCase();
+                    
+                    if (name.includes(keyword) || desc.includes(keyword)) {
+                        item.style.display = 'block';
+                        hasResults = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                noResults.style.display = hasResults ? 'none' : 'block';
+            });
+        }
+
+        // 渲染收藏书源
+        function renderFavorites() {
+            const favorites = getFavorites();
+            const container = document.getElementById('favorite-sources');
+            
+            if (favorites.length === 0) {
+                container.innerHTML = '<p style="text-align:center;color:#666;">暂无收藏的书源</p>';
+                return;
+            }
+            
+            container.innerHTML = favorites.map(url => {
+                const source = findSourceByUrl(url);
+                if (!source) return '';
+                
+                const importUrl = `legado://import/bookSource?src=${encodeURIComponent(source.url)}`;
+                return `
+                    <div class="source-item" data-url="${source.url}" data-name="${source.name}">
+                        <button class="favorite-btn active" data-url="${source.url}">❤</button>
+                        <div class="source-name">${source.name}</div>
+                        <div class="source-desc">${source.desc}</div>
+                        <div class="source-meta">
+                            <span>${source.date}</span>
+                        </div>
+                        <div class="source-actions">
+                            <button class="action-btn import-btn" data-import="${importUrl}" data-url="${source.url}">一键导入</button>
+                            <button class="action-btn copy-btn" data-url="${source.url}">复制链接</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // 重新绑定事件
+            addSourceClickEvents();
+        }
+
+        // 收藏相关函数
+        function toggleFavorite(url) {
+            const favorites = getFavorites();
+            const index = favorites.indexOf(url);
+            
+            if (index === -1) {
+                favorites.push(url);
+            } else {
+                favorites.splice(index, 1);
+            }
+            
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+
+        function getFavorites() {
+            return JSON.parse(localStorage.getItem('favorites') || '[]');
+        }
+
+        function checkIsFavorite(url) {
+            const favorites = getFavorites();
+            return favorites.includes(url);
+        }
+
+        function findSourceByUrl(url) {
+            for (const category in sourceDatabase) {
+                const found = sourceDatabase[category].find(s => s.url === url);
+                if (found) return found;
+            }
+            return null;
+        }
+
+        // 工具函数
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = decodeURIComponent(text);
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.left = '50%';
+            toast.style.transform = 'translateX(-50%)';
+            toast.style.backgroundColor = 'rgba(0,0,0,0.7)';
+            toast.style.color = 'white';
+            toast.style.padding = '10px 20px';
+            toast.style.borderRadius = '5px';
+            toast.style.zIndex = '1000';
+            toast.style.transition = 'opacity 0.3s';
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
