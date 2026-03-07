@@ -1,0 +1,8 @@
+频道,#genre#
+CCTV1综合,http://74.91.26.218:82/live/cctv1hd.m3u8#isVideo=true
+CCTV13,http://74.91.26.218:82/live/cctv13hd.m3u8#isVideo=true
+浙江卫视,https://ali-xwl.cztv.com/live/channel01720Plxw.m3u8#isVideo=true
+东方卫视,http://74.91.26.218:82/live/dfwshd.m3u8#isVideo=true
+江苏卫视,http://74.91.26.218:82/live/jswshd.m3u8#isVideo=true
+湖南卫视,http://74.91.26.218:82/live/hnwshd.m3u8#isVideo=true
+湖北卫视,http://swtyc.f3322.org:8880/udp/239.253.157.115:8664#isVideo=true
