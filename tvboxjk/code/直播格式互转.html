@@ -1,0 +1,658 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TXT与M3U格式互转工具</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --success-color: #4caf50;
+            --info-color: #2196f3;
+            --warning-color: #ff9800;
+            --danger-color: #f44336;
+            --glass-effect: rgba(255, 255, 255, 0.08);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            color: var(--light-color);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            background: var(--dark-color);
+        }
+
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--dark-color) center/cover no-repeat;
+            transition: var(--transition);
+        }
+
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .card {
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            border: var(--glass-border);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45);
+        }
+
+        .mode-switch {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mode-btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .mode-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .mode-btn.active-mode {
+            background: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
+        }
+
+        .mode-btn i {
+            font-size: 1rem;
+        }
+
+        .input-output-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .input-output-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .text-container h3 {
+            margin-bottom: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .text-container h3 i {
+            color: var(--accent-color);
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 1rem;
+            border-radius: 10px;
+            border: var(--glass-border);
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-family: 'Noto Sans SC', sans-serif;
+            resize: vertical;
+            transition: var(--transition);
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.3);
+        }
+
+        #outputArea {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #3d8b40;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn-danger {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #d32f2f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(244, 67, 54, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success-color);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transform: translateX(200%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-container" id="dynamicBg"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <header>
+            <h1>TXT与M3U格式互转工具</h1>
+            <p class="subtitle">高效、简洁、专业的多媒体列表转换解决方案</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <div class="mode-switch">
+                    <button id="txtToM3U" class="mode-btn active-mode" onclick="switchMode('txt2m3u')">
+                        <i class="fas fa-exchange-alt"></i> TXT → M3U
+                    </button>
+                    <button id="m3uToTxt" class="mode-btn" onclick="switchMode('m3u2txt')">
+                        <i class="fas fa-exchange-alt"></i> M3U → TXT
+                    </button>
+                </div>
+
+                <div class="input-output-container">
+                    <div class="text-container">
+                        <h3 id="inputLabel"><i class="fas fa-paste"></i> TXT格式源:</h3>
+                        <textarea id="inputArea" placeholder="在此粘贴TXT内容..."></textarea>
+                    </div>
+
+                    <div class="text-container">
+                        <h3 id="outputLabel"><i class="fas fa-file-code"></i> M3U格式结果:</h3>
+                        <textarea id="outputArea" readonly></textarea>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary pulse" onclick="convert()">
+                        <i class="fas fa-sync-alt"></i> 转换格式
+                    </button>
+                    <button class="btn btn-danger" onclick="clearScreen()">
+                        <i class="fas fa-trash-alt"></i> 清除内容
+                    </button>
+                    <button class="btn btn-success" onclick="copyResult()">
+                        <i class="fas fa-copy"></i> 复制结果
+                    </button>
+                    <button class="btn btn-secondary" onclick="saveFile()">
+                        <i class="fas fa-download"></i> 保存文件
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer id="copyright">
+            © 2025 <a href="" target="_blank">ZF影视</a>
+        </footer>
+    </div>
+
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">已复制到剪贴板！</span>
+    </div>
+
+    <script>
+        // EPG频道列表
+        const epgLists = [
+            "CCTV1", "CCTV2", "CCTV3", "CCTV4", "CCTV5", "CCTV5+", "CCTV6", "CCTV7", 
+            "CCTV8", "CCTV9", "CCTV10", "CCTV11", "CCTV12", "CCTV13", "CCTV14", "CCTV15",
+            "CCTV16", "CCTV17", "CGTN", "北京卫视", "湖南卫视", "浙江卫视", "江苏卫视",
+            "东方卫视", "安徽卫视", "山东卫视", "天津卫视", "辽宁卫视", "黑龙江卫视",
+            "湖北卫视", "广东卫视", "深圳卫视", "重庆卫视", "四川卫视", "东南卫视",
+            "江西卫视", "广西卫视", "贵州卫视", "云南卫视", "河北卫视", "山西卫视",
+            "内蒙古卫视", "吉林卫视", "西藏卫视", "陕西卫视", "甘肃卫视", "青海卫视",
+            "宁夏卫视", "新疆卫视", "海南卫视", "北京文艺", "北京科教", "北京影视",
+            "北京财经", "北京生活", "北京青年", "北京新闻", "北京体育", "北京纪实",
+            "北京卡酷", "湖南金鹰", "江苏城市", "浙江钱江", "山东齐鲁", "广东珠江",
+            "广东体育", "深圳都市", "重庆影视", "四川影视", "天津文艺", "辽宁都市",
+            "黑龙江都市", "湖北经视", "安徽经视", "河南都市", "河北经济", "山西经济",
+            "陕西都市", "江西都市", "云南都市", "贵州公共", "广西综艺", "福建综合",
+            "新疆汉语", "西藏汉语", "内蒙古汉语", "宁夏公共", "青海综合", "甘肃文化"
+        ];
+
+        // 动态背景设置
+        function updateBackground() {
+            const bgContainer = document.getElementById('dynamicBg');
+            const timestamp = new Date().getTime();
+            bgContainer.style.backgroundImage = `url('https://api.imlcd.cn/bg/gq.php?timestamp=${timestamp}')`;
+        }
+
+        // 初始加载背景
+        updateBackground();
+        
+        // 每30分钟更换一次背景
+        setInterval(updateBackground, 30 * 60 * 1000);
+
+        // 当前模式
+        let currentMode = 'txt2m3u';
+
+        // 显示通知
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // 切换模式
+        function switchMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active-mode'));
+            document.getElementById(mode === 'txt2m3u' ? 'txtToM3U' : 'm3uToTxt').classList.add('active-mode');
+            
+            document.getElementById('inputLabel').innerHTML = mode === 'txt2m3u' ? 
+                '<i class="fas fa-paste"></i> TXT格式源:' : '<i class="fas fa-file-code"></i> M3U格式源:';
+            document.getElementById('outputLabel').innerHTML = mode === 'txt2m3u' ? 
+                '<i class="fas fa-file-code"></i> M3U格式结果:' : '<i class="fas fa-paste"></i> TXT格式结果:';
+            document.getElementById('inputArea').placeholder = mode === 'txt2m3u' ? 
+                '在此粘贴TXT内容...' : '在此粘贴M3U内容...';
+            
+            // 清空输出区域
+            document.getElementById('outputArea').value = '';
+            
+            // 给按钮添加脉冲动画
+            const convertBtn = document.querySelector('.btn-primary');
+            convertBtn.classList.add('pulse');
+        }
+
+        // 转换函数
+        function convert() {
+            try {
+                currentMode === 'txt2m3u' ? convertToM3U() : convertToTXT();
+                
+                // 移除按钮脉冲动画
+                const convertBtn = document.querySelector('.btn-primary');
+                convertBtn.classList.remove('pulse');
+                
+                showNotification('转换成功！');
+            } catch (error) {
+                showNotification('转换出错: ' + error.message);
+            }
+        }
+
+        // 处理频道信息（智能识别频道和分组）
+        function processChannelInfo(name, currentGroup) {
+            let tvgName = name;
+            let tvgId = "";
+            let group = currentGroup;
+            let logoUrl = "";
+            
+            // 清理频道名称中的冗余信息
+            const cleanName = name.replace(/(超清|高清|标清|4K|HD|FHD|\[.*?\]|\(.*?\))/g, '').trim();
+            
+            // 尝试匹配EPG列表中的频道
+            const matchedEpg = epgLists.find(epg => cleanName.includes(epg));
+            if (matchedEpg) {
+                tvgName = matchedEpg;
+                tvgId = matchedEpg;
+            } else {
+                tvgId = cleanName;
+            }
+            
+            // 智能分组（如果没有指定分组）
+            if (!group) {
+                if (cleanName.includes('CCTV') || cleanName.includes('央视') || cleanName.includes('中央') || cleanName.includes('CGTN')) {
+                    group = "央视";
+                } else if (cleanName.includes('卫视') && !cleanName.includes('凤凰')) {
+                    group = "卫视";
+                } else if (cleanName.match(/北京|上海|河北|山西|辽宁|吉林|黑龙江|江苏|浙江|安徽|福建|江西|山东|河南|湖北|湖南|广东|海南|四川|贵州|云南|陕西|甘肃|青海|台湾|香港|重庆/)) {
+                    const match = cleanName.match(/北京|上海|河北|山西|辽宁|吉林|黑龙江|江苏|浙江|安徽|福建|江西|山东|河南|湖北|湖南|广东|海南|四川|贵州|云南|陕西|甘肃|青海|台湾|重庆|香港/);
+                    group = match ? match[0] : "其他";
+                } else if (cleanName.includes('凤凰')) {
+                    group = "香港";
+                } else if (cleanName.match(/翡翠|明珠|民视|台视|华视|TVB|纬来|年代|原住民|中视|澳亚|东森|好消息电视台|大爱|博斯|ELEVEN|FOX|ASTRO|HBO|NIPPON|NHK|GSTV|无线/)) {
+                    group = "港澳台";
+                } else if (cleanName.includes('BTV')) {
+                    group = "北京";
+                } else if (cleanName.match(/世界地理|兵器科技|卫生健康|央视台球|女性时尚|怀旧剧场|文化精品|电视指南|第一剧场|风云剧场|风云足球|风云音乐|高尔夫网球|老故事|中学生/)) {
+                    group = "央视";
+                } else {
+                    group = "其他";
+                }
+            }
+            
+            // 生成logo URL
+            logoUrl = `https://11.112114.xyz/logo/${tvgName}.png`;
+            
+            return {
+                tvgName: tvgName,
+                tvgId: tvgId,
+                group: group,
+                logoUrl: logoUrl
+            };
+        }
+
+        // 转换为M3U（改进版）
+        function convertToM3U() {
+            const input = document.getElementById('inputArea').value;
+            if (!input.trim()) {
+                throw new Error('请输入内容');
+            }
+            
+            const lines = input.split('\n').filter(line => line.trim() !== '');
+            let m3u = '#EXTM3U x-tvg-url="https://11.112114.xyz/pp.xml"\n';
+            let currentGroup = null;
+
+            lines.forEach(line => {
+                const trimmed = line.trim();
+                
+                // 处理分组行
+                if (trimmed.includes('#genre#')) {
+                    currentGroup = trimmed.replace(',#genre#', '');
+                    return;
+                }
+                
+                // 跳过空行和非URL行
+                if (!trimmed || !trimmed.includes('http')) {
+                    return;
+                }
+                
+                // 分割频道名称和URL
+                const lastCommaIndex = trimmed.lastIndexOf(',');
+                if (lastCommaIndex === -1) {
+                    throw new Error('格式错误: 每行应为"频道名称,URL"格式');
+                }
+                
+                const name = trimmed.substring(0, lastCommaIndex).trim();
+                const url = trimmed.substring(lastCommaIndex + 1).trim();
+                
+                if (!name || !url) {
+                    throw new Error('格式错误: 每行应为"频道名称,URL"格式');
+                }
+                
+                // 智能处理频道名称和分组
+                const processedInfo = processChannelInfo(name, currentGroup);
+                
+                m3u += `#EXTINF:-1 tvg-id="${processedInfo.tvgId}" tvg-name="${processedInfo.tvgName}" tvg-logo="${processedInfo.logoUrl}"`;
+                
+                if (processedInfo.group) {
+                    m3u += ` group-title="${processedInfo.group}"`;
+                }
+                
+                m3u += `,${name}\n${url}\n`;
+            });
+
+            document.getElementById('outputArea').value = m3u;
+        }
+
+        // 转换为TXT
+        function convertToTXT() {
+            const input = document.getElementById('inputArea').value;
+            if (!input.trim()) {
+                throw new Error('请输入内容');
+            }
+            
+            const lines = input.split('\n').filter(line => line.trim() !== '');
+            let txt = '';
+            let currentGroup = null;
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (line.startsWith('#EXTINF')) {
+                    const extinf = line;
+                    const url = lines[++i];
+                    
+                    if (!url) {
+                        throw new Error('格式错误: #EXTINF后缺少URL');
+                    }
+                    
+                    // 解析分组信息
+                    const groupMatch = extinf.match(/group-title="([^"]+)"/);
+                    const group = groupMatch ? groupMatch[1] : currentGroup;
+                    
+                    // 解析频道名称
+                    const nameMatch = extinf.match(/,(.*)$/);
+                    const name = nameMatch ? nameMatch[1] : '未知频道';
+                    
+                    // 处理分组变化
+                    if (group && group !== currentGroup) {
+                        currentGroup = group;
+                        txt += `\n${currentGroup},#genre#\n`;
+                    }
+                    
+                    txt += `${name},${url}\n`;
+                }
+            }
+
+            document.getElementById('outputArea').value = txt.trim();
+        }
+
+        // 清空屏幕
+        function clearScreen() {
+            document.getElementById('inputArea').value = '';
+            document.getElementById('outputArea').value = '';
+            
+            // 给按钮添加脉冲动画
+            const convertBtn = document.querySelector('.btn-primary');
+            convertBtn.classList.add('pulse');
+            
+            showNotification('已清空内容');
+        }
+
+        // 复制结果
+        function copyResult() {
+            const output = document.getElementById('outputArea');
+            if (!output.value.trim()) {
+                showNotification('没有内容可复制');
+                return;
+            }
+            
+            output.select();
+            document.execCommand('copy');
+            showNotification('已复制到剪贴板！');
+        }
+
+        // 保存文件
+        function saveFile() {
+            const content = document.getElementById('outputArea').value;
+            if (!content.trim()) {
+                showNotification('没有内容可保存');
+                return;
+            }
+            
+            const extension = currentMode === 'txt2m3u' ? 'm3u' : 'txt';
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `playlist.${extension}`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showNotification(`文件已保存为 playlist.${extension}`);
+        }
+    </script>
+</body>
+</html>
