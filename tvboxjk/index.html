@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" /> 
+  <link rel="shortcut icon" type="image/x-icon" href="images/1.png" /> 
+  <link rel="stylesheet" href="css.css" /> 
+  <title>ZF影视| TVBox资源导航</title> 
+
+
+
+  <script>
+	(function() {
+      // 1. 禁用右键菜单 (全面拦截)
+      window.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+      }, true);
+
+      // 2. 禁用所有查看源码相关的快捷键
+      window.addEventListener('keydown', function(e) {
+        if (
+          e.keyCode === 123 || // F12
+          (e.ctrlKey && e.keyCode === 85) || // Ctrl+U (查看源码)
+          (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 67 || e.keyCode === 74)) || // Ctrl+Shift+I/C/J
+          (e.ctrlKey && e.keyCode === 83) // Ctrl+S (保存)
+        ) {
+          e.preventDefault();
+          return false;
+        }
+      }, true);
+
+      // 3. 反调试循环：如果控制台被强行打开，页面会陷入 debugger 暂停
+      setInterval(function() {
+        (function(a) {
+          return (function(a) {
+            return (Function('Function(arguments[0].join(""))')(a));
+          })([window.btoa('debugger;')]);
+        })(['d', 'e', 'b', 'u', 'g', 'g', 'e', 'r', ';']);
+      }, 100);
+    })();
+  </script>
+
+
+  
+
+</head> 
+
+<body>
+       
+
+	
+			
+
+
+  
+  <button class="home-btn" onclick="window.location.href='../index.html'">返回主页</button>
+  <div id="copyToast" class="copy-toast">复制成功</div>
+
+  <div class="find ch"> 
+    <div class="container links"> 
+      <h2 class="chtitle">空壳源 <span>接口（点击复制）</span></h2> 
+      <div class="clear col-4"> 
+        <div class="item"> <div class="bg" style="background-color:#FF3030"></div> <div class="inner copyable" data-copy="https://jihulab.com/ymz1231/xymz/-/raw/main/ymshaoer"><span>少儿教育</span></div></div> 
+        <div class="item"> <div class="bg" style="background-color:#A020F0"></div> <div class="inner copyable" data-copy="http://www.饭太硬.net/tv"><span>饭太硬</span></div></div> 
+        <div class="item"> <div class="bg" style="background-color:#28a9e0"></div> <div class="inner copyable" data-copy="http://tvbox.xn--4kq62z5rby2qupq9ub.top/"><span>王二小 </span></div></div> 
+        <div class="item"> <div class="bg" style="background-color:#7b68ee"></div> <div class="inner copyable" data-copy="http://ok213.top/tv"><span>OK杰克 </span></div></div> 
+        <div class="item"> <div class="bg" style="background-color:#237DFF"></div> <div class="inner copyable" data-copy="http://cdn.qiaoji8.com/tvbox.json"><span>巧技</span></div></div> 
+        <div class="item"> <div class="bg" style="background-color:#2ECC71"></div> <div class="inner copyable" data-copy="http://我不是.摸鱼儿.com"><span>摸鱼儿</span></div></div> 
+        <div class="item"> <div class="bg" style="background-color:#ff4500"></div> <div class="inner copyable" data-copy="http://肥猫.com"><span>肥猫</span></div></div> 
+        <div class="item"> <div class="bg" style="background-color:#1ba050"></div> <div class="inner copyable" data-copy="https://gh-proxy.com/https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json"><span>南风</span></div></div> 
+        <div class="item"> <div class="bg" style="background-color:#3EDFFF"></div> <div class="inner copyable" data-copy="https://gitee.com/blssss/jk/raw/api/bls.json"><span>玩偶</span></div></div>  
+        <div class="item"> <div class="bg" style="background-color:#E74C3C"></div> <div class="inner copyable" data-copy="https://gitee.com/lzxw66/lzxw9/raw/master/Ace"><span>林中小屋</span></div></div> 
+        <div class="item"> <div class="bg" style="background-color:#5499C7"></div> <div class="inner copyable" data-copy="https://gh-proxy.com/https:/raw.githubusercontent.com/leevi0709/one/main/jsm.json"><span>one</span></div></div> 
+		<div class="item"> <div class="bg" style="background-color:#E98D12"></div> <div class="inner copyable" data-copy="https://gh-proxy.com/https://raw.githubusercontent.com/xyq254245/xyqonlinerule/main/XYQTVBox.json"><span>香雅情</span></div></div>
+        <div class="item"> <div class="bg" style="background-color:#E31C3C"></div> <div class="inner copyable" data-copy="https://16723.kstore.space/不良帅.png"><span>不良人 | 4K</span></div></div> 
+        <div class="item"> <div class="bg" style="background-color:#987FD9"></div> <div class="inner copyable" data-copy="https://17264.kstore.space/哈基米.png"><span>哈基米 | 4K</span></div></div>
+        <div class="item"> <div class="bg" style="background-color:#FF3E96"></div> <div class="inner copyable" data-copy="https://gitee.com/senno/tvbox/raw/master/api.json"><span>优选 | 2K、4K</span></div></div> 
+		<div class="item"> <div class="bg" style="background-color:#1f3cfb"></div> <div class="inner copyable" data-copy="https://9877.kstore.space/AnotherD/api.json"><span>潇洒</span></div></div>  
+		<div class="item"> <div class="bg" style="background-color:#6495ed"></div> <div class="inner copyable" data-copy="https://gitee.com/yiwu369/6758/raw/master/青龙/1.json"><span>青龙</span></div></div>  
+<!---  --->       <div class="item"> <div class="bg" style="background-color:#daa520"></div> <div class="inner copyable" data-copy="https://objectstorage.ap-melbourne-1.oraclecloud.com/n/axvdhhe2hcmn/b/tv-bucket-20250804-1124/o/jjzx.json"><span>JJZX | 含18禁</span></div></div> 
+		<div class="item"> <div class="bg" style="background-color:#008000"></div> <div class="inner copyable" data-copy="https://objectstorage.ap-melbourne-1.oraclecloud.com/n/axvdhhe2hcmn/b/tv-bucket-20250804-1124/o/cs.json"><span>CS | 含18禁</span></div></div> 
+       
+
+
+
+
+
+
+
+
+
+
+
+<div class="item"> <div class="bg" style="background-color:#008B8B"></div> <div class="inner copyable" data-copy="https://gitlab.com/noimank/tvbox/-/raw/main/tvboxmuti.json"><span>muti | 多仓</span></div></div> 
+<div class="item"> <div class="bg" style="background-color:#E31C3C"></div> <div class="inner copyable" data-copy="http://xhztv.top/dc"><span>小盒子 | 多仓</span></div></div> 
+
+<div class="item"> <div class="bg" style="background-color:#E31C3C"></div> <div class="inner copyable" data-copy="https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1"><span>裤佬 | 直播</span></div></div> 
+<div class="item"> <div class="bg" style="background-color:#E31C3C"></div> <div class="inner copyable" data-copy="https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/refs/heads/Jsnzkpg/Jsnzkpg"><span>裤佬 | VPN</span></div></div> 
+
+    
+
+
+
+
+
+
+      </div>
+    </div> 
+  </div>
+
+   <div class="gate ch"> 
+    <div class="container links"> 
+     <h2 class="chtitle">开源空壳 <span>相关免费资源推荐</span></h2> 
+     <div class="clear col-4"> 
+
+
+<a href="https://github.com/o0HalfLife0o/TVBoxOSC/releases" target="_blank"><div class="item"><div class="avatar"><img src="https://tvbox.clbug.com/app_icon.png" /></div><div class="inner"><h5>TVBox 源码</h5><p>TVBox支持多种设备，包括安卓手机、电视盒子以及智能电视等。</p></div></div></a>
+<a href="https://pan.quark.cn/s/61d324167c07" target="_blank"><div class="item"><div class="avatar"><img src="https://s1.imagehub.cc/images/2023/07/01/ysc.png" alt="影视仓" /></div><div class="inner"><h5>影视仓 下载</h5><p>Tvbox源码二开，支持多仓订阅，投屏，升级阿里播放器</p></div></div></a> 
+<a href="https://pan.quark.cn/s/cb0ee2b9ac64" target="_blank"><div class="item"><div class="avatar"><img src="https://s1.imagehub.cc/images/2023/07/01/ystv.md.png" alt="OK影视 下载" /></div><div class="inner"><h5>OK影视 下载</h5><p>片头片尾快捷标记，最新EXO支持软硬解，无缝换线路换源</p></div></div> </a> 
+<a href="https://github.com/FongMi/TV" target="_blank"><div class="item"><div class="avatar"><img src="https://s1.imagehub.cc/images/2023/07/01/ystv.md.png" alt="fongmiTV" /></div><div class="inner"><h5>fongmi TV 开源仓库</h5><p>台湾活雷锋FongMI开发，免费简洁强大的自动更新播放器</p></div></div> </a> 
+<a href="https://gh.xxooo.cf/" target="_blank"><div class="item"><div class="avatar"><img src="https://s1.imagehub.cc/images/2023/07/01/tk.png" alt="太快" /></div><div class="inner"><h5>太快</h5><p>GitHub 文件加速</p></div></div></a>
+<a href="http://z.qiqiv.cn/" target="_blank"><div class="item"><div class="avatar"><img src="https://s1.imagehub.cc/images/2023/07/01/tnb.png" alt="太能编" /></div><div class="inner"><h5>太能编</h5><p>接口配置编辑器，支持加解密</p></div></div></a>
+<a href="https://tv.cctv.com/live/" target="_blank"><div class="item"><div class="avatar"><img src="https://s1.imagehub.cc/images/2024/11/06/a1631bcdf8e7e79cf31e19d44c1e3025.jpg" alt="CCTV" /></div><div class="inner"><h5>直播大全</h5><p>CCTV直播大全</p></div></div></a>
+<a href="https://www.qiushui.vip/" target="_blank"><div class="item"><div class="avatar"><img src="https://s1.imagehub.cc/images/2025/03/01/f34a58938b3e2b08652fafcda58d77b2.th.jpg" alt="秋水网" /></div><div class="inner"><h5>秋水网</h5><p>简单易用的导航网站</p></div></div></a>
+<a href="http://www.foodieguide.com/iptvsearch/?s=" target="_blank"><div class="item"><div class="avatar"><img src="https://s1.imagehub.cc/images/2023/07/01/iptv.png" alt="IPTV搜索" /></div><div class="inner"><h5>直播源搜索引擎</h5><p>国内外电视直播源搜索，m3u8、flv、rtsp……</p></div></div></a>
+
+
+
+
+<a href="https://www.lylme.com/html/" target="_blank"><div class="item"><div class="avatar"><img src="https://s1.imagehub.cc/images/2023/07/01/zbzh.webp" alt=" Markdown 编辑器" /></div><div class="inner"><h5>Markdown</h5><p> Markdown 编辑器</p></div></div></a>
+
+
+<a href="https://www.toolhelper.cn/JSON/JSONFormat?type=1" target="_blank"><div class="item"><div class="avatar"><img src="https://s1.imagehub.cc/images/2023/07/01/tnb.png" alt="JSON工具" /></div><div class="inner"><h5>JSON 格式化与验证工具</h5><p>在线JSON 格式化校验工具</p></div></div></a>
+<a href="./code/jm.html" target="_blank"><div class="item"><div class="avatar"><img src="https://s1.imagehub.cc/images/2023/07/01/tnb.png" alt="接口加解密" /></div><div class="inner"><h5>接口加解密</h5><p>TVBOX接口加解密</p></div></div></a>
+<a href="./code/直播格式互转.html" target="_blank"><div class="item"><div class="avatar"><img src="https://s1.imagehub.cc/images/2023/07/01/zbzh.webp" alt="格式转换" /></div><div class="inner"><h5>直播源格式转换</h5><p>直播源格式在线转换工具</p></div></div></a>
+	   
+     </div> 
+     <div class="push"></div>
+    </div> 
+   </div>
+   
+   
+   <div class="footer ch"> 
+     <div class="container"> 
+	 	  		<h2 class="chtitle" style="text-align: left;">
+          请注意：<br>
+		  本站接口全部来源于网络公开资源。<br>
+		  本站不存储任何视频源及媒体的内容，所有视频源均由第三方提供，本站不对其内容负责，不保证视频源的可用性、稳定性和合法性。
+        </h2> 
+		
+      <h4>&copy; 2026 Powered by ZF影视</h4> 
+	  
+    </div> 
+   </div> 
+ 
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let startX = 0, startY = 0, isMoved = false;
+      const MOVE_THRESHOLD = 10;
+
+      function recordStart(e) {
+        const point = e.touches ? e.touches[0] : e;
+        startX = point.clientX; startY = point.clientY;
+        isMoved = false;
+      }
+
+      function detectMove(e) {
+        const point = e.touches ? e.touches[0] : e;
+        if (Math.abs(point.clientX - startX) > MOVE_THRESHOLD || Math.abs(point.clientY - startY) > MOVE_THRESHOLD) {
+          isMoved = true;
+        }
+      }
+
+      document.body.addEventListener('mousedown', recordStart, true);
+      document.body.addEventListener('touchstart', recordStart, true);
+      document.body.addEventListener('mousemove', detectMove, true);
+      document.body.addEventListener('touchmove', detectMove, true);
+
+      document.body.addEventListener('click', function (e) {
+        if (isMoved) return;
+        const target = e.target.closest('.copyable');
+        if (!target) return;
+        const text = target.getAttribute('data-copy');
+        if (!text) return;
+        const type = target.classList.contains('alipay-content') ? 'alipay' : 'api';
+        copyText(text, type);
+      });
+
+      function copyText(text, type) {
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(() => showCopySuccess(type)).catch(() => fallbackCopy(text, type));
+        } else {
+          fallbackCopy(text, type);
+        }
+      }
+
+      function fallbackCopy(text, type) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed'; textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try { document.execCommand('copy'); showCopySuccess(type); } catch { showToast('复制失败', true); }
+        document.body.removeChild(textarea);
+      }
+
+      function showCopySuccess(type) {
+        const msg = (type === 'alipay') ? '红包口令已复制，请打开支付宝' : '接口已复制，请粘贴到壳设置';
+        showToast(msg, false);
+      }
+
+      function showToast(message, isError) {
+        const toast = document.getElementById('copyToast');
+        toast.textContent = message;
+        toast.className = 'copy-toast show' + (isError ? ' error' : '');
+        setTimeout(() => { toast.classList.remove('show'); }, 2000);
+      }
+    });
+  </script>
+
+</body>
+</html>
