@@ -9,8 +9,7 @@ var searchFunc = function(path, search_id, content_id) {
                 return {
                     title: $( "title", this ).text(),
                     content: $("content",this).text(),
-                    url: $( "url" , this).text(),
-                    date: $( "date", this).text()
+                    url: $( "url" , this).text()
                 };
             }).get();
 
@@ -19,8 +18,8 @@ var searchFunc = function(path, search_id, content_id) {
             var $resultContent = document.getElementById(content_id);
             if ($("#local-search-input").length > 0) {
                 $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
                     var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    var str = '<ul class=\"list-group pb-3\">';
                     $resultContent.innerHTML = "";
                     if (this.value.trim().length <= 0) {
                         return;
@@ -61,6 +60,7 @@ var searchFunc = function(path, search_id, content_id) {
                         }
                         // show search results
                         if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
                             var content = data.content.trim().replace(/<[^>]+>/g, "");
                             if (first_occur >= 0) {
                                 // cut out 100 characters
@@ -87,12 +87,6 @@ var searchFunc = function(path, search_id, content_id) {
                                     match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
                                 });
 
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    data_title = data_title.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
-
-                                str += "<li class='list-group-item tag-hover'><a href='" + data_url + "' class='search-result-title link-dark'>" + data_title +"</a>";
                                 str += "<p class=\"search-result\">" + match_content + "...</p>"
                             }
                             str += "</li>";
@@ -105,7 +99,3 @@ var searchFunc = function(path, search_id, content_id) {
         }
     });
 }
-
-function hiddenSearch() {
-    // $('#local-search-input').val("")
-}   
