@@ -1,120 +1,31 @@
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="dark">
 <head>
-  <meta charset="utf-8">
-  <title>ZF影视</title>
-  <meta name="keywords" content="ZF影视" />
-  <meta name="description" content="ZF影视" />
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
- 
-  <link rel="stylesheet" href="./static/layui/css/layui.css"  media="all">
-  <link rel="stylesheet" href="./static/css/global.css" media="all">
-</head>
-<body class="site-home" style="background-color: #eee;">
-<div class="layui-header header header-index">
-  <div class="layui-main">
-    <a class="logo" href="/">ZF影视</a>
-    <div class="layui-form component">
-       
-    </div>
-    <ul class="layui-nav">
-    		<li class="layui-nav-item"><a href="/check.html" target="_blank">盗版检测</a></li>
-    		<li class="layui-nav-item"><a href="/doc/v10/index.html" target="_blank">文档</a></li>
-		<li class="layui-nav-item"><a href="https://t.me/maccms_channel" target="_blank" >Telegram群</a></li>
-    </ul>
-  </div>
-</div>
-<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
-<!--[if lt IE 9]>
-  <script src="./static/js/html5.min.js"></script>
-  <script src="./static/js/respond.min.js"></script>
-<![endif]--> 
-<div class="site-banner h600">
-	<canvas id="canvas">浏览器不支持canvas</canvas>
-	
-  <div class="site-banner-bg"></div>
-  <div class="site-banner-main">
-    <div class="site-zfj">
-      <i class="layui-icon" style="color: #fff; color: rgba(255,255,255,.7);">&#xe609;</i>
-    </div>
-    <div class="layui-anim site-desc">
-      <h1>ZF影视</h1>
-      <cite>永久免费,功能全面,性能优良,零门槛开箱即用的建站解决方案</cite>
-    </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZF影视</title>
+    <meta name="description" content="世界如此辽阔，别躲在悲伤的角落">
+    <!-- 主题闪白修复：最早读取本地存储 -->
+    <script>!function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t)}()</script>
+
+    <!-- 预加载关键CSS -->
+    <link rel="shortcut icon" href="./img/pic.png" type="image/x-icon" />
+    <link rel="preload" href="./css/style.css" as="style">
+    <link rel="preload" href="./css/inter.css" as="style">
+    <link rel="stylesheet" href="./css/inter.css">
+    <!-- iconfont 图标库 -->
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5127482_avu0fd1zdqo.css">
+        <link rel="icon" href="./css/pic.png">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/cylinder.css">
+
+
+
+
+    </head>
+
     
-    <div class="site-download">
-      <a class="layui-inline site-down" target="_blank" href="">
-        <cite class="layui-icon">&#xe601;</cite>
-        Github源站
-      </a>
-      <a class="layui-inline site-down" target="_blank" href="" style="margin-left:10px;">
-        <cite class="layui-icon">&#xe601;</cite>
-        Github加速
-      </a>
-      <a class="layui-inline site-down" target="_blank" href="" style="margin-left:10px;">
-        <cite class="layui-icon">&#xe601;</cite>
-        官方V10
-      </a>
-    </div>
-    <div class="site-version">
-      <span>本程序没有内置任何数据及采集规则,自行维护数据请在符合当地法律的前提下使用！</span>
-    </div>
-    <div class="site-banner-other">
-      <a href="" target="_blank" rel="nofollow" class="site-star">
-        <i class="layui-icon">&#xe658;</i>
-        ZF影视01
-      </a>
-      <a href="" target="_blank" rel="nofollow" class="site-fork">
-        <i class="layui-icon">&#xe658;</i>
-        ZF影视02
-      </a>
-    </div>
-  </div>
-</div>
-<div class="layui-main" style="width: 100%;">
-
-  <div class="index-content baise">
-    <div class="tpt-wp cl group">
-      <h2>影视仓</h2>
-      <div class="section-container" >
-        <div class="section-container">
-          <article class="odd"> <img src="./static/images/g1.jpg" alt="影视仓">
-            <figcaption>
-              <h3>影视仓</h3>
-              <div class="p" >
-                <p>影视仓001</p>
-              </div>
-            </figcaption>
-          </article>
-
-          <article class="odd"> <img src="./static/images/g2.jpg" alt="影视仓">
-            <figcaption>
-              <h3>影视仓</h3>
-              <div class="p" >
-                <p>影视仓002</p>
-              </div>
-            </figcaption>
-          </article>
-         
-
-          <article class="odd"> <img src="./static/images/g3.jpg" alt="影视仓">
-            <figcaption>
-              <h3>影视仓</h3>
-              <div class="p" >
-                <p>影视仓002</p>
-              </div>
-            </figcaption>
-          </article>
-          <article class="odd"> <img src="./static/images/g4.jpg" alt="影视仓">
-            <figcaption>
-              <h3>影视仓</h3>
-              <div class="p" >
-                <p>影视仓002</p>
-              </div>
-            </figcaption>
-          </article>
 
 
 
@@ -123,36 +34,691 @@
 
 
 
+<body>
+    <!-- 启动遮罩 -->
+    <div class="splash" id="splash">
+        <!-- 水平光线扫描 -->
+        <div class="splash-scan"></div>
+        <div class="splash-content">
+            <div class="splash-logo">
+                                <img src="./css/pic.png" alt="Logo" width="48" height="48" style="border-radius:8px;">
+                            </div>
+            <h1 class="splash-title">ZF影视</h1>
+            <p class="splash-desc">世界如此辽阔，别躲在悲伤的角落</p>
         </div>
-      </div>
+        <!-- 底部箭头引导 -->
+        <div class="splash-arrow-wrap" id="splashEnter">
+            <span class="splash-hint">点击任意位置进入</span>
+            <svg class="splash-arrow" width="18" height="28" viewBox="0 0 18 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="0" x2="9" y2="22"/><polyline points="3 18 9 24 15 18"/></svg>
+        </div>
+                <div class="splash-footer">© 2026 · ZF影视</div>
+            </div>
+
+    <!-- 斜切背景动画层 -->
+    <div class="stage" id="stage" aria-hidden="true">
+        <div class="stage-tiles">
+                        <div class="stage-row">
+                                <div class="stage-row-set">
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                </div>
+                                <div class="stage-row-set">
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                </div>
+                        </div>
+                        <div class="stage-row">
+                                <div class="stage-row-set">
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                    </div>
+                                <div class="stage-row-set">
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                    </div>
+                        </div>
+                        <div class="stage-row">
+                                <div class="stage-row-set">
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                    </div>
+                                <div class="stage-row-set">
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                    </div>
+                        </div>
+                        <div class="stage-row">
+                                <div class="stage-row-set">
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                    </div>
+                                <div class="stage-row-set">
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                    </div>
+                        </div>
+                        <div class="stage-row">
+                                <div class="stage-row-set">
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                    </div>
+                                <div class="stage-row-set">
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                    </div>
+                        </div>
+                        <div class="stage-row">
+                        <div class="stage-row-set">
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                    </div>
+                                <div class="stage-row-set">
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                            <div class="stage-tile"><img src="./css/pic.png" alt="" loading="eager"></div>
+                                    </div>
+                            </div>
+                    </div>
     </div>
-  </div>
+
+    <!-- 粒子层 -->
+    <canvas id="particles"></canvas>
+
+    <!-- 页面主体 -->
+    <div class="page">
+        <!-- 移动端左上角汉堡按钮 -->
+        <button class="sidebar-toggle" id="sidebarToggle" title="分类导航">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <!-- 浮动操作按钮（右侧） -->
+        <div class="floating-actions" id="floatingActions">
+                        <button class="fab-btn" id="heroMuteBtn" title="取消静音">
+                <svg class="icon-muted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                <svg class="icon-unmuted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
+            </button>
+                        <a href="admin/" class="fab-btn" title="管理后台">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </a>
+        </div>
+
+        <!-- 搜索弹窗 -->
+        <div class="search-modal" id="searchModal">
+            <div class="search-backdrop" id="searchBackdrop"></div>
+            <div class="search-dialog">
+                <div class="search-input-wrap">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="searchInput" placeholder="输入关键词搜索..." autocomplete="off">
+                    <kbd id="searchClose">Esc</kbd>
+                </div>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+        </div>
+
+        <!-- 双栏布局：侧栏 + 主区域 -->
+        <div class="layout">
+            <!-- 侧栏导航 -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-brand">
+                    <div class="sidebar-logo">
+                                                <img src="./css/pic.png" alt="Logo" width="40" height="40" style="border-radius:8px;">
+                                            </div>
+                    <span class="sidebar-title">ZF影视</span>
+                </div>
+                <nav class="sidebar-nav">
+
+                    <a href="#cat-1" class="sidebar-item" data-cat-id="1" style="--cat-color: #088c1e">
+                        <span class="sidebar-icon"><i class="iconfont icon-ego-box" style="font-size:18px;line-height:1;"></i></span>
+                        <span class="sidebar-label">空壳接口</span>
+                        <span class="sidebar-count"></span>
+                    </a>
+                    
+                    <a href="#cat-2" class="sidebar-item" data-cat-id="2" style="--cat-color: #5684f0">
+                        <span class="sidebar-icon"><i class="iconfont icon-xiazai" style="font-size:18px;line-height:1;"></i></span>
+                        <span class="sidebar-label">在线工具</span>
+                        <span class="sidebar-count"></span>
+                    </a>
+                    
+                    <a href="#cat-3" class="sidebar-item" data-cat-id="3" style="--cat-color: #041a86">
+                        <span class="sidebar-icon"><i class="iconfont icon-jiaoliuqun" style="font-size:18px;line-height:1;"></i></span>
+                        <span class="sidebar-label">交流群组</span>
+                        <span class="sidebar-count"></span>
+                    </a>
+
+                    <a href="#cat-4" class="sidebar-item" data-cat-id="4" style="--cat-color: #d49711">
+                        <span class="sidebar-icon"><i class="iconfont icon-gongju1" style="font-size:18px;line-height:1;"></i></span>
+                        <span class="sidebar-label">相关工具</span>
+                        <span class="sidebar-count"></span>
+                    </a>
+
+                    <a href="#cat-5" class="sidebar-item" data-cat-id="5" style="--cat-color: #1f8da8">
+                        <span class="sidebar-icon"><i class="iconfont icon-shangwuhezuo" style="font-size:18px;line-height:1;"></i></span>
+                        <span class="sidebar-label">ZF影视专用</span>
+                        <span class="sidebar-count"></span>
+                    </a>
+
+                    <a href="#cat-6" class="sidebar-item" data-cat-id="6" style="--cat-color: #1f8da8">
+                        <span class="sidebar-icon"><i class="iconfont icon-shangwuhezuo" style="font-size:18px;line-height:1;"></i></span>
+                        <span class="sidebar-label">网盘空间</span>
+                        <span class="sidebar-count"></span>
+                    </a>
+
+
+
+
+
+
+
+
+                                    </nav>
+                <div class="sidebar-footer">
+                    <p>© 2026 · ZF影视</p>
+                    <p>数据每日自动更新 </p>
+                </div>
+            </aside>
+
+            <!-- 主内容区 -->
+            <div class="main-area">
+
+            <!-- Hero 区域 -->
+            <header class="hero" id="heroSection">
+                                <video class="hero-video" id="heroVideo" loop playsinline muted preload="auto" fetchpriority="high">
+                    <source src="https://xn--vusr00g.v.nxog.top/m/tv/xjj.php?id=0&2" type="video/mp4">
+                </video>
+                                <div class="hero-overlay">
+                    <h1 class="hero-title">ZF影视</h1>
+                    <p class="hero-stats"></p>
+                    <div class="hero-search" id="heroSearch">
+                        <svg class="hero-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" class="hero-search-input" id="heroSearchInput" placeholder="搜索导航链接..." autocomplete="off">
+                        <kbd class="hero-search-kbd">Ctrl+K</kbd>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 分类导航 -->
+            <main class="content">
+
+
+<section class="section" id="cat-1" data-category-id="1" style="--cat-color: #088c1e">
+                    <div class="section-head">
+                        <div class="section-tag"><i class="iconfont icon-ego-box" style="font-size:20px;line-height:1;"></i></div>
+                        <div class="section-info">
+                            <h2>空壳接口</h2>
+                                                        <p class="section-desc">复制下方地址到空壳软件配置中即可使用</p>
+                                                    </div>
+                        <span class="section-count"></span>
+                    </div>
+<div class="grid">
+
+    <a href="https://d.kstore.dev/download/14751/zf/1.json" class="card" data-id="1" target="_blank" rel="noopener" data-title="ZF影视" data-desc="ZF影视接口" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./css/pic.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">ZF影视</h3> <span class="tag tag-cyan">接口</span> </div> <p class="card-desc">ZF影视接口地址</p> </div> </div> </a>                       
+
+   
+
+
+
+
+
+
+
+    <a href="http://我不是.摸鱼儿.com" class="card" data-id="1" target="_blank" rel="noopener" data-title="摸鱼主用" data-desc="摸鱼主用接口地址" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./css/pic.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">摸鱼主用</h3> <span class="tag tag-cyan">接口</span> </div> <p class="card-desc">摸鱼主用接口地址</p> </div> </div> </a>                       
+    <a href="http://www.饭太硬.com/tv" class="card" data-id="10" target="_blank" rel="noopener" data-title="饭太硬" data-desc="饭太硬接口" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="https://tc-new.z.wiki/autoupload/iYHTWVx6T8RrCmqdGD6MOdiO_OyvX7mIgxFBfDMDErs/nav/1111.jpg" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">饭太硬</h3> <span class="tag tag-yellow">接口</span> </div> <p class="card-desc">饭太硬接口</p> </div> </div> </a>
+
+    <a href="https://6800.kstore.vip/fish.json" class="card" data-id="2" target="_blank" rel="noopener" data-title="凯速备用" data-desc="安卓羊壳peek专用" style="--i: 2"> <div class="card-body"> <span class="card-icon"><img src="https://kstore.space/favicon.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">凯速备用</h3> <span class="tag tag-green">接口</span> </div> <p class="card-desc">安卓羊壳peek专用</p> </div> </div> </a>        
+    <a href="https://9877.kstore.space/AnotherD/api.json" class="card" data-id="9" target="_blank" rel="noopener" data-title="潇洒接口" data-desc="潇洒主用接口" style="--i: 3"> <div class="card-body"> <span class="card-icon"><img src="https://kstore.space/favicon.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">潇洒接口</h3> <span class="tag tag-blue">接口</span> </div> <p class="card-desc">潇洒主用接口</p> </div> </div> </a>                                                                    
+    <a href="http://hb.小虎斑.site:25252/仅供测试/" class="card" data-id="10" target="_blank" rel="noopener" data-title="小虎斑接口" data-desc="小虎斑主用接口" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="https://tc-new.z.wiki/autoupload/iYHTWVx6T8RrCmqdGD6MOdiO_OyvX7mIgxFBfDMDErs/nav/1111.jpg" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">小虎斑接口</h3> <span class="tag tag-yellow">接口</span> </div> <p class="card-desc">小虎斑主用接口</p> </div> </div> </a>
+    <a href="http://tvbox.xn--4kq62z5rby2qupq9ub.top/" class="card" data-id="10" target="_blank" rel="noopener" data-title="王二小放牛娃" data-desc="王二小放牛娃接口" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="https://tc-new.z.wiki/autoupload/iYHTWVx6T8RrCmqdGD6MOdiO_OyvX7mIgxFBfDMDErs/nav/1111.jpg" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">王二小</h3> <span class="tag tag-yellow">接口</span> </div> <p class="card-desc">王二小接口</p> </div> </div> </a>
+    
+    <a href="https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/refs/heads/Jsnzkpg/Jsnzkpg" class="card" data-id="10" target="_blank" rel="noopener" data-title="酷佬VPN" data-desc="酷佬VPN" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">酷佬VPN</h3> <span class="tag tag-yellow">VPN</span> </div> <p class="card-desc">酷佬VPN</p> </div> </div> </a>
+    <a href="https://codeberg.org/Jsnzkpg/Jsnzkpg/raw/branch/Jsnzkpg/Jsnzkpg2" class="card" data-id="10" target="_blank" rel="noopener" data-title="酷佬接口" data-desc="酷佬接口" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">酷佬接口</h3> <span class="tag tag-yellow">接口</span> </div> <p class="card-desc">酷佬接口</p> </div> </div> </a>
+  
+    <a href="https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg1.m3u" class="card" data-id="10" target="_blank" rel="noopener" data-title="酷佬直播" data-desc="酷佬直播" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">酷佬直播</h3> <span class="tag tag-yellow">直播</span> </div> <p class="card-desc">酷佬直播</p> </div> </div> </a>
+        
+    <a href="https://develop202.github.io/migu_video/interface.txt" class="card" data-id="10" target="_blank" rel="noopener" data-title="咪咕直播" data-desc="咪咕直播" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">咪咕直播</h3> <span class="tag tag-yellow">直播</span> </div> <p class="card-desc">咪咕直播</p> </div> </div> </a>
 
 </div>
-<div class="layui-footer footer footer-index">
-  <div class="layui-main">
-    <p>&copy; 2026 <a href="/">ZF影视</a> </p>
-  
-    <p>
-      声明：本站所开发的相关程序请在遵守法律的前提下使用，对用户在使用过程中的信息内容本站不负任何责任！ 
-    </p>
-  
-  </div>
-</div>
+</section>
+            
+                                                             
 
-<div class="site-tree-mobile layui-hide">
-  <i class="layui-icon">&#xe602;</i>
+
+<section class="section" id="cat-2" data-category-id="2" style="--cat-color: #d49711">
+    <div class="section-head">
+        <div class="section-tag"><i class="iconfont icon-gongju1" style="font-size:20px;line-height:1;"></i></div>
+        <div class="section-info">
+            <h2>在线工具</h2>
+                                        <p class="section-desc">在线工具推荐</p>
+                                    </div>
+        <span class="section-count"></span>
+    </div>
+
+<div class="grid">
+         
+<a href="http://我不是.摸鱼儿.com/helper" class="card" data-id="12" target="_blank" rel="noopener" data-title="接口解密工具" data-desc="接口解密、本地包下载工具" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./css/pic.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">接口解密工具</h3> <span class="tag tag-red">解密</span> </div> <p class="card-desc">接口解密、本地包下载工具</p> </div> </div> </a>                        
+<a href="https://filehelper.weixin.qq.com/?from=windows&type=recommend" class="card" data-id="10" target="_blank" rel="noopener" data-title="微信文件传输助手" data-desc="微信文件传输助手" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="https://res.wx.qq.com/a/wx_fed/assets/res/NTI4MWU5.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">微信文件传输助手</h3> <span class="tag tag-yellow">文件</span> </div> <p class="card-desc">微信文件传输助手</p> </div> </div> </a>
+<a href="https://dazi.91xjr.com/" class="card" data-id="10" target="_blank" rel="noopener" data-title="91小键人打字" data-desc="91小键人打字" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="https://dazi.91xjr.com/static/web/images/pwa_logo.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">91小键人打字</h3> <span class="tag tag-yellow">打字</span> </div> <p class="card-desc">91小键人打字</p> </div> </div> </a>
+<a href="https://dazi.kukuw.com/" class="card" data-id="10" target="_blank" rel="noopener" data-title="酷酷网打字" data-desc="酷酷网打字" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="https://dazi.kukuw.com/favicon.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">酷酷网打字</h3> <span class="tag tag-yellow">打字</span> </div> <p class="card-desc">酷酷网打字</p> </div> </div> </a>
+<a href="https://ctdsbepaper.hubeidaily.net/" class="card" data-id="10" target="_blank" rel="noopener" data-title="楚天都市报" data-desc="楚天都市报" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="https://dazi.kukuw.com/favicon.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">楚天都市报</h3> <span class="tag tag-yellow">新闻</span> </div> <p class="card-desc">楚天都市报</p> </div> </div> </a>
+                                                        
+       
+
+
+
+
+
+
+<a href="https://sc.chinaz.com/moban/" class="card" data-id="10" target="_blank" rel="noopener" data-title="站长之家" data-desc="网页模板" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="https://sc.chinaz.com/favicon.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">站长之家</h3> <span class="tag tag-yellow">模板</span> </div> <p class="card-desc">网页模板</p> </div> </div> </a>
+
+
+
+
+
 </div>
-<div class="site-mobile-shade"></div>
-<script src="./static/layui/layui.js" charset="utf-8"></script>
-<script src="./static/js/canvasparticle.js" charset="utf-8"></script>
-<script>
-layui.config({
-  base: './static/js/'
-  ,version: '20180130'
-}).use('global');
-</script>
-<div style="display:none;">
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="section" id="cat-4" data-category-id="4" style="--cat-color: #d49711">
+                    <div class="section-head">
+                        <div class="section-tag"><i class="iconfont icon-gongju1" style="font-size:20px;line-height:1;"></i></div>
+                        <div class="section-info">
+                            <h2>相关工具</h2>
+                                                        <p class="section-desc">壳子相关工具推荐</p>
+                                                    </div>
+                        <span class="section-count"></span>
+                    </div>
+
+<div class="grid">
+                         
+<a href="http://我不是.摸鱼儿.com/helper" class="card" data-id="12" target="_blank" rel="noopener" data-title="接口解密工具" data-desc="接口解密、本地包下载工具" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./css/pic.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">接口解密工具</h3> <span class="tag tag-red">解密</span> </div> <p class="card-desc">接口解密、本地包下载工具</p> </div> </div> </a>                        
+                        
+                                                                        
+                       
+
+
+
+
+
+
+
+
+
+
+
 </div>
+</section>
+
+
+<section class="section" id="cat-4" data-category-id="4" style="--cat-color: #d49711">
+    <div class="section-head">
+        <div class="section-tag"><i class="iconfont icon-gongju1" style="font-size:20px;line-height:1;"></i></div>
+        <div class="section-info">
+            <h2>官网</h2>
+                                        <p class="section-desc">一些官方网站</p>
+                                    </div>
+        <span class="section-count"></span>
+    </div>
+
+<div class="grid">
+         
+<a href="https://www.xn--sss604efuw.com/" class="card" data-id="12" target="_blank" rel="noopener" data-title="饭太硬" data-desc="饭太硬" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./css/pic.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">饭太硬</h3> <span class="tag tag-red">官</span> </div> <p class="card-desc">饭太硬</p> </div> </div> </a>                        
+        
+<a href="https://github.com/qiusunshine/" class="card" data-id="12" target="_blank" rel="noopener" data-title="小棉袄" data-desc="小棉袄" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">小棉袄</h3> <span class="tag tag-red">GITHUB</span> </div> <p class="card-desc">小棉袄</p> </div> </div> </a>                        
+<a href="https://github.com/hjdhnx" class="card" data-id="12" target="_blank" rel="noopener" data-title="道长" data-desc="道长" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">道长</h3> <span class="tag tag-red">GITHUB</span> </div> <p class="card-desc">道长</p> </div> </div> </a>                        
+<a href="https://github.com/FongMi" class="card" data-id="12" target="_blank" rel="noopener" data-title="FongMi" data-desc="FongMi" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">FongMi</h3> <span class="tag tag-red">GITHUB</span> </div> <p class="card-desc">FongMi</p> </div> </div> </a>                        
+<a href="https://github.com/xyq254245" class="card" data-id="12" target="_blank" rel="noopener" data-title="香雅晴" data-desc="香雅晴" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">香雅晴</h3> <span class="tag tag-red">GITHUB</span> </div> <p class="card-desc">香雅晴</p> </div> </div> </a>                        
+<a href="https://github.com/PizazzGY" class="card" data-id="12" target="_blank" rel="noopener" data-title="潇洒" data-desc="潇洒" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">潇洒</h3> <span class="tag tag-red">GITHUB</span> </div> <p class="card-desc">潇洒</p> </div> </div> </a>                        
+<a href="https://github.com/Moriafly/SaltPlayerSource/releases/tag/11.0.4 " class="card" data-id="12" target="_blank" rel="noopener" data-title="椒盐音乐" data-desc="椒盐音乐" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">椒盐音乐</h3> <span class="tag tag-red">GITHUB</span> </div> <p class="card-desc">椒盐音乐</p> </div> </div> </a>                        
+
+
+<a href="https://github.com/Jsnzkpg" class="card" data-id="12" target="_blank" rel="noopener" data-title="酷佬" data-desc="酷佬" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">酷佬</h3> <span class="tag tag-red">GITHUB</span> </div> <p class="card-desc">酷佬</p> </div> </div> </a>                        
+
+<a href="https://github.com/gedoor/legado/releases" class="card" data-id="12" target="_blank" rel="noopener" data-title="开源阅读" data-desc="开源阅读" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">开源阅读</h3> <span class="tag tag-red">GITHUB</span> </div> <p class="card-desc">开源阅读</p> </div> </div> </a>                        
+
+
+
+
+
+
+      
+<a href="http://client.jijidown.com" class="card" data-id="12" target="_blank" rel="noopener" data-title="唧唧Down" data-desc="唧唧Down" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="http://client.jijidown.com/favicon/favicon.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">唧唧Down</h3> <span class="tag tag-red">官</span> </div> <p class="card-desc">唧唧Down</p> </div> </div> </a>                        
+<a href="https://ngrok.com/" class="card" data-id="12" target="_blank" rel="noopener" data-title="ngrok" data-desc="ngrok" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./img/ngrok.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">ngrok</h3> <span class="tag tag-red">官</span> </div> <p class="card-desc">ngrok</p> </div> </div> </a>                        
+
+
+
+
+<a href="https://www.maoyanzy.com/maoyanzy/help.html" class="card" data-id="12" target="_blank" rel="noopener" data-title="猫眼资源网" data-desc="猫眼资源网" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="https://www.maoyanzy.com/favicon.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">猫眼资源网</h3> <span class="tag tag-red">采集</span> </div> <p class="card-desc">猫眼资源网</p> </div> </div> </a>                        
+
+
+
+<a href="https://gh.xxooo.cf/" class="card" data-id="12" target="_blank" rel="noopener" data-title="gh.xxooo.cf" data-desc="GitHub 文件加速" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">gh.xxooo.cf 文件加速</h3> <span class="tag tag-red">加速</span> </div> <p class="card-desc">GitHub 文件加速</p> </div> </div> </a>                        
+<a href="https://gh-proxy.com/" class="card" data-id="12" target="_blank" rel="noopener" data-title="gh-proxy.com" data-desc="GitHub 文件加速" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">gh-proxy.com文件加速</h3> <span class="tag tag-red">加速</span> </div> <p class="card-desc">GitHub 文件加速</p> </div> </div> </a>                        
+
+
+
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="section" id="cat-5" data-category-id="5" style="--cat-color: #1f8da8">
+                    <div class="section-head">
+                        <div class="section-tag"><i class="iconfont icon-shangwuhezuo" style="font-size:20px;line-height:1;"></i></div>
+                        <div class="section-info">
+                            <h2>ZF影视专用</h2><p class="section-desc">定制网站，合作洽谈</p>
+                        </div>
+                        <span class="section-count"></span>
+                    </div>
+
+
+<div class="grid">
+
+<a href="https://zf2629.neocities.org/" class="card" target="_blank" rel="noopener" data-title="zf2629" data-desc="https://zf2629.neocities.org/" style="--i: 1"> <div class="card-body"> <span class="card-icon"><img src="./img/neocities.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">zf2629</h3> <span class="tag tag-blue">空间</span> </div> <p class="card-desc">https://zf2629.neocities.org</p> </div> </div> </a>                        
+<a href="https://zf2629.github.io/" class="card" target="_blank" rel="noopener" data-title="zf2629" data-desc="https://zf2629.neocities.org/" style="--i: 1"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">zf2629</h3> <span class="tag tag-blue">空间</span> </div> <p class="card-desc">https://zf2629.github.io</p> </div> </div> </a>                        
+<a href="https://kstore.cc/" class="card" target="_blank" rel="noopener" data-title="凯速网" data-desc="凯速网" style="--i: 1"> <div class="card-body"> <span class="card-icon"><img src="https://kstore.cc/favicon.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">凯速网</h3> <span class="tag tag-blue">空间</span> </div> <p class="card-desc">凯速网</p> </div> </div> </a>                        
+<a href="" class="card" target="_blank" rel="noopener" data-title="标题" data-desc="副标题" style="--i: 1"> <div class="card-body"> <span class="card-icon"><img src="./css/pic.png"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">标题</h3> <span class="tag tag-blue">无标签</span> </div> <p class="card-desc">副标题</p> </div> </div> </a>                        
+
+
+<a href="https://github.com/zf2629/ZFAPP/blob/main/README.md" class="card" target="_blank" rel="noopener" data-title="ZFAPP下载" data-desc="ZFAPP下载" style="--i: 1"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">ZFAPP下载</h3> <span class="tag tag-blue">蓝奏云</span> </div> <p class="card-desc">ZFAPP下载</p> </div> </div> </a>                        
+
+
+</div>
+</section>
+
+
+
+<section class="section" id="cat-6" data-category-id="6" style="--cat-color: #088c1e">
+    <div class="section-head">
+        <div class="section-tag"><i class="iconfont icon-ego-box" style="font-size:20px;line-height:1;"></i></div>
+        <div class="section-info">
+            <h2>网盘空间</h2>
+                                        <p class="section-desc">我收藏的网盘空间</p>
+                                    </div>
+        <span class="section-count"></span>
+    </div>
+<div class="grid">
+
+<a href="https://www.netlify.com/" class="card" data-id="1" target="_blank" rel="noopener" data-title="netlify" data-desc="netlify" style="--i: 0"> <div class="card-body"> <span class="card-icon"><img src="https://www.netlify.com/favicon/favicon.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">netlify</h3> <span class="tag tag-cyan">空间</span> </div> <p class="card-desc">netlify</p> </div> </div> </a>                       
+<a href="https://kstore.cc/" class="card" data-id="2" target="_blank" rel="noopener" data-title="凯速网" data-desc="凯速网" style="--i: 2"> <div class="card-body"> <span class="card-icon"><img src="https://kstore.cc/favicon.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">凯速网</h3> <span class="tag tag-green">空间</span> </div> <p class="card-desc">凯速网</p> </div> </div> </a>        
+<a href="https://gitee.com/" class="card" data-id="9" target="_blank" rel="noopener" data-title="gitee" data-desc="gitee" style="--i: 3"> <div class="card-body"> <span class="card-icon"><img src="https://gitee.com/favicon.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">gitee</h3> <span class="tag tag-blue">空间</span> </div> <p class="card-desc">gitee</p> </div> </div> </a>                                                                    
+<a href="https://github.com/" class="card" data-id="10" target="_blank" rel="noopener" data-title="github" data-desc="github" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="./img/github.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">github</h3> <span class="tag tag-yellow">github</span> </div> <p class="card-desc">github</p> </div> </div> </a>
+<a href="http://zf2629.ysepan.com/" class="card" data-id="10" target="_blank" rel="noopener" data-title="永硕E盘" data-desc="永硕E盘" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="http://www.ys168.com/zy/img/ys168.png" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">永硕E盘</h3> <span class="tag tag-yellow">空间</span> </div> <p class="card-desc">永硕E盘</p> </div> </div> </a>
+<a href="https://www.lanzoui.com/" class="card" data-id="10" target="_blank" rel="noopener" data-title="蓝奏云" data-desc="蓝奏云" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="https://js.woozooo.com/assets/favicon.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">蓝奏云</h3> <span class="tag tag-yellow">网盘</span> </div> <p class="card-desc">蓝奏云</p> </div> </div> </a>
+
+<a href="https://free.3v.do/" class="card" data-id="10" target="_blank" rel="noopener" data-title="三维免费空间" data-desc="三维免费空间" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="https://free.3v.do/images/favicon.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">三维免费空间</h3> <span class="tag tag-yellow">空间</span> </div> <p class="card-desc">三维免费空间</p> </div> </div> </a>
+
+<a href="https://pastebin.com/" class="card" data-id="10" target="_blank" rel="noopener" data-title="pastebin" data-desc="pastebin" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="https://pastebin.com/favicon.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">pastebin</h3> <span class="tag tag-yellow">网盘</span> </div> <p class="card-desc">pastebin</p> </div> </div> </a>
+
+<a href="https://codeberg.org/" class="card" data-id="10" target="_blank" rel="noopener" data-title="codeberg" data-desc="codeberg" style="--i: 4"> <div class="card-body"> <span class="card-icon"><img src="https://pastebin.com/favicon.ico" alt="" style="width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:middle;"></span> <div class="card-text"> <div class="card-name-row"> <h3 class="card-name">codeberg</h3> <span class="tag tag-yellow">网盘</span> </div> <p class="card-desc">codeberg</p> </div> </div> </a>
+
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+                <!-- 页脚（嵌入内容区底部） -->
+                <div class="footer-inner">
+                    <p>© 2026 · ZF影视</p>
+                </div>
+            </main>
+
+            </div><!-- /.main-area -->
+        </div><!-- /.layout -->
+    </div>
+
+    <!-- 滚动进度条 -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <!-- 右下角悬浮按钮组 -->
+    <div class="bottom-actions" id="bottomActions">
+        <button class="bottom-fab" id="themeToggle" title="切换主题">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="bottom-fab back-to-top" id="backToTop" title="回到顶部">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+        </button>
+    </div>
+
+    <!-- 通用弹窗 -->
+    <div class="nav-modal-overlay" id="navModalOverlay">
+        <div class="nav-modal" id="navModal">
+            <div class="nav-modal-header"></div>
+            <div class="nav-modal-icon" id="navModalIcon"></div>
+            <div class="nav-modal-title" id="navModalTitle"></div>
+            <div class="nav-modal-desc" id="navModalDesc"></div>
+            <div class="nav-modal-url" id="navModalUrl"></div>
+            <div class="nav-modal-actions" id="navModalActions"></div>
+        </div>
+    </div>
+
+    <script>
+        window.__SITE_LOGO__ = "./css/pic.png";
+        window.__INTRO__ = {
+            enabled: true,
+            type: "cylinder",
+            duration: 3        };
+    </script>
+    <script src="./js/gsap.min.js"></script>
+    <script src="./js/cylinder.js"></script>
+    <script src="./js/app.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
