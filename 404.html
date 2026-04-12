@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>error</title>
+<style>
+    html {
+        font-size: 10px;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        box-sizing:border-box;
+        -moz-box-sizing:border-box; /* Firefox */
+    }
+    *,:after,:before{
+        box-sizing:inherit;
+        -moz-box-sizing:inherit; /* Firefox */
+    }
+    body {
+        font: 14px/1.5  "微软雅黑", "Microsoft Yahei", "华文细黑", STXihei, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        color: #6F7479;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+    }
+
+    ul,li,dd,dl {
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    a.link{
+        color: #00aaff;
+    }
+    a {outline: none;}
+    a:active {star:expression(this.onFocus=this.blur());}
+    p,ul, li, h1, h2, h3, h4, h5, h6, dl, dd, a {
+        margin: 0;
+        padding: 0;
+        color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }
+    .cf:before,
+    .cf:after {
+        content: " ";
+        display: table;
+        line-height: 0;
+    }
+    .cf:after {
+        clear: both;
+    }
+    .cf {
+        *zoom: 1;
+    }
+    #content{
+        /*background-color: #f7f7f7;*/
+        /*color: #;*/
+    }
+    .container{
+        width: 1280px;
+        margin: 0 auto 0;
+        height: 100%;
+        padding-top: 50px;
+
+    }
+    .top-gap{
+        background-color: #fff;
+        border-bottom: 1px solid #cccccc;
+        height: 40px;
+        width: 100%;
+    }
+    h1{
+        font-size: 48px;
+        margin-bottom: 55px;
+
+    }
+    p{
+       margin-bottom: 40px;
+    }
+    /*.f18{*/
+        /*font-size: 18px;*/
+    /*}*/
+    .color353954{
+        color: #353954;
+    }
+    h4{
+        font-size:16px;
+        border-left:2px solid #e41e2b ;
+        padding-left: 8px;
+        line-height: 1;
+        margin-bottom: 20px;
+    }
+    .reason .left,.reason .right{
+        float: left;
+        width: 50%;
+    }
+    .reason{
+        margin-bottom: 33px;
+    }
+    .reason .left{
+        padding-right: 33px;
+    }
+	.reason .right{
+        padding-right: 33px;
+    }
+    .tips{
+        border-top: 1px solid #d6d6d6;
+        padding-top: 20px;
+        text-align: right;
+    }
+</style></head>
+
+<body>
+    <div id="content">
+        <div class="top-gap">
+
+        </div>
+        <div class="container">
+            <h1 class="color353954">温馨提示：该网站暂时无法访问</h1>
+            <p class="color353954 f18">尊敬的用户，您好：</p>
+            <p>很抱歉，该网站暂时无法访问，可能由以下原因导致：</p>
+            <div class="reason cf">
+                <div class="left">
+                    <h4>原因一</h4>
+                    <p>您的网站尚未进行备案，根据《非经营性互联网信息服务备案管理办法》，网站需要先备案后接入。<a class="link" href="https://beian.miit.gov.cn/#/Integrated/recordQuery" target="_blank">工信部备案查询点此进入。</a></p>
+                </div>
+                <div class="right">
+                    <h4>原因二</h4>
+                    <p>网站内容与备案信息不符或备案信息不准确；根据《非经营性互联网信息服务备案管理办法》，网站内容需要与备案信息一致，且备案信息需真实有效。建议网站管理员尽快修改网站信息。</p>
+                </div>
+				<div class="right">
+                    <h4>原因三</h4>
+                    <p>网站在备案成功后打开仍然显示阻断页面，是由于备案信息在系统间同步存在延迟，备案通过一个工作日后网页会自动开放。</p>
+                </div>
+                <div class="right">
+                    <h4>原因四</h4>
+                    <p>该网站内容可能涉嫌侵犯或侵害他人权益，涉嫌从事、鼓动、协助或允许他人进行任何违法、非法、侵权、有害或欺诈行为，包括不限于任何下述活动：诈骗、以任何方式伤害或企图伤害未成年人、色情、非法赌博、违规搭建VPN、庞氏骗局、网络攻击、网络钓鱼或损害、私自拦截任何系统、程序或数据，未经许可监控服务数据或流量。</p>
+                </div>
+            </div>
+            <div class="tips">
+                本页面为默认提示页面，如网站存在以上问题请及时进行处理。请联系您的服务提供商进行网站备案。
+            </div>
+        </div>
+    </div>
+    
+    
+    
+<script type="text/javascript">var time = 6; //时间,秒 
+                    function Redirect(){ 
+                    window.location = "https://zf2629.neocities.org/"; 
+                    } 
+                    var i = 0; 
+                    function dis(){ 
+                    document.all.zhong.innerHTML = "<span style=color:#000>还剩</span> <span style=color:#00cc00><b>" + (time - i) + "</b></span>  <span style=color:#000>秒进入网站首页..<s/pan>"; 
+                    i++; 
+                    } 
+                    timer=setInterval('dis()', 1000);//显示时间 
+                    timer=setTimeout('Redirect()',time * 1000); //跳转 
+                </script>
+
+
+
+</body></html>
