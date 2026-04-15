@@ -41,6 +41,30 @@ const websitesData = {
 
    
  
+        {
+            "name": "影视仓6.19",
+            "subtitle": "影视仓6.19",
+            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iT1kx3lwxfhc&pwd=123",
+            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/影视仓.png"
+        },
+
+        {
+            "name": "ZF影视",
+            "subtitle": "ZF影视",
+            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iGABG3lnjhcb&pwd=123",
+            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/ZF影视.png"
+        },
+
+        
+        
+
+
+
+
+
+
+
+
 
 
 
