@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZF影视</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="ZF影视">
+  <meta name="keywords" content="ZF影视,导航网站,AI工具,云服务,ChatGPT,DeepSeek,GitHub,搜索引擎,个人导航">
+  <meta name="author" content="ZF影视">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="ZF影视 - 导航网站">
+  <meta property="og:description" content="ZF影视,整合AI工具、云服务、开发资源的现代化导航网站">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+
+
+
+  <!-- Font Awesome 6.4.0 -->
+  <link href="css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/components.css">
+  <!-- Particles.js 2.0.0 -->
+  <script src="js/particles.min.js"></script>
+</head>
+
+<body>
+  <!-- 粒子效果容器（移到最外层，覆盖整个页面） -->
+  <div id="particles-js"></div>
+
+  <!-- 新闻侧边栏 -->
+  <div class="news-sidebar collapsed">
+    <button class="sidebar-toggle" id="toggle-sidebar">
+      <i class="fas fa-chevron-left sidebar-icon"></i>
+    </button>
+    <!-- 新闻分类标签 -->
+    <div class="news-tabs-container" id="newsTabsContainer">
+      <!-- 分类标签将动态插入 -->
+    </div>
+    <!-- 右侧主要内容区域 -->
+    <div class="news-main-content">
+      <!-- 新闻内容区域 -->
+      <div class="carousel-wrapper">
+        <div class="carousel-container">
+          <div class="news-list" id="carouselContent">
+            <div class="loading">加载中...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 主容器 -->
+  <div class="container">
+
+    <div class="header">
+      <h1>ZF影视</h1>
+      <div class="search-wrapper" id="search-wrapper">
+        <select id="search-engine">
+          <option value="https://www.baidu.com/s?wd=">百度</option>
+          <option value="https://www.sogou.com/web?query=">搜狗</option>
+          <option value="https://cn.bing.com/search?q=">必应</option>
+          <option value="https://metaso.cn/search/?q=">秘塔</option>
+          <option value="https://www.google.com/search?q=">谷歌</option>
+          <option value="https://fanyi.baidu.com/mtpe-individual/transText?query=">翻译</option>
+          
+        </select>
+        <input type="text" id="search-input" placeholder="请输入关键词...">
+        <button>
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="categories" id="category-list">
+      <!-- 分类标签将动态生成 -->
+    </div>
+
+    <div class="links-grid" id="links-container">
+      <!-- 链接将动态插入 -->
+    </div>
+  </div>
+
+  <!-- 引入模块化的 JavaScript 文件 -->
+  <script src="./data/websites.js"></script>
+  <script src="./js/config.js"></script>
+  <script src="./js/theme.js"></script>
+  <script src="./js/news.js"></script>
+  <script src="./js/links.js"></script>
+  <script src="./js/search.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+
+</html>
