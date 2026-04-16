@@ -122,10 +122,10 @@ const websitesData = {
             "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/APK编辑器.png"
         },
         {
-            "name": "海阔04",
-            "subtitle": "海阔04APP",
-            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/ipVNp3lxdogb&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/海阔.png"
+            "name": "Clash Meta",
+            "subtitle": "2.11.24.Meta",
+            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/ifAd13nemzcf&pwd=123",
+            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/Clash.png"
         },
 
    
