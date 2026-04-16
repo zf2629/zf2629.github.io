@@ -131,17 +131,17 @@ const websitesData = {
    
  
         {
-            "name": "影视仓6.19",
-            "subtitle": "影视仓6.19",
-            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iT1kx3lwxfhc&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/影视仓.png"
+            "name": "QuickEdit高级版",
+            "subtitle": "QuickEdit高级版",
+            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iwjW03neqsni&pwd=123",
+            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/QuickEdit.png"
         },
 
         {
-            "name": "ZF影视",
-            "subtitle": "ZF影视",
-            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iGABG3lnjhcb&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/ZF影视.png"
+            "name": "我的记账本",
+            "subtitle": "我的记账本",
+            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iUlev3nes41e&pwd=123",
+            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/我的记账本.png"
         },
 
         
@@ -158,10 +158,10 @@ const websitesData = {
 
 
         {
-            "name": "测试",
-            "subtitle": "测试",
-            "url": "",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/海阔.png"
+            "name": "小白一键清理",
+            "subtitle": "小白一键清理",
+            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iC7LU3nesc0b&pwd=123",
+            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/小白一键清理.png"
         }
     ],
 
