@@ -103,10 +103,10 @@ const websitesData = {
         },    
         
         {
-            "name": "海阔01",
-            "subtitle": "海阔01APP",
-            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iQaIO3lxdjgb&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/海阔.png"
+            "name": "IDM",
+            "subtitle": "IDM+下载",
+            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/i3Sqi3negegh&pwd=123",
+            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/IDM.png"
         },
         {
             "name": "海阔02",
@@ -393,30 +393,7 @@ const websitesData = {
         }
     ],
     "AI": [
-        {
-            "name": "ChatGPT",
-            "subtitle": "OpenAI开发",
-            "url": "https://chat.openai.com",
-            "icon": "./icon/chatgpt.png"
-        },
-        {
-            "name": "Claude",
-            "subtitle": "代码能力强",
-            "url": "https://claude.ai/",
-            "icon": "./icon/claude.png"
-        },
-        {
-            "name": "Gemini",
-            "subtitle": "代码能力强",
-            "url": "https://gemini.google.com/",
-            "icon": "./icon/gemini.svg"
-        },
-        {
-            "name": "Grok",
-            "subtitle": "马斯克旗下",
-            "url": "https://grok.com/chat",
-            "icon": "./icon/grok.ico"
-        },
+        
         {
             "name": "DeepSeek",
             "subtitle": "国产开源先河",
