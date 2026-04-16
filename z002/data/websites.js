@@ -100,7 +100,13 @@ const websitesData = {
             "subtitle": "黄鸟抓包",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/idXgN3nb9zmj&pwd=123",
             "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/HttpCanary.png"
-        },    
+        },  
+        {
+            "name": "ProxyPin抓包",
+            "subtitle": "ProxyPin",
+            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/igCIP3nem3lc&pwd=123",
+            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/ProxyPin.png"
+        },  
         
         {
             "name": "IDM",
@@ -108,12 +114,7 @@ const websitesData = {
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/i3Sqi3negegh&pwd=123",
             "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/IDM.png"
         },
-        {
-            "name": "海阔02",
-            "subtitle": "海阔02APP",
-            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iezrH3lxdkqh&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/海阔.png"
-        },
+    
         {
             "name": "海阔03",
             "subtitle": "海阔03APP",
