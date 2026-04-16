@@ -116,10 +116,10 @@ const websitesData = {
         },
     
         {
-            "name": "海阔03",
-            "subtitle": "海阔03APP",
-            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iauiW3lxdmbe&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/海阔.png"
+            "name": "APK编辑器",
+            "subtitle": "APK编辑器",
+            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/itrrs3neml0j&pwd=123",
+            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/APK编辑器.png"
         },
         {
             "name": "海阔04",
