@@ -5,38 +5,38 @@ const websitesData = {
             "name": "海阔",
             "subtitle": "海阔APP",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/i4afc3lxdiji&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/海阔.png"
+            "icon": "./png/海阔.png"
         },
         {
             "name": "黄海阔",
             "subtitle": "海阔APP",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/i997B3lxdsze&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/黄海阔.png"
+            "icon": "./png/黄海阔.png"
         },    
         
         {
             "name": "海阔01",
             "subtitle": "海阔01APP",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iQaIO3lxdjgb&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/海阔.png"
+            "icon": "./png/海阔.png"
         },
         {
             "name": "海阔02",
             "subtitle": "海阔02APP",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iezrH3lxdkqh&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/海阔.png"
+            "icon": "./png/海阔.png"
         },
         {
             "name": "海阔03",
             "subtitle": "海阔03APP",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iauiW3lxdmbe&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/海阔.png"
+            "icon": "./png/海阔.png"
         },
         {
             "name": "海阔04",
             "subtitle": "海阔04APP",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/ipVNp3lxdogb&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/海阔.png"
+            "icon": "./png/海阔.png"
         },
 
    
@@ -45,7 +45,7 @@ const websitesData = {
             "name": "影视仓6.19",
             "subtitle": "影视仓6.19",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iT1kx3lwxfhc&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/影视仓.png"
+            "icon": "./png/影视仓.png"
         },
 
      
@@ -55,7 +55,7 @@ const websitesData = {
             "name": "开源阅读",
             "subtitle": "开源阅读",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/i9Oux3lxfkad&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/阅读.png"
+            "icon": "./png/阅读.png"
         },     
 
 
@@ -65,16 +65,27 @@ const websitesData = {
             "name": "ZF电视",
             "subtitle": "ZF电视[MT改]",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iZk9T3nea9vg&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/ZF电视.png"
+            "icon": "./png/ZF电视.png"
         },    
         {
             "name": "ZF影视",
             "subtitle": "ZF影视[MT改]",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iCb193neadpe&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/ZF影视.png"
+            "icon": "./png/ZF影视.png"
         },
 
-
+        {
+            "name": "KTV_80.3.0",
+            "subtitle": "KTV_80.3.0",
+            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iDm1c3h3z56f&pwd=123",
+            "icon": "./png/KTV.png"
+        },
+        {
+            "name": "咪咕爱唱",
+            "subtitle": "咪咕爱唱",
+            "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iB9cW3ki2ucb&pwd=123",
+            "icon": "./png/咪咕爱唱.png"
+        },
 
 
 
@@ -82,7 +93,7 @@ const websitesData = {
             "name": "测试",
             "subtitle": "测试",
             "url": "",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/海阔.png"
+            "icon": "./png/海阔.png"
         }
     ],
 
@@ -93,39 +104,39 @@ const websitesData = {
             "name": "MT管理器",
             "subtitle": "MT管理器",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/isdga3nb8dhg&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/MT管理器.png"
+            "icon": "./png/MT管理器.png"
         },
         {
             "name": "黄鸟抓包",
             "subtitle": "黄鸟抓包",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/idXgN3nb9zmj&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/HttpCanary.png"
+            "icon": "./png/HttpCanary.png"
         },  
         {
             "name": "ProxyPin抓包",
             "subtitle": "ProxyPin",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/igCIP3nem3lc&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/ProxyPin.png"
+            "icon": "./png/ProxyPin.png"
         },  
         
         {
             "name": "IDM",
             "subtitle": "IDM+下载",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/i3Sqi3negegh&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/IDM.png"
+            "icon": "./png/IDM.png"
         },
     
         {
             "name": "APK编辑器",
             "subtitle": "APK编辑器",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/itrrs3neml0j&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/APK编辑器.png"
+            "icon": "./png/APK编辑器.png"
         },
         {
             "name": "Clash Meta",
             "subtitle": "2.11.24.Meta",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/ifAd13nemzcf&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/Clash.png"
+            "icon": "./png/Clash.png"
         },
 
    
@@ -134,14 +145,14 @@ const websitesData = {
             "name": "QuickEdit高级版",
             "subtitle": "QuickEdit高级版",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iwjW03neqsni&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/QuickEdit.png"
+            "icon": "./png/QuickEdit.png"
         },
 
         {
             "name": "我的记账本",
             "subtitle": "我的记账本",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iUlev3nes41e&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/我的记账本.png"
+            "icon": "./png/我的记账本.png"
         },
 
         
@@ -161,7 +172,7 @@ const websitesData = {
             "name": "小白一键清理",
             "subtitle": "小白一键清理",
             "url": "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzoum.com/iC7LU3nesc0b&pwd=123",
-            "icon": "https://raw.githubusercontent.com/zf2629/icon/refs/heads/main/小白一键清理.png"
+            "icon": "./png/小白一键清理.png"
         }
     ],
 
