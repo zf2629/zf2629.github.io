@@ -1,380 +1,961 @@
 
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZF影视</title>
-   
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    
-    <!-- Icons -->
-    <link rel="icon" type="image/x-icon" href="images/logo.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css">
-    <link rel="stylesheet" href="css/royalcms.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="css/geo.css">
+    <style>
+        /* 二维码弹窗样式 */
+        .qr-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .qr-modal.active {
+            display: flex;
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        .qr-modal-content {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            animation: contentSlideUp 0.4s ease;
+        }
+        
+        .qr-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .qr-close-btn:hover {
+            color: #6366f1;
+            transform: rotate(90deg);
+        }
+        
+        .qr-code-img {
+            width: 220px;
+            height: 220px;
+            margin: 20px auto;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #6366f1;
+        }
+        
+        .qr-code-img img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .qr-instruction {
+            margin-top: 20px;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes contentSlideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 移除电话号码后的样式调整 */
+        .hero-btns .btn-phone,
+        .phone-side-button {
+            display: none;
+        }
+        
+        .contact-btn {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.4);
+        }
+        
+        .contact-btn i {
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
-
 <body>
-    <!-- 导航栏 -->
-    <header id="header">
+    <!-- 二维码弹窗 -->
+    <div class="qr-modal" id="qrModal">
+        <div class="qr-modal-content">
+            <button class="qr-close-btn" id="closeQrModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 style="color: white; margin-bottom: 10px;">微信咨询</h3>
+            <p style="color: #94a3b8; margin-bottom: 20px;">扫描二维码添加微信，获取专属优化方案</p>
+            
+            <div class="qr-code-img"> 
+                <img src="/images/wechat.jpg" alt="微信二维码">
+            </div>
+            
+            <div class="qr-instruction">
+                <p><i class="fas fa-check-circle" style="color: #10b981; margin-right: 8px;"></i>专业顾问1对1服务</p>
+                <p><i class="fas fa-check-circle" style="color: #10b981; margin-right: 8px;"></i>免费获取优化方案</p>
+                <p><i class="fas fa-check-circle" style="color: #10b981; margin-right: 8px;"></i>工作日9:00-18:00在线</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主题切换按钮 -->
+    <div class="fixed-side-buttons">
+        <button class="side-button" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="side-button contact-side-button" id="contactBtn">
+            <i class="fas fa-comment-alt"></i>
+        </button>
+        <a href="#top" class="side-button back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </div>
+
+    <!-- 头部 -->
+    <header id="top">
         <div class="container">
-            <nav class="navbar">
-                <a href="index.html" class="logo">
+            <div class="navbar">
+                <a href="#top" class="logo">
                     <div class="logo-icon">
-                        <img src="css/pic.png" alt="" width="40px;" height="40px;">
+                        <i class="fas fa-globe-americas"></i>
                     </div>
-                    ZF影视
+                    <span>ZF影视</span>
                 </a>
-                <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link">首页</a></li>
-                    
-                   
-                    <li><a href="#core-features" class="nav-link">核心功能</a></li>
-                   
-                    <li><a href="#compact-ads" class="nav-link">核心功能1</a></li>
-                    
-                    <li><a href="#download" class="nav-link">免费下载</a></li>
-                    <li><a href="https://neocities.org/" class="nav-link" target="_blank">后台管理</a></li>
-                    
-                    <li>
-                        <button class="theme-toggle" id="themeToggle">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                    </li>
-                </ul>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
+                
+                <!-- 桌面端导航 -->
+                <nav class="desktop-nav">
+                    <ul class="nav-links">
+                        <li><a href="#platforms">合作平台</a></li>
+                        <li><a href="#stats">数据展示</a></li>
+                        <li><a href="#how-it-works">服务流程</a></li>
+                        <li><a href="#advantages">服务优势</a></li>
+                        <li><a href="#testimonials">客户反馈</a></li>
+                        <li><a href="#guarantee">服务保障</a></li>
+                        <li><a href="#contact" class="nav-contact-btn">联系我们</a></li>
+                        <li><a href="https://neocities.org/" target="_blank" class="nav-contact-btn">后台管理</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- 移动端汉堡菜单按钮 -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span class="menu-icon"><i class="fas fa-bars"></i></span>
                 </button>
-            </nav>
+            </div>
         </div>
     </header>
 
-
-
-
-    
-    
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- 英雄区域 -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>
-                    <span class="hero-title">澹泊明志·宁静致远</span>
-                    
-                </h1>
-              
-                <hr>
-                <h2>何以明志？此心不动。何以致远？随心而动！</h2>
-
-             <br>
-             <br>
-             <br>
-
-
-             
-                <div class="hero-btns">
-                    <!-- <a href="https://demo.royalcms.com.cn" class="btn btn-primary" target="_blank">
-                        <i class="fas fa-play-circle"></i>
-                        免费演示
-                    </a>
-                   
-                    <a href="doc.html" class="btn btn-accent" target="_blank">
-                        <i class="fas fa-book"></i>
-                        开发文档
-                    </a> -->
-                    <a href="#download" class="btn btn-success download-trigger">
-                        <i class="fas fa-download"></i>
-                        影视仓
-                    </a>
-
-                    <a href="#download" class="btn btn-success download-trigger">
-                        <i class="fas fa-download"></i>
-                        海阔视界
-                    </a>
-
-                     <a href="#download" class="btn btn-success download-trigger">
-                        <i class="fas fa-download"></i>
-                       开源阅读
-                    </a>
-                    <div class="download-count">
-                        <i class="fas fa-download"></i>
-                        <span>已被下载 <span id="downloadCount">0</span> 次</span>
-                    </div>
-                </div>
-                   
-
-                   
-
-                
-            </div>
-        </div>
-        <div class="floating-elements">
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-        </div>
-        <!-- 在hero区域的现有内容之后添加 -->
         <div class="tech-lines">
             <div class="tech-line"></div>
             <div class="tech-line"></div>
             <div class="tech-line"></div>
             <div class="tech-line"></div>
             <div class="tech-line"></div>
-            <div class="tech-line"></div>
         </div>
-
+        
         <div class="data-stream">
             <div class="data-point"></div>
             <div class="data-point"></div>
             <div class="data-point"></div>
             <div class="data-point"></div>
-            <div class="data-point"></div>
-            <div class="data-point"></div>
         </div>
-
-        <div class="tech-panel">
-
+        
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
         </div>
-    </section>
-
-  
-    <!-- 核心功能 -->
-    <section id="core-features" class="core-features">
+        
         <div class="container">
-            <div class="section-title">
-                <h2>核心功能</h2>
-                <p>RoyalCMS集成了最实用的功能，同时保持系统的轻量与高效</p>
-            </div>
-            <div class="features-tabs">
-                <button class="tab-btn active" data-tab="tab1">智能内容管理</button>
-                <button class="tab-btn" data-tab="tab2">优雅后台界面</button>
-                <button class="tab-btn" data-tab="tab3">强劲安全内核</button>
-                <button class="tab-btn" data-tab="tab4">极致轻量化</button>
-            </div>
-            <div class="tab-content active" id="tab1">
-                <div class="feature-detail">
-                    <div class="feature-text">
-                        <h3>基于百度编辑器的强大内容管理</h3>
-                        <p>集成成熟的百度编辑器，提供丰富的图文排版功能，让内容创作变得简单而高效。</p>
-                        <ul>
-                            <li>可视化拖拽编辑，所见即所得</li>
-                            <li>支持多媒体内容嵌入</li>
-                            <li>一键排版，专业美观</li>
-                            <li>自动保存，防止内容丢失</li>
-                        </ul>
-                    </div>
-                    <div class="feature-image">
-                        <div class="demo-box" style="background: var(--primary-gradient);">
-                            <i class="fas fa-edit"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-content" id="tab2">
-                <div class="feature-detail">
-                    <div class="feature-text">
-                        <h3>基于Layui的优雅后台界面</h3>
-                        <p>采用广受欢迎的Layui前端框架，界面简洁直观，操作流畅自然，降低学习成本。</p>
-                        <ul>
-                            <li>响应式设计，多设备完美适配</li>
-                            <li>模块化布局，功能分区清晰</li>
-                            <li>丰富的UI组件，提升操作效率</li>
-                            <li>暗色/亮色主题可选</li>
-                        </ul>
-                    </div>
-                    <div class="feature-image">
-                        <div class="demo-box" style="background: var(--secondary-gradient);">
-                            <i class="fas fa-desktop"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-content" id="tab3">
-                <div class="feature-detail">
-                    <div class="feature-text">
-                        <h3>基于ThinkPHP的强劲安全内核</h3>
-                        <p>依托ThinkPHP成熟稳定的框架基础，内置多重安全机制，为企业数据保驾护航。</p>
-                        <ul>
-                            <li>SQL注入、XSS攻击全面防护</li>
-                            <li>数据验证与过滤机制</li>
-                            <li>RBAC权限管理系统</li>
-                            <li>操作日志全程记录</li>
-                        </ul>
-                    </div>
-                    <div class="feature-image">
-                        <div class="demo-box" style="background: var(--tech-gradient);">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-content" id="tab4">
-                <div class="feature-detail">
-                    <div class="feature-text">
-                        <h3>极致轻量化设计 <span class="free-badge">免费轻量</span></h3>
-                        <p>核心精简，去除冗余功能，资源占用极低，让您的项目在各类服务器上都能流畅运行。</p>
-                        <ul>
-                            <li>核心文件小于5MB，快速部署</li>
-                            <li>内存占用低，运行效率高</li>
-                            <li>模块化设计，按需加载</li>
-                            <li>支持PHP 8.0+，性能最大化</li>
-                        </ul>
-                    </div>
-                    <div class="feature-image">
-                        <div class="demo-box" style="background: var(--success-gradient);">
-                            <i class="fas fa-feather"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="hero-content">
+                <h1>澹泊明志·宁静致远</h1>
+                <p>影视仓，海阔视界，开源阅读</p>
 
-   
+                
+                    <ul class="zf-links">
+                        <a href="https://www.baidu.com/"  target="_blank">百度一下</a>、
+                <a href="https://www.lanzoum.com/" target="_blank">蓝奏云</a>、
+			
+                <a href="http://zf2629.ysepan.com/" target="_blank">永硕E盘</a>、
+                <a href="https://github.com/" target="_blank">GitHub</a>、
+                <a href="https://zf2629.github.io/html01/开源阅读书源.html" target="_blank">开源阅读书源</a>、
+                <!--
+                <a href="./html01/开源阅读书源导航.html" target="_blank">开源阅读书源</a>、
+                -->
+                <a href="./zxgj/index.html" target="_blank">在线工具</a>、
+                <a href="./tvboxjk/index.html" target="_blank">TVBOX接口</a>、
+                <a href="./z002/index.html" target="_blank">软件下载</a>、
+                <a href="./z009/index.html" target="_blank">网址导航01</a>、
+                <a href="./z001/index.html" target="_blank">网址导航</a>
+                    </ul>
+                
 
 
 
-    <!-- 下载模块 -->
-    <section id="download" class="download">
-        <div class="container">
-            <div class="section-title">
-                <h2>免费下载 </h2>
-                <p>立即获取最新版本的RoyalCMS，开始您的智能内容管理之旅</p>
-            </div>
-            <div>
-                <div class="download-btns">
-                    <a href="#" class="btn btn-success download-trigger">
-                        <i class="fas fa-file-archive"></i>
-                        直接下载 ZIP
-                    </a>
-                    <a href="#" class="btn btn-warning tech-service-trigger">
-                        <i class="fas fa-headset"></i>
-                        有偿技术服务
+
+                
+                <div class="hero-btns">
+                    <button class="btn contact-btn" id="heroContactBtn">
+                        <i class="fab fa-weixin"></i> 微信咨询获取方案
+                    </button>
+                    <a href="#advantages" class="btn btn-outline">
+                        <i class="fas fa-chart-line"></i> 了解服务优势
                     </a>
                 </div>
-                <p style="margin-top: 30px; color: rgba(255,255,255,0.8);">下载内容包括完整的RoyalCMS系统文件，解压后即可部署使用。</p>
             </div>
         </div>
-    </section>
-    
-    
-        <!-- 广告区块 -->
-    <section id="compact-ads" class="compact-ads">
-        <div class="container">
-            <div class="ad-tagline">
-                <span class="ad-label">
-                    <i class="fas fa-ad"></i> 推荐服务
-                </span>
+        
+        <!-- 3D插画效果 -->
+        <div class="hero-illustration">
+            <div class="cube">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face right"></div>
+                <div class="face left"></div>
             </div>
+            <div class="geo-sphere"></div>
+            <div class="ai-badge">AI+ZF影视智能</div>
+        </div>
+    </section>
 
-   
-       
+    <!-- 数据展示区域 -->
+    <section id="stats" class="stats">
+        <!-- 粒子容器优化 -->
+        <div class="particles-container" id="particles-js"></div>
+        
+        <div class="container">
+            <div class="section-title">
+                <h2>数据展示服务效果</h2>
+                <p>基于ZF影视技术的智能化服务，我们致力于为企业提供优质的数据表现与客户服务体验</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">客户满意度</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <i class="fas fa-building"></i>
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">服务企业数</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div class="stat-number">30天</div>
+                    <div class="stat-label">优化周期</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <i class="fas fa-desktop"></i>
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">智能监控</div>
+                </div>
+            </div>
         </div>
     </section>
- 
+
+    <!-- 平台合作展示 -->
+    <section id="platforms" class="platforms-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>合作的技术平台</h2>
+                <p>我们与多家AI技术平台合作，为企业提供ZF影视优化技术与算法支持</p>
+            </div>
+            <div class="platforms-grid">
+                <div class="platform-card fade-in">
+                    <div class="platform-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>DeepSeek AI</h3>
+                    <p>利用深度学习技术，分析用户意图和行为模式，实现智能化优化策略制定</p>
+                </div>
+                <div class="platform-card fade-in">
+                    <div class="platform-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>元宝智能</h3>
+                    <p>基于元宝AI的内容生成与优化系统，创建高质量智能化内容，提升搜索相关性</p>
+                </div>
+                <div class="platform-card fade-in">
+                    <div class="platform-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>智谱AI</h3>
+                    <p>应用智谱大模型进行语义分析和关键词策略优化，提升内容质量和效果</p>
+                </div>
+                <div class="platform-card fade-in">
+                    <div class="platform-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>百度文心</h3>
+                    <p>结合百度文心大模型的智能化理解能力，针对搜索引擎算法进行优化</p>
+                </div>
+                <div class="platform-card fade-in">
+                    <div class="platform-icon">
+                        <i class="fab fa-weixin"></i>
+                    </div>
+                    <h3>腾讯混元</h3>
+                    <p>整合腾讯混元大模型，优化社交生态排名，提升平台内的内容曝光</p>
+                </div>
+                <div class="platform-card fade-in">
+                    <div class="platform-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>阿里通义</h3>
+                    <p>基于阿里通义大模型，优化电商平台排名，提升商品和服务曝光效果</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工作原理区域 -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>ZF影视优化流程</h2>
+                <p>科学高效的ZF影视驱动优化方案，旨在通过合理步骤提升您的排名效果</p>
+            </div>
+            <div class="steps">
+                <div class="step fade-in">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>深度数据分析与智能定位</h3>
+                        <p>利用AI技术，全面分析您的行业、竞争对手、目标用户和数据，建立优化基准和策略方向</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>智能策略生成与AI内容优化</h3>
+                        <p>基于多平台协同，生成个性化的优化策略，包括关键词布局、内容优化和方案制定</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>实时优化执行与智能监控</h3>
+                        <p>自动化执行优化策略，实时监控排名变化，调整方案应对搜索算法更新</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>效果追踪报告与效果分析</h3>
+                        <p>定期提供详细的效果分析报告，展示流量、排名、转化等关键指标的变化</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 优势区域 -->
+    <section id="advantages" class="advantages">
+        <div class="container">
+            <div class="section-title">
+                <h2>ZF影视优化的服务优势</h2>
+                <p>众多企业选择我们的ZF影视优化服务，我们注重技术应用与服务效果的平衡发展</p>
+            </div>
+            <div class="advantages-grid">
+                <div class="advantage-card fade-in">
+                    <div class="advantage-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>精准智能化</h3>
+                    <p>基于地理智能与人工智能的优化，提升目标客户触达效果，转化率有所提升</p>
+                </div>
+                <div class="advantage-card fade-in">
+                    <div class="advantage-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI驱动智能</h3>
+                    <p>集成AI平台，实现智能优化，处理效率有所提升</p>
+                </div>
+                <div class="advantage-card fade-in">
+                    <div class="advantage-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>优化见效</h3>
+                    <p>合理周期内实现核心关键词排名提升，带来精准流量和业务增长</p>
+                </div>
+                <div class="advantage-card fade-in">
+                    <div class="advantage-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>数据透明</h3>
+                    <p>实时数据面板，展示投入带来的效果和回报，决策有据可依</p>
+                </div>
+                <div class="advantage-card fade-in">
+                    <div class="advantage-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>持续迭代</h3>
+                    <p>AI模型持续学习优化，策略随市场变化调整，保持竞争优势</p>
+                </div>
+                <div class="advantage-card fade-in">
+                    <div class="advantage-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>安全合规保障</h3>
+                    <p>合规优化技术，避免搜索引擎风险，确保业务稳定发展</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户见证区域 -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>客户反馈</h2>
+                <p>客户反馈见证ZF影视驱动的优化效果</p>
+            </div>
+            <div class="testimonial-cards">
+                <div class="testimonial-card fade-in">
+                    <p>使用ZF影视优化服务后，我们的智能排名得到提升，咨询量有所增加。ZF影视驱动的优化确实比传统方法高效</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">张</div>
+                        <div class="author-info">
+                            <h4>张明 总经理</h4>
+                            <span>餐饮品牌</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p>作为一家本地服务机构，我们最需要精准的客户触达。ZF影视的智能化优化功能让我们在目标区域的排名有所提升</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">李</div>
+                        <div class="author-info">
+                            <h4>李华 市场总监</h4>
+                            <span>健身机构</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p>最让我们满意的是ZF影视的智能报告功能，数据透明，可以清楚看到投入带来的回报。与传统方法相比，效果有所提升</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">王</div>
+                        <div class="author-info">
+                            <h4>王伟 CEO</h4>
+                            <span>教育机构</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p>我们尝试过传统优化方法，效果慢且不稳定。ZF影视的智能化驱动优化在合理周期内将我们的核心关键词优化效果提升</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">刘</div>
+                        <div class="author-info">
+                            <h4>刘芳 运营总监</h4>
+                            <span>美容机构</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p>优化后网站流量增长，转化率提升，服务团队专业负责，沟通顺畅</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">陈</div>
+                        <div class="author-info">
+                            <h4>陈涛 创始人</h4>
+                            <span>科技公司</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p>智能化优化精准触达目标客户，业务增长稳定，效果持续可见</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">赵</div>
+                        <div class="author-info">
+                            <h4>赵静 营销总监</h4>
+                            <span>健康机构</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p>ZF影视技术应用提升优化效率，数据报告详细清晰，决策有据可依</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">周</div>
+                        <div class="author-info">
+                            <h4>周强 总经理</h4>
+                            <span>企业服务</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p>优化方案针对性强，执行过程透明，结果符合预期目标</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">吴</div>
+                        <div class="author-info">
+                            <h4>吴琳 运营主管</h4>
+                            <span>电商企业</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p>智能定位优化精准有效，目标客户获取成本降低，业务拓展加速</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">郑</div>
+                        <div class="author-info">
+                            <h4>郑辉 业务总监</h4>
+                            <span>本地服务</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p>ZF影视智能监控及时调整策略，保持排名稳定，效果持续优化</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">孙</div>
+                        <div class="author-info">
+                            <h4>孙悦 市场经理</h4>
+                            <span>零售品牌</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p>优化周期内实现目标，服务团队专业负责，沟通顺畅</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">钱</div>
+                        <div class="author-info">
+                            <h4>钱勇 创始人</h4>
+                            <span>创业公司</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p>综合优化效果显著，多平台排名提升，品牌曝光增加</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">冯</div>
+                        <div class="author-info">
+                            <h4>冯雪 品牌总监</h4>
+                            <span>文创公司</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 保障区域 -->
+    <section id="guarantee" class="guarantee">
+        <div class="container">
+            <div class="section-title">
+                <h2>服务保障</h2>
+                <p>我们提供多方面的服务保障，旨在为企业提供更安心的合作体验</p>
+            </div>
+            <div class="guarantee-cards">
+                <div class="guarantee-card fade-in">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>排名效果保障</h3>
+                    <p>在协议周期内，我们将努力将您的核心关键词优化至搜索引擎首页位置。若未达成约定目标，将依据服务协议提供相应措施</p>
+                    <div class="highlight">详细保障细则请参阅正式服务协议</div>
+                </div>
+                <div class="guarantee-card fade-in">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>未达标保障</h3>
+                    <p>若在约定服务周期内未能实现双方确认的排名目标，我们将依据合同约定提供相应方案</p>
+                    <div class="highlight">具体保障条款以签署的服务合同为准</div>
+                </div>
+                <div class="guarantee-card fade-in">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>长期合作权益</h3>
+                    <p>针对长期合作伙伴，我们提供优惠政策和返点机制，建立持久共赢的合作关系，共同实现业务持续增长</p>
+                    <div class="highlight">专属客户经理为您提供个性化方案</div>
+                </div>
+            </div>
+            <div class="disclaimer-box fade-in">
+                <p><strong>重要声明：</strong>搜索引擎排名受多重因素综合影响，包括但不限于搜索引擎算法更新、行业竞争态势、网站基础质量、内容更新频率等。本服务基于专业优化经验与合理预期制定，实际优化效果可能因具体市场环境与竞争状况而有所不同。服务效果以实际表现为准。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最终行动号召区域 -->
+    <section class="final-cta">
+        <div class="cta-geometrics">
+            <div class="cta-shape"></div>
+            <div class="cta-shape"></div>
+            <div class="cta-shape"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h2>立即开启ZF影视优化服务</h2>
+                <p>现在咨询，免费获得专属的ZF影视智能优化方案，助力您的业务在搜索引擎中提升表现。</p>
+                <button class="btn contact-btn" style="background: linear-gradient(135deg, #ffffff, #d1fae5); color: #0f766e; box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);" id="finalContactBtn">
+                    <i class="fab fa-weixin"></i> 微信咨询获取方案
+                </button>
+                <p style="margin-top: 30px; font-size: 1rem; opacity: 0.8;">专业顾问1对1服务 | 工作日9:00-18:00在线</p>
+            </div>
+        </div>
+    </section>
+
     <!-- 页脚 -->
-    <footer>
+    <footer id="contact">
         <div class="container">
-            <div class="footer-content"> 
-                <div class="footer-text">基于 ThinkPHP 和 Layui 构建，遵循 MIT 开源协议</div>
-                <div class="footer-links">
-                    <a href="index.html">首页</a>
-                    <a href="doc.html">开发文档</a>
-                    <a href="#">演示网站</a>
-                    <a href="#">演示后台</a>
-                    <a href="doc.html#license">版权声明</a>
-                    <a href="doc.html#disclaimer">免责声明</a>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ZF影视优化</h3> 
+                    <div class="contact-info">
+                        <button class="contact-btn" style="padding: 12px 24px; font-size: 1rem;">
+                            <i class="fab fa-weixin"></i> 微信咨询
+                        </button>
+                        <p>服务时间：周一至周五 9:00-18:00</p> 
+                    </div>
                 </div>
-                <div class="copyright">© 2014-2025 RoyalCMS Team. All Rights Reserved.</div>
+                <div class="footer-column">
+                    <h3>友情链接</h3>
+                    <ul>
+                        <li><a href="https://gitee.com/">GITEE</a></li>
+                        <li><a href="https://github.com/">GitHub</a></li>
+                        <li><a href="#">AI内容生成</a></li>
+                        <li><a href="#">竞争对手分析</a></li>
+                        <li><a href="#">智能化营销策略</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>微信咨询</h3>
+                    <div class="wechat-qr">
+                        <div class="qr-code">
+                            <img src="images/wechat.jpg" alt="">
+                        </div>
+                        <div class="qr-info">
+                            <h4>微信咨询</h4>
+                            <p>添加微信获取优化方案</p>
+                            <p>专业顾问1对1服务</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 ZF影视优化服务平台 | 免责声明：本页面内容仅供参考，具体服务以合同约定为准</p>
             </div>
         </div>
     </footer>
 
-    <!-- 下载确认弹窗 -->
-    <div class="modal" id="downloadModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">下载确认</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p><strong>重要提示：</strong>您即将下载的是RoyalCMS的完整演示网站前后台代码，需要自行部署到服务器环境。</p>
-                <p>下载内容包括：</p>
-                <ul>
-                    <li>完整的RoyalCMS演示网站的前后台源代码</li>
-                    <li>数据库结构文件</li>
-                    <li>基础配置文件示例</li>
-                </ul>
-                <p><strong>系统要求：</strong>您需要具备ThinkPHP和Layui框架的基础知识，能够自行配置服务器环境。</p>
-                <p>如果您不熟悉服务器部署，我们可以提供有偿的技术支持服务。</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" id="confirmDownload">确认下载</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 技术服务弹窗 -->
-    <div class="modal" id="techServiceModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">有偿技术服务</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>我们提供专业的有偿技术服务，帮助您解决部署和使用过程中的问题。</p>
-
-                <div class="qr-code">
-                    <img src="images/wechat.jpg" alt="" width="200">
-                </div>
-
-                <p style="text-align: center; margin-bottom: 20px;">扫描二维码添加技术客服</p>
-
-                <div class="tech-service-info">
-                    <h4>服务内容：</h4>
-                    <ul>
-                        <li>系统部署与配置指导</li>
-                        <li>服务器环境搭建</li>
-                        <li>定制开发与功能扩展</li>
-                        <li>系统维护与优化</li>
-                        <li>故障排查与技术支持</li>
-                        <li><a href="/service.html" style="color:red" target="_blank">收费标准</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div> 
-    <div class="fixed-side-buttons">
-        <button class="side-button tech-service-button tech-service-trigger" title="技术服务">
-            <i class="fas fa-headset"></i>
-        </button>
-        <button class="side-button back-to-top" id="backToTop" title="返回顶部">
-            <i class="fas fa-chevron-up"></i>
-        </button>
-    </div>
-    <script src="css/royalcms.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // 二维码弹窗功能
+        const qrModal = document.getElementById('qrModal');
+        const closeQrModal = document.getElementById('closeQrModal');
+        const contactBtn = document.getElementById('contactBtn');
+        const heroContactBtn = document.getElementById('heroContactBtn');
+        const finalContactBtn = document.getElementById('finalContactBtn');
+        const navContactBtn = document.querySelector('.nav-contact-btn');
+        
+        // 打开二维码弹窗
+        function openQrModal() {
+            qrModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // 关闭二维码弹窗
+        function closeQrModalFunc() {
+            qrModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // 添加事件监听器
+        contactBtn.addEventListener('click', openQrModal);
+        heroContactBtn.addEventListener('click', openQrModal);
+        finalContactBtn.addEventListener('click', openQrModal);
+        navContactBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openQrModal();
+        });
+        
+        closeQrModal.addEventListener('click', closeQrModalFunc);
+        
+        // 点击模态框外部关闭
+        qrModal.addEventListener('click', function(e) {
+            if (e.target === qrModal) {
+                closeQrModalFunc();
+            }
+        });
+        
+        // 按ESC键关闭
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && qrModal.classList.contains('active')) {
+                closeQrModalFunc();
+            }
+        });
+        
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+        
+        // 页面加载时应用保存的主题
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        // 移动端导航功能
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+        const menuIcon = mobileMenuBtn.querySelector('.menu-icon');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+            
+            if (navLinks.classList.contains('active')) {
+                menuIcon.innerHTML = '<i class="fas fa-times"></i>';
+                menuIcon.style.transform = 'rotate(90deg)';
+            } else {
+                menuIcon.innerHTML = '<i class="fas fa-bars"></i>';
+                menuIcon.style.transform = 'rotate(0deg)';
+            }
+        });
+        
+        // 点击导航链接后关闭菜单
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                menuIcon.innerHTML = '<i class="fas fa-bars"></i>';
+                menuIcon.style.transform = 'rotate(0deg)';
+            });
+        });
+        
+        // 滚动动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 如果是移动端菜单，关闭菜单
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.classList.remove('active');
+                        menuIcon.innerHTML = '<i class="fas fa-bars"></i>';
+                        menuIcon.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+        });
+        
+        // 页面滚动时头部效果和返回顶部按钮
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+                backToTop.classList.add('show');
+            } else {
+                header.classList.remove('scrolled');
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        // 粒子背景
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.getElementById('particles-js');
+            if (particlesContainer) {
+                particlesJS("particles-js", {
+                    particles: {
+                        number: { 
+                            value: 80, 
+                            density: { 
+                                enable: true, 
+                                value_area: 800 
+                            } 
+                        },
+                        color: { 
+                            value: "#6366f1" 
+                        },
+                        shape: { 
+                            type: "circle" 
+                        },
+                        opacity: { 
+                            value: 0.4, 
+                            random: true 
+                        },
+                        size: { 
+                            value: 2.5, 
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 3,
+                                size_min: 0.3,
+                                sync: false
+                            }
+                        },
+                        line_linked: {
+                            enable: true,
+                            distance: 120,
+                            color: "#6366f1",
+                            opacity: 0.2,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 1.5,
+                            direction: "none",
+                            random: true,
+                            straight: false,
+                            out_mode: "out",
+                            bounce: false
+                        }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: { 
+                                enable: true, 
+                                mode: "repulse" 
+                            },
+                            onclick: { 
+                                enable: true, 
+                                mode: "push" 
+                            }
+                        },
+                        modes: {
+                            repulse: {
+                                distance: 80,
+                                duration: 0.4
+                            },
+                            push: {
+                                particles_nb: 3
+                            }
+                        }
+                    },
+                    retina_detect: true
+                });
+            }
+        });
+        
+        // 添加页面加载动画
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+        
+        // 移动端触摸事件优化
+        document.addEventListener('touchstart', function(){}, {passive: true});
+        
+        // 卡片悬停效果增强
+        document.querySelectorAll('.platform-card, .advantage-card, .testimonial-card, .guarantee-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.zIndex = '10';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.zIndex = '1';
+            });
+        });
+        
+        // 为页脚中的二维码添加点击事件
+        document.querySelector('.footer-column .contact-btn').addEventListener('click', openQrModal);
+    </script>
 </body>
-
 </html>
