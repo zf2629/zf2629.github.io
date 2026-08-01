@@ -65,7 +65,7 @@
 	
 	border-radius: 40px;
 	color: white;
-	box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+	/* box-shadow: 0 2px 6px rgba(0,0,0,0.1); */
 }
 
 .music-controls {
@@ -77,12 +77,12 @@
 
 
 
-	body {
+	/* body {
 		line-height: 1;
 		background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url("../../images/bg.png") no-repeat center center fixed;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
 		background-size: cover;
-	}
+	} */
 
