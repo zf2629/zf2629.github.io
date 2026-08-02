@@ -1,0 +1,30 @@
+{
+    "class": [
+        {
+            "type_name": "黄瓜种植",
+            "type_id": "黄瓜种植"
+        },
+        {
+            "type_name": "西瓜种植",
+            "type_id": "西瓜种植"
+        },
+        {
+            "type_name": "菜台种植",
+            "type_id": "菜台种植"
+        },
+   
+
+
+
+        {
+            "type_name": "茄子种植",
+            "type_id": "茄子种植"
+        },
+
+
+        {
+            "type_name": "花草种植",
+            "type_id": "花草种植"
+        }
+    ]
+}
