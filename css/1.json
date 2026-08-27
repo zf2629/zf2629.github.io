@@ -1,0 +1,281 @@
+const NAV_APIS = [
+  {"name":"主接口","url":"http://www.英格里希嗷呜.top/tv"},
+  {"name":"备用接口一","url":"https://9763.kstore.vip/aowu.json"},
+  {"name":"备用接口二","url":"http://itv666.cc/aowu/config.webp"},
+  {"name":"饭太硬","url":"http://www.饭太硬.cc/tv"},
+
+  {"name":"小虎斑","url":"http://hb.小虎斑.site:25252/仅供测试"},
+  {"name":"分享者","url":"https://gh-proxy.com/raw.githubusercontent.com/maoystv/6/main/001.json"},
+
+  {"name": "📌👖酷佬", "url": "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg"},
+          {"name": "饭太硬", "url": "http://www.饭太硬.net/tv"},
+          {"name": "王二小放牛娃", "url": "http://new.王二小放牛娃.top"},
+          {"name": "摸鱼儿", "url": "http://www.小不点.com"},
+          {"name": "肥猫", "url": "http://肥猫.net"},
+          {"name": "东篱", "url": "https://16151.kstore.space"},
+          {"name": "嗷呜", "url": "http://itv666.cc/aowu/config.webp"},
+          {"name": "天神", "url": "https://gh-proxy.com/raw.githubusercontent.com/IY-CPU/IY/main/天神IY.png"},
+          {"name": "VOX", "url": "https://xduo.codered.cloud/vox/demo.json"},
+          {"name": "潇洒", "url": "https://cnb.cool/fish2018/xs/-/git/raw/main/api.json"},
+          {"name": "澜露", "url": "https://gh-proxy.org/https://raw.githubusercontent.com/hulanlu/05/refs/heads/main/lanlu.png"},
+          {"name": "多多", "url": "https://iduo.us.ci/gt/leevi0709/one/main/config.bin"},
+          {"name": "哈基米", "url": "https://17264.kstore.space/哈基米.png"},
+          {"name": "南风", "url": "https://gh-proxy.com/raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json"},
+          {"name": "catvod", "url": "https://jk.catvod.site/jk/t4.json"},
+          {"name": "雷蒙", "url": "https://gh-proxy.org/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/lem.json"},
+
+
+  {"name":"王二小","url":"http://new.王二小放牛娃.top"}];
+const NAV_RESOURCES = [
+  {"title":"防失联1","desc":"接口发布、更新、问题反馈入口","url":"https://zf2629.github.io/","icon":"https://gh-proxy.com/https://raw.githubusercontent.com/homezf/01img/main/logo/logo.png"},
+  {"title":"防失联2","desc":"接口发布、更新、问题反馈入口","url":"https://zf2629.neocities.org/","icon":"https://gh-proxy.com/https://raw.githubusercontent.com/homezf/01img/main/logo/logo.png"},
+
+  {"title":"TVBox 接口编辑器","desc":"通通能解，可用于解密各种网络加密接口","url":"https://bjq.catvod.site/","icon":"https://gimg0.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=s1.imagehub.cc/images/2023/07/01/jm.jpeg"},
+  {"title":"空壳下载","desc":"下载OK、影视仓","url":"https://pan.quark.cn/s/a308752455c2","icon":"https://ts1.tc.mm.bing.net/th/id/ODF.AgG9i63xHeUAytW1FXNoAg?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2"},
+  {"title":"影视TV 开源仓库","desc":"台湾活雷锋FongMI开发，免费简洁强大的自动更新播放器","url":"https://github.com/FongMi/TV","icon":"https://gimg0.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=s1.imagehub.cc/images/2023/07/01/ystv.md.png"},
+  {"title":"文件加速","desc":"常用镜像、直链和下载加速入口","url":"https://github.akams.cn/","icon":"https://ts1.tc.mm.bing.net/th/id/ODF.l7OW0bAG6RgvH1xWyfVzAg?w=32&h=32&qlt=92&pcl=fffffa&o=6&pid=1.2"}];
+
+const apiGrid = document.querySelector("#apiGrid");
+const resourceGrid = document.querySelector("#resourceGrid");
+const toast = document.querySelector("#toast");
+const currentYear = document.querySelector("#currentYear");
+const meteorCanvas = document.querySelector("#meteorCanvas");
+const dailySaying = document.querySelector("#dailySaying");
+const apiCount = document.querySelector("#apiCount");
+let toastTimer;
+
+currentYear.textContent = new Date().getFullYear();
+
+function initMeteorRain() {
+  const ctx = meteorCanvas.getContext("2d");
+  const meteors = [];
+  const stars = [];
+  const meteorCount = 22;
+  const starCount = 88;
+  let width = 0;
+  let height = 0;
+  let pixelRatio = 1;
+  let resizeTimer;
+
+  function random(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function resizeCanvas() {
+    const nextWidth = window.innerWidth;
+    const nextHeight = window.innerHeight;
+    const widthChanged = Math.abs(nextWidth - width) > 2;
+    const heightChanged = Math.abs(nextHeight - height) > 120;
+
+    if (width && !widthChanged && !heightChanged) {
+      return;
+    }
+
+    const previousWidth = width || nextWidth;
+    const previousHeight = height || nextHeight;
+    pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    width = nextWidth;
+    height = nextHeight;
+    meteorCanvas.width = Math.floor(width * pixelRatio);
+    meteorCanvas.height = Math.floor(height * pixelRatio);
+    meteorCanvas.style.width = `${width}px`;
+    meteorCanvas.style.height = `${height}px`;
+    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+    if (!stars.length) return;
+
+    const scaleX = width / previousWidth;
+    const scaleY = height / previousHeight;
+    for (const star of stars) {
+      star.x = Math.min(width, star.x * scaleX);
+      star.y = Math.min(height, star.y * scaleY);
+    }
+    for (const meteor of meteors) {
+      meteor.x *= scaleX;
+      meteor.y *= scaleY;
+    }
+  }
+
+  function createStars() {
+    stars.length = 0;
+    for (let index = 0; index < starCount; index += 1) {
+      stars.push({
+        x: random(0, width),
+        y: random(0, height),
+        radius: random(0.5, 1.8),
+        alpha: random(0.18, 0.78),
+        pulse: random(0.002, 0.008)
+      });
+    }
+  }
+
+  function resetMeteor(meteor, initial = false) {
+    meteor.x = initial ? random(0, width * 1.4) : random(width * 0.15, width * 1.15);
+    meteor.y = initial ? random(-height * 0.15, height) : random(-height * 0.25, height * 0.55);
+    meteor.length = random(110, 230);
+    meteor.speed = random(3.2, 6.8);
+    meteor.size = random(1.2, 2.8);
+    meteor.alpha = random(0.5, 0.92);
+  }
+
+  function createMeteors() {
+    meteors.length = 0;
+    for (let index = 0; index < meteorCount; index += 1) {
+      const meteor = {};
+      resetMeteor(meteor, true);
+      meteors.push(meteor);
+    }
+  }
+
+  function drawStars(time) {
+    for (const star of stars) {
+      const alpha = star.alpha + Math.sin(time * star.pulse) * 0.18;
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0.08, alpha)})`;
+      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function drawMeteors() {
+    ctx.lineCap = "round";
+
+    for (const meteor of meteors) {
+      const tailX = meteor.x + meteor.length;
+      const tailY = meteor.y - meteor.length * 0.56;
+      const gradient = ctx.createLinearGradient(meteor.x, meteor.y, tailX, tailY);
+      gradient.addColorStop(0, `rgba(255, 255, 255, ${meteor.alpha})`);
+      gradient.addColorStop(0.25, `rgba(84, 214, 255, ${meteor.alpha * 0.5})`);
+      gradient.addColorStop(1, "rgba(84, 214, 255, 0)");
+
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = meteor.size;
+      ctx.beginPath();
+      ctx.moveTo(meteor.x, meteor.y);
+      ctx.lineTo(tailX, tailY);
+      ctx.stroke();
+
+      meteor.x -= meteor.speed;
+      meteor.y += meteor.speed * 0.56;
+
+      if (meteor.x < -meteor.length || meteor.y > height + meteor.length) {
+        resetMeteor(meteor);
+      }
+    }
+  }
+
+  function animate(time) {
+    ctx.clearRect(0, 0, width, height);
+    drawStars(time);
+    drawMeteors();
+    window.requestAnimationFrame(animate);
+  }
+
+  resizeCanvas();
+  createStars();
+  createMeteors();
+  window.addEventListener("resize", () => {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(resizeCanvas, 120);
+  });
+  window.requestAnimationFrame(animate);
+}
+
+async function loadJson(path) {
+  const response = await fetch(path);
+  if (!response.ok) {
+    throw new Error(`Failed to load ${path}`);
+  }
+  return response.json();
+}
+
+async function loadDailySaying() {
+  try {
+    const data = await loadJson("./api/saying.php");
+    if (data.ok && data.text) {
+      dailySaying.textContent = data.text;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add("is-visible");
+  clearTimeout(toastTimer);
+  toastTimer = window.setTimeout(() => {
+    toast.classList.remove("is-visible");
+  }, 1800);
+}
+
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    showToast("已复制接口地址");
+  } catch {
+    const input = document.createElement("textarea");
+    input.value = text;
+    input.setAttribute("readonly", "");
+    input.style.position = "fixed";
+    input.style.opacity = "0";
+    document.body.append(input);
+    input.select();
+    document.execCommand("copy");
+    input.remove();
+    showToast("已复制接口地址");
+  }
+}
+
+function renderApis(apiItems) {
+  apiGrid.innerHTML = apiItems.map((item) => `
+    <button class="api-card" type="button" data-url="${item.url}" title="复制 ${item.name}">
+      <span class="api-card__name">${item.name}</span>
+    </button>
+  `).join("");
+
+  apiGrid.addEventListener("click", (event) => {
+    const button = event.target.closest(".api-card");
+    if (!button) return;
+    copyText(button.dataset.url);
+  });
+}
+
+function renderResources(resourceItems) {
+  resourceGrid.innerHTML = resourceItems.map((item) => `
+    <a class="resource-card" href="${item.url}" target="_blank" rel="noopener noreferrer">
+      <span class="resource-card__icon" aria-hidden="true">${renderResourceIcon(item.icon, item.title)}</span>
+      <span>
+        <h3>${item.title}</h3>
+        <p>${item.desc}</p>
+      </span>
+    </a>
+  `).join("");
+}
+
+function renderResourceIcon(icon, title) {
+  if (/^(https?:\/\/|\.\/|\/|assets\/)/i.test(icon)) {
+    return `<img src="${icon}" alt="${title} 图标" loading="lazy">`;
+  }
+
+  return icon;
+}
+
+function init() {
+  try {
+    if (!Array.isArray(NAV_APIS) || !Array.isArray(NAV_RESOURCES)) {
+      throw new Error("Navigation data is invalid");
+    }
+
+    apiCount.textContent = `${NAV_APIS.length} 个接口`;
+    renderApis(NAV_APIS);
+    renderResources(NAV_RESOURCES);
+  } catch (error) {
+    console.error(error);
+    showToast("数据加载失败");
+  }
+}
+
+initMeteorRain();
+loadDailySaying();
+init();

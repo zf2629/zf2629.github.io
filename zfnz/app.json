@@ -1,7 +1,0 @@
-{
-"sites":[
-{"key":"应用商店","name":"🛒本地包更新","type":3,"api":"csp_Market","searchable":0,"changeable":0,"ext":"./set/应用商店.json"},
-{"key":"push_agent","name":"📢手机｜推送","type":3,"api":"csp_Push","searchable":0,"filterable":0,"changeable":0}],
-"spider":"https://gh-proxy.com/https://github.com/zf2629/01jar/raw/main/og.jar;md5;8fd1a7eb6c700c7036319c664bf4f62c",
-"logo":"https://zf2629.github.io/images/pic.png"
-}
