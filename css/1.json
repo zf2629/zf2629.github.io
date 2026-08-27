@@ -28,12 +28,10 @@ const NAV_APIS = [
   {"name":"王二小","url":"http://new.王二小放牛娃.top"}];
 const NAV_RESOURCES = [
   {"title":"百度一下","desc":"全球最大的中文搜索引擎","url":"https://www.baidu.com/","icon":"https://www.baidu.com/favicon.ico"},
-  {"title":"防失联1","desc":"GITHUB入口","url":"https://zf2629.github.io/","icon":"./img/logo.png"},
-  {"title":"防失联2","desc":"neocities入口","url":"https://zf2629.neocities.org/","icon":"./img/logo.png"},
-  {"title":"TVBox 接口编辑器","desc":"通通能解，可用于解密各种网络加密接口","url":"https://bjq.catvod.site/","icon":"https://gimg0.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=s1.imagehub.cc/images/2023/07/01/jm.jpeg"},
-  {"title":"空壳下载","desc":"下载OK、影视仓","url":"https://pan.quark.cn/s/a308752455c2","icon":"https://ts1.tc.mm.bing.net/th/id/ODF.AgG9i63xHeUAytW1FXNoAg?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2"},
-  {"title":"影视TV 开源仓库","desc":"台湾活雷锋FongMI开发，免费简洁强大的自动更新播放器","url":"https://github.com/FongMi/TV","icon":"https://gimg0.baidu.com/gimg/app=2001&n=0&g=0n&fmt=jpeg&src=s1.imagehub.cc/images/2023/07/01/ystv.md.png"},
-  {"title":"文件加速","desc":"常用镜像、直链和下载加速入口","url":"https://github.akams.cn/","icon":"https://ts1.tc.mm.bing.net/th/id/ODF.l7OW0bAG6RgvH1xWyfVzAg?w=32&h=32&qlt=92&pcl=fffffa&o=6&pid=1.2"}];
+  {"title":"防失联1","desc":"GITHUB入口","url":"https://zf2629.github.io/","icon":"https://github.githubassets.com/favicons/favicon.svg"},
+  {"title":"防失联2","desc":"neocities入口","url":"https://zf2629.neocities.org/","icon":"https://neocities.org/img/favicon.png"},
+  {"title":"TVBox 接口编辑器","desc":"通通能解，可用于解密各种网络加密接口","url":"https://bjq.catvod.site/","icon":"./img/MT管理器.png"},
+  {"title":"我的音乐","desc":"音乐下载","url":"./music/index.html","icon":"./img/XPlayer.png"}];
 
 const apiGrid = document.querySelector("#apiGrid");
 const resourceGrid = document.querySelector("#resourceGrid");
