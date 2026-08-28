@@ -31,6 +31,7 @@ const NAV_RESOURCES = [
   // {"title":"防失联1","desc":"GITHUB入口","url":"https://zf2629.github.io/","icon":"https://github.githubassets.com/favicons/favicon.svg"},
   {"title":"防失联2","desc":"neocities入口","url":"https://zf2629.neocities.org/","icon":"https://neocities.org/img/favicon.png"},
   {"title":"TVBox 接口编辑器","desc":"通通能解，可用于解密各种网络加密接口","url":"https://bjq.catvod.site/","icon":"./img/MT管理器.png"},
+  {"title":"应用下载","desc":"通通能解，可用于解密各种网络加密接口","url":"./app/index.html","icon":"./img/MT管理器.png"},
   {"title":"我的音乐","desc":"音乐下载","url":"./music/index.html","icon":"./img/XPlayer.png"}];
 
 const apiGrid = document.querySelector("#apiGrid");
