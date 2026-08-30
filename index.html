@@ -1,694 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh">
 
-<!doctype html>
-<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="一个简洁的接口与资源导航页">
-  <title>ZF2629</title>
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-  <style>
-    :root {
-  color-scheme: dark;
-  --bg: #070a12;
-  --bg-soft: #111827;
-  --panel: rgba(15, 22, 34, 0.22);
-  --panel-strong: rgba(12, 18, 30, 0.34);
-  --panel-border: rgba(255, 255, 255, 0.2);
-  --text: #f5f7fb;
-  --muted: #b4bfce;
-  --accent: #6ee7d8;
-  --accent-strong: #ffcc66;
-  --danger: #ff7568;
-  --shadow: 0 22px 70px rgba(0, 0, 0, 0.36);
-  --glass-blur: blur(18px) saturate(135%);
-}
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="viggo" />
+    <title>ZF2629 - 网址导航</title>
+    <meta name="keywords" content="ZF2629">
+    <meta name="description" content="ZF2629">
+    <link rel="shortcut icon" href="./assets/images/favicon.png">
+    <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic"> -->
+    <link rel="stylesheet" href="./assets/css/fonts/linecons/css/linecons.css">
+    <link rel="stylesheet" href="./assets/css/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/xenon-core.css">
+    <link rel="stylesheet" href="./assets/css/xenon-components.css">
+    <link rel="stylesheet" href="./assets/css/xenon-skins.css">
+    <link rel="stylesheet" href="./assets/css/nav.css">
+    <link rel="stylesheet" href="./assets/css/zf.css">
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  height: 100%;
-  min-height: 100%;
-  background: var(--bg);
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100svh;
-  margin: 0;
-  font-family: Inter, "Microsoft YaHei", "PingFang SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: var(--text);
-  background:
-    radial-gradient(circle at 12% 12%, rgba(110, 231, 216, 0.18), transparent 28rem),
-    radial-gradient(circle at 82% 4%, rgba(255, 204, 102, 0.12), transparent 26rem),
-    radial-gradient(circle at 50% 92%, rgba(99, 102, 241, 0.12), transparent 30rem),
-    linear-gradient(145deg, #070a12 0%, #101725 54%, #070a12 100%);
-}
-
-body::before {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  content: "";
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), transparent 72%);
-}
-
-.meteor-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-button,
-a {
-  font: inherit;
-}
-
-.page-shell {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex: 1 0 auto;
-  flex-direction: column;
-  justify-content: center;
-  width: min(1120px, calc(100% - 32px));
-  margin: 0 auto;
-  padding: 36px 0 24px;
-}
-
-.hero {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 24px;
-  min-height: 220px;
-  padding: clamp(24px, 4vw, 44px);
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  backdrop-filter: none;
-  box-shadow: none;
-  overflow: hidden;
-}
-
-.hero::before {
-  position: absolute;
-  inset: 0;
-  content: "";
-  pointer-events: none;
-  background: none;
-  opacity: 0;
-}
-
-.hero__content,
-.hero__logo {
-  position: relative;
-  z-index: 1;
-}
-
-.section-kicker {
-  margin: 0 0 10px;
-  color: var(--accent);
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0;
-}
-
-h1,
-h2,
-h3,
-p {
-  margin-top: 0;
-}
-
-h1 {
-  margin-bottom: 12px;
-  font-size: clamp(32px, 5vw, 56px);
-  line-height: 1.08;
-  letter-spacing: 0;
-  text-shadow: 0 12px 34px rgba(0, 0, 0, 0.36);
-}
-
-.hero__slogan {
-  max-width: 620px;
-  margin-bottom: 0;
-  color: var(--muted);
-  font-size: clamp(16px, 2vw, 20px);
-  line-height: 1.8;
-}
-
-.hero__logo {
-  display: block;
-  width: clamp(96px, 14vw, 148px);
-  aspect-ratio: 1;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 8px;
-  background: linear-gradient(160deg, rgba(53, 208, 186, 0.28), rgba(255, 204, 102, 0.18));
-  object-fit: cover;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-.panel {
-  margin-top: 24px;
-  padding: clamp(20px, 4vw, 32px);
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  backdrop-filter: none;
-  box-shadow: none;
-}
-
-.section-head {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.section-head h2 {
-  margin-bottom: 0;
-  font-size: clamp(24px, 3vw, 34px);
-  letter-spacing: 0;
-}
-
-.section-count {
-  flex: 0 0 auto;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.api-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.api-card {
-  min-height: 74px;
-  padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 8px;
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.045);
-  cursor: pointer;
-  text-align: left;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
-}
-
-.api-card:hover,
-.api-card:focus-visible {
-  outline: none;
-  transform: translateY(-2px);
-  border-color: rgba(110, 231, 216, 0.72);
-  background: rgba(110, 231, 216, 0.13);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.16);
-}
-
-.api-card__name {
-  display: block;
-  font-weight: 800;
-}
-
-.resource-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.resource-card {
-  display: grid;
-  grid-template-columns: 48px minmax(0, 1fr);
-  gap: 14px;
-  align-items: center;
-  min-height: 92px;
-  padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 8px;
-  color: inherit;
-  background: rgba(255, 255, 255, 0.045);
-  text-decoration: none;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
-}
-
-.resource-card:hover,
-.resource-card:focus-visible {
-  outline: none;
-  transform: translateY(-2px);
-  border-color: rgba(255, 204, 102, 0.72);
-  background: rgba(255, 204, 102, 0.11);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.16);
-}
-
-.resource-card__icon {
-  display: grid;
-  place-items: center;
-  width: 48px;
-  aspect-ratio: 1;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--accent-strong);
-  font-weight: 900;
-  overflow: hidden;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
-}
-
-.resource-card__icon img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.resource-card h3 {
-  margin-bottom: 5px;
-  overflow-wrap: anywhere;
-  font-size: 16px;
-  line-height: 1.35;
-}
-
-.resource-card p {
-  margin-bottom: 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-.toast {
-  position: fixed;
-  left: 50%;
-  bottom: 28px;
-  z-index: 10;
-  transform: translate(-50%, 16px);
-  padding: 10px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 8px;
-  color: #101217;
-  background: var(--accent);
-  font-weight: 800;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 180ms ease, transform 180ms ease;
-}
-
-.toast.is-visible {
-  opacity: 1;
-  transform: translate(-50%, 0);
-}
-
-.site-footer {
-  position: relative;
-  z-index: 2;
-  flex: 0 0 auto;
-  width: min(1120px, calc(100% - 32px));
-  margin: 0 auto;
-  padding: 18px 0 36px;
-  color: var(--muted);
-  text-align: center;
-  font-size: 14px;
-}
-
-@media (max-width: 860px) {
-  .page-shell {
-    width: min(100% - 24px, 720px);
-    padding-top: 24px;
-  }
-
-  .hero {
-    grid-template-columns: 1fr;
-  }
-
-  .hero__logo {
-    width: 92px;
-  }
-
-  .api-grid,
-  .resource-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 560px) {
-  .section-head {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .api-grid,
-  .resource-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero,
-  .panel {
-    padding: 20px;
-  }
-}
-
-  </style>
+    <script src="./assets/js/copy.js" ></script>
+    <script src="./assets/js/jquery-1.11.1.min.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
 </head>
-<body>
-  <canvas class="meteor-canvas" id="meteorCanvas" aria-hidden="true"></canvas>
+<body class="page-body">
 
-  <main class="page-shell">
-    <section class="hero" aria-labelledby="site-title">
-      <div class="hero__content">
-        <h1 id="site-title">ZF2629</h1>
-        <p class="hero__slogan" id="dailySaying">又是美好的一天，当然要开心啦。</p>
-      </div>
-      <img class="hero__logo" src="./appimg/logo.png" alt="ZF2629 logo">
-    </section>
+    <!-- skin-white -->
+    <div class="page-container">
+        <div class="sidebar-menu toggle-others fixed">
+            <div class="sidebar-menu-inner">
+                <header class="logo-env">
+                    <!-- logo -->
+                    <div class="logo">
+                        <a href="index.html" class="logo-expanded">
+                            <img src="./assets/images/logo.png" width="100%" alt="" />
+                        </a>
+                        <!-- <a href="index.html" class="logo-collapsed">
+                            <img src="./assets/images/logo-collapsed@2x.png" width="40" alt="" />
+                        </a> -->
+                    </div>
+                    <div class="mobile-menu-toggle visible-xs">
+                        <a href="#" data-toggle="user-info-menu">
+                            <i class="linecons-cog"></i>
+                        </a>
+                        <a href="#" data-toggle="mobile-menu">
+                            <i class="fa-bars"></i>
+                        </a>
+                    </div>
+                </header>
+                <ul id="main-menu" class="main-menu">
 
 
-    <section class="panel" aria-labelledby="resource-title">
-      <div class="section-head">
-        <div>
-          <p class="section-kicker">ZF2629导航</p>
-          <h2 id="resource-title">应用下载</h2>
+                    <li><a><i class="linecons-lightbulb"></i><span class="title">APP下载</span></a>
+                        <ul>
+                            <li><a href="#原版APP" class="smooth"><i class="linecons-star"></i><span class="title">原版APP</span> </a></li>
+                            <li><a href="#海阔共存版" class="smooth"><i class="linecons-star"></i><span class="title">海阔共存版</span> </a></li>
+                            <li><a href="#APP工具" class="smooth"><i class="linecons-star"></i><span class="title">APP工具</span> </a></li>
+                            <li><a href="#插件APP" class="smooth"><i class="linecons-star"></i><span class="title">插件APP</span> </a></li>
+                        </ul>
+                    </li>
+
+                    <li><a><i class="linecons-lightbulb"></i><span class="title">网盘空间</span></a>
+                        <ul>
+                            <li><a href="#github999" class="smooth"><i class="linecons-star"></i><span class="title">github收藏</span> </a></li>
+                            <li><a href="#蓝奏云" class="smooth"><i class="linecons-star"></i><span class="title">蓝奏云收藏</span> </a></li>
+             
+                        </ul>
+                    </li>
+
+
+
+
+                    
+
+
+
+                    <li><a href="#海阔主题仓库" class="smooth"><i class="linecons-star"></i><span class="title">海阔主题仓库</span> </a></li>
+
+             
+                    
+                    <li><a href="#音乐" class="smooth"><i class="linecons-star"></i><span class="title">音乐</span> </a></li>
+                    <li><a href="#邮箱" class="smooth"><i class="linecons-star"></i><span class="title">邮箱</span> </a></li>
+                    
+                  
+
+                    <li><a href="#在线工具" class="smooth"><i class="linecons-star"></i><span class="title">在线工具</span> </a></li>
+                  
+                    
+                    <li><a href="#github999" class="smooth"><i class="linecons-star"></i><span class="title">GitHub合集</span> </a></li>
+                    <li> <a href="./001/index.html" target="_blank" > <i class="linecons-heart"></i> <span class="tooltip-blue">关于本站</span> <span class="label label-Primary pull-right hidden-collapsed">♥︎</span> </a> </li>
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                    <!-- <div class="submit-tag">
+                        <a href="about.html">
+                            <i class="linecons-heart"></i>
+                            <span class="tooltip-blue">关于本站</span>
+                            <span class="label label-Primary pull-right hidden-collapsed">♥︎</span>
+                        </a>
+                    </div> -->
+                </ul>
+            </div>
         </div>
-        <span class="section-count">精品应用</span>
-      </div>
-      <div class="resource-grid" id="resourceGrid"></div>
-    </section>
+        <div class="main-content">
+            <nav class="navbar user-info-navbar" role="navigation">
+                <!-- User Info, Notifications and Menu Bar -->
+                <!-- Left links for user info navbar -->
+                <ul class="user-info-menu left-links list-inline list-unstyled">
+                    <li class="hidden-sm hidden-xs">
+                        <a href="#" data-toggle="sidebar">
+                            <i class="fa-bars"></i>
+                        </a>
+                    </li>
+                    <li class="dropdown hover-line language-switcher">
+                        <a href="./cn/index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="./assets/images/flags/flag-cn.png" alt="flag-cn" /> Chinese
+                        </a>
+                        <ul class="dropdown-menu languages">
+                            <li>
+                                <a href="./en/index.html">
+                                    <img src="./assets/images/flags/flag-us.png" alt="flag-us" /> English
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="./cn/index.html">
+                                    <img src="./assets/images/flags/flag-cn.png" alt="flag-cn" /> Chinese
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown hover-line language-switcher"> <a href="https://www.baidu.com/" class="dropdown-toggle" target="_blank" style="color: #FF9800;">百度一下</a> </li>
+                    <li class="dropdown hover-line language-switcher"> <a href="https://gh-proxy.com/" class="copy-link" onclick="copyLinkToClipboard('https://gh-proxy.com/'); return false;" style="color: #FF9800;">gh-proxy</a></li>
+                </ul>
+                <ul class="user-info-menu right-links list-inline list-unstyled">
+                    <li class="hidden-sm hidden-xs">
+                        <a href="https://github.com/WebStackPage/WebStackPage.github.io" target="_blank">
+                            <i class="fa-github"></i>  GitHub
+                        </a>
+                    </li>
+                </ul>
+                <!-- <a href="https://github.com/WebStackPage/WebStackPage.github.io" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a> -->
+
+            </nav>
+
+
+
+    
+            <ul class="list-inline list-inline-bg" id="原版APP">
+                <h3><span>原版APP</span></h3>
+                <li> <a href="https://gh-proxy.com/https://github.com/homezf/01app/raw/main/海阔视界.apk">海阔视界_V8.83</a></li> 
+                <li> <a href="https://gh-proxy.com/https://github.com/homezf/01app/raw/main/阅读.apk">阅读3.26</a></li> 
+                <li> <a href="https://gh-proxy.com/https://github.com/homezf/01app/raw/main/影视仓.apk">影视仓6.1.9</a></li> 
+                <li> <a href="https://gh-proxy.com/https://github.com/homezf/01app/raw/main/影视仓V3.apk">影视仓V3</a></li> 
+                <li> <a href="https://gh-proxy.com/https://github.com/FongMi/Release/raw/fongmi/apk/mobile-arm64_v8a.apk">FM影视手机版[官]</a></li> 
+                <li> <a href="https://gh-proxy.com/github.com/FongMi/Release/raw/fongmi/apk/leanback-armeabi_v7a.apk">FM影视TV版[官]</a></li> 
+                <li> <a href="https://gh-proxy.com/https://github.com/homezf/01app/raw/main/智能K歌.apk">智能K歌</a></li> 
+                <li> <a href="https://gh-proxy.com/https://github.com/homezf/01app/raw/main/IKTV.apk">KTV_80.3.0</a></li> 
+                <li> <a href="https://gh-proxy.com/github.com/Moriafly/SaltPlayerSource/releases/download/12.2.0/12.2.0-2026081002-official-arm64-v8a.apk">椒盐音乐[官]</a></li> 
+                <li> <a href="https://gh-proxy.com/https://github.com/homezf/01app/raw/main/佳视通.apk">佳视通</a></li>
+             
+
+                
+              
+            </ul>
+ 
+         
+         
+     
+          
+
+
+            <ul class="list-inline list-inline-bg" id="插件APP">
+                <h3><span>插件APP</span></h3>
+                <li> <a href="https://gh-proxy.com/https://github.com/homezf/01app/raw/main/云影空蒙.apk">云影空蒙</a></li> 
+                <li><a href="https://gh-proxy.com/https://github.com/homezf/01json/raw/main/云影空蒙.json" class="copy-link" onclick="copyLinkToClipboard('https://gh-proxy.com/https://github.com/homezf/01json/raw/main/云影空蒙.json'); return false;" style="color: #FF9800;">云影空蒙[1]</a></li>
+                <li> <a href="https://gh-proxy.com/https://github.com/homezf/01app/raw/main/musicfree.apk">musicfree</a></li> 
+                <li><a href="https://gh-proxy.com/https://github.com/homezf/01json/raw/main/musicfree.json" class="copy-link" onclick="copyLinkToClipboard('https://gh-proxy.com/https://github.com/homezf/01json/raw/main/musicfree.json'); return false;" style="color: #FF9800;">musicfree[1]</a></li>
+                <li> <a href="https://gh-proxy.com/https://github.com/homezf/01app/raw/main/ClashMeta.apk">ClashMeta</a></li>  
+                <li><a href="https://gh-proxy.com/https://github.com/homezf/01json/raw/main/v.json" class="copy-link" onclick="copyLinkToClipboard('https://gh-proxy.com/https://github.com/homezf/01json/raw/main/v.json'); return false;" style="color: #FF9800;">ClashMeta[0]</a></li>
+                <li><a href="https://gh-proxy.com/https://github.com/homezf/01json/raw/main/v1.json" class="copy-link" onclick="copyLinkToClipboard('https://gh-proxy.com/https://github.com/homezf/01json/raw/main/v1.json'); return false;" style="color: #FF9800;">ClashMeta[1]</a></li>
+            </ul> 
 
 
 
 
-    <section class="panel" aria-labelledby="api-title">
-      <div class="section-head">
-        <div>
-          <p class="section-kicker">点击即可复制</p>
-          <h2 id="api-title">插件接口</h2>
+
+
+
+
+
+            <ul class="list-inline list-inline-bg" id="APP工具">
+                <h3><span>APP工具</span></h3>
+                <li> <a href="https://gh-proxy.com/github.com/homezf/01app/raw/main/1DM.apk">1DM</a></li> 
+                <li> <a href="https://gh-proxy.com/github.com/homezf/01app/raw/main/APK编辑器.apk">APK编辑器</a></li> 
+                <li> <a href="https://gh-proxy.com/github.com/homezf/01app/raw/main/MT管理器.apk">MT管理器</a></li> 
+                <li> <a href="https://gh-proxy.com/github.com/homezf/01app/raw/main/小白文件管理器.apk">小白文件管理器</a></li> 
+                <li> <a href="https://gh-proxy.com/github.com/homezf/01app/raw/main/ProxyPin.apk">ProxyPin</a></li> 
+                <li> <a href="https://gh-proxy.com/github.com/homezf/01app/raw/main/黄鸟抓包.apk">黄鸟抓包</a></li> 
+           
+                <li> <a href="https://gh-proxy.com/github.com/homezf/01app/raw/main/葫芦侠3楼.apk">葫芦侠3楼</a></li> 
+       
+            </ul>
+
+            <ul class="list-inline list-inline-bg" id="海阔共存版">
+                <h3><span>海阔共存版</span></h3>
+                <li> <a href="https://gh-proxy.com/github.com/homezf/01app/raw/main/海阔视界01.apk">海阔视界01</a></li> 
+                <li> <a href="https://gh-proxy.com/github.com/homezf/01app/raw/main/海阔视界02.apk">海阔视界02</a></li> 
+                <li> <a href="https://gh-proxy.com/github.com/homezf/01app/raw/main/海阔视界03.apk">海阔视界03</a></li> 
+                <li> <a href="https://gh-proxy.com/github.com/homezf/01app/raw/main/海阔视界04.apk">海阔视界04</a></li> 
+            </ul>
+
+   
+
+
+
+            <ul class="list-inline list-inline-bg" id="海阔主题仓库">
+                <h3><span>海阔主题仓库</span></h3>
+                <li> <a href="https://gh-proxy.com/github.com/zf2629/02hiker/raw/main/ZF仓库.hiker" target="_blank">ZF仓库</a></li> 
+                <li> <a href="https://gh-proxy.com/github.com/zf2629/02hiker/raw/main/ZF仓库.hiker" target="_blank">ZF主题</a></li> 
+
+            </ul>
+
+
+            
+
+
+
+       
+            <ul class="list-inline list-inline-bg" id="阅读">
+                <h3><span>阅读</span></h3>
+                <li> <a href="https://cdn.mgz.la/app/">喵公子-阅读[官]</a></li> 
+                <li> <a href="https://gh-proxy.com/github.com/HapeLee/legado-with-MD3/releases/download/3.26.16-beta.16/legado-3.26.16-beta.16-arm64-v8a.apk"  target="_blank" title="">MD3-阅读[官]</a></li> 
+                <li> <a href="https://legado.tucong.vip/"  target="_blank" title="">多版本发布聚合-阅读[官]</a></li> 
+            </ul>
+
+       
+
+
+
+
+            <ul class="list-inline list-inline-bg" id="音乐">
+                <h3><span>音乐</span></h3>
+                <li> <a href="./music/music.html"  target="_blank" title="">我的音乐网</a></li> 
+                <li> <a href="https://flac.music.hi.cn/"  target="_blank" title="">无损音乐下载</a></li> 
+                <li> <a href="https://www.4c44.com/"  target="_blank" title="">世纪音乐网</a></li> 
+                <li> <a href="https://www.mvmp3.com/"  target="_blank" title="">无名音乐网</a></li> 
+                <li> <a href="https://music.hi.cn/"  target="_blank" title="">音乐搜索器</a></li> 
+            </ul>
+
+  
+       
+            <ul class="list-inline list-inline-bg" id="邮箱">
+                <h3><span>邮箱</span></h3>
+                <li> <a href="https://mail.qq.com/"  target="_blank" title="">QQ邮箱</a></li> 
+                <li> <a href="https://mail.163.com/"  target="_blank" title="">网易163邮箱</a></li> 
+                <li> <a href="https://skymail.ink/login"  target="_blank" title="">skymail.ink</a></li>      
+            </ul>
+
+
+
+
+
+
+
+
+
+
+            <ul class="list-inline list-inline-bg" id="在线工具">
+                <h3><span>在线工具</span></h3>
+                <li><a href="./code/JSON校验格式化.html" target="_blank">JSON校验格式化</a></li>
+                <li><a href="./code/html格式化压缩.html" target="_blank">html格式化压缩</a></li>
+                <li><a href="./code/URL编码解码.html" target="_blank">URL编码解码</a></li>
+                <li><a href="./code/base64编码解码.html" target="_blank">base64编码解码</a></li>
+                <li><a href="./code/html调试.html" target="_blank">html调试</a></li>
+                <li><a href="./code/随机密码生成器.html" target="_blank">随机密码生成器</a></li>
+                <li><a href="./code/利息收益.html" target="_blank">利息收益</a></li>
+                <li><a href="./code/小学数学题目.html" target="_blank">小学数学题目生成器</a></li>
+                
+            </ul>
+
+         
+
+
+            <ul class="list-inline list-inline-bg" id="蓝奏云">
+                <h3><span>蓝奏云</span></h3>
+                <li><a href="https://haikuo.lanzoub.com/b0ekkjzi" target="_blank">海阔视界</a></li>
+                <li><a href="https://miaogongzi.lanzout.com/b01rgkhhe" target="_blank">喵公子-阅读Beta</a></li>
+                <li><a href="https://1665585.share.123pan.cn/123pan/fajA-n6LQh" target="_blank">海阔视界内测-123pan</a></li>
+            </ul>
+
+
+          
+
+
+
+
+            <ul class="list-inline list-inline-bg" id="github999">
+                <h3><span>阅读专用</span></h3>
+                <li><a href="https://gh-proxy.com/https://raw.githubusercontent.com/homezf/01json/refs/heads/main/阅读/度逍遥.json" target="_blank">度逍遥</a></li>
+            
+
+
+           
+        </ul>
+
+            <ul class="list-inline list-inline-bg" id="github999">
+                <h3><span>网址收藏</span></h3>
+                <li><a href="https://hellowindows.cn/" target="_blank">只收录官方原版Windows系统</a></li>
+                <li> <a href="https://szfilehelper.weixin.qq.com/"  target="_blank">微信文件传输助手</a></li> 
+                <li> <a href="https://wx.qq.com/" target="_blank" >网页版微信</a></li> 
+                <li> <a href="https://ctdsbepaper.hubeidaily.net/" target="_blank" >楚天都市报</a></li> 
+                <li> <a href="https://client.jijidown.com/" target="_blank" >唧唧[exe]</a></li> 
+            
+
+            </ul>
+
+
+            <ul class="list-inline list-inline-bg" id="github999">
+                <h3><span>网盘空间</span></h3>
+                <li><a href="https://mpimg.cn/" target="_blank">惜染网盘</a></li>
+                <li><a href="https://pan.szfx.top/" target="_blank">松子云盘</a></li>
+                <li><a href="https://app.netlify.com/" target="_blank">netlify</a></li>
+                <li><a href="https://www.lanzoum.com/" target="_blank">蓝奏云</a></li>
+                <li><a href="https://zf2629.ysepan.com/" target="_blank">ysepan</a></li>
+                <li><a href="https://www.jianguoyun.com/" target="_blank">坚果云</a></li>
+                <li><a href="https://kstore.cc/login" target="_blank">凯速网</a></li>
+                <li><a href="https://yecao.app/" target="_blank">小草助手</a></li>
+                
+            </ul>
+
+
+
+            <ul class="list-inline list-inline-bg" id="github999">
+                <h3><span>github合集</span></h3>
+               
+             <li><a href="https://github.com/n3rddd" target="_blank">n3rddd</a></li>
+             <li><a href="https://github.com/yoursmile66" target="_blank">yoursmile66</a></li>
+             <li><a href="https://github.com/leevi0709" target="_blank">leevi0709</a></li>           
+             <li><a href="https://github.com/hulanlu" target="_blank">hulanlu</a></li>            
+             <li><a href="https://github.com/fish2018" target="_blank">fish2018</a></li>            
+             <li><a href="https://github.com/IY-CPU" target="_blank">IY-CPU</a></li>           
+             <li><a href="https://github.com/Jsnzkpg" target="_blank">Jsnzkpg</a></li>  
+             <li><a href="https://github.com/maoystv" target="_blank">maoystv</a></li>
+             <li><a href="https://github.com/n3rddd" target="_blank">n3rddd</a></li>
+             <li><a href="https://github.com/n3rddd" target="_blank">n3rddd</a></li>           
+             <li><a href="https://github.com/n3rddd" target="_blank">n3rddd</a></li>            
+             <li><a href="https://github.com/n3rddd" target="_blank">n3rddd</a></li>            
+             <li><a href="https://github.com/n3rddd" target="_blank">n3rddd</a></li>           
+             <li><a href="https://github.com/n3rddd" target="_blank">n3rddd</a></li>             
+             
+
+
+
+
+
+
+
+            </ul>
+
+
+
+
+
+
+            
+ 
+            <!-- Main Footer -->
+            <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+            <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+            <!-- Or class "fixed" to  always fix the footer to the end of page -->
+            <footer class="main-footer sticky footer-type-1">
+                <div class="footer-inner">
+
+
+
+                    <div class="col-sm-12">
+                        <p>
+
+
+
+                        点击复制：<a href="https://gh-proxy.com/" class="copy-link" onclick="copyLinkToClipboard('https://gh-proxy.com/'); return false;" style="color: #FF9800;">gh-proxy</a>、
+                        <a href="https://toolb.cn/favicon/" class="copy-link" onclick="copyLinkToClipboard('https://toolb.cn/favicon/'); return false;" style="color: #FF9800;">favicon查看</a>、
+                        <a href="view-source:" class="copy-link" onclick="copyLinkToClipboard('view-source:'); return false;" style="color: #FF9800;">查看源代码</a>、
+                
+                        
+                        </p>
+
+
+
+
+                    <!-- Add your copyright text here -->
+                    <div class="footer-text">
+                    <P>
+                        Copyright ©2026 <a href="https://ZF2629.GITHUB.IO" target="_blank"><strong>ZF2629.GITHUB.IO</strong></a> All Rights Reserved. <BR>
+                        声明：本站非营利性网站，如果发布的内容若侵犯到您的权益，请联系我们，我们将及时处理。
+                    </P>
+                    </div>
+
+
+
+
+
+
+                    <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
+                    <div class="go-up">
+                        <a href="#" rel="go-top">
+                            <i class="fa-angle-up"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
         </div>
-        <span class="section-count" id="apiCount"></span>
-      </div>
-      <div class="api-grid" id="apiGrid"></div>
-    </section>
+    </div>
+    <!-- 锚点平滑移动 -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+         //img lazy loaded
+         const observer = lozad();
+         observer.observe();
 
+        $(document).on('click', '.has-sub', function(){
+            var _this = $(this)
+            if(!$(this).hasClass('expanded')) {
+               setTimeout(function(){
+                    _this.find('ul').attr("style","")
+               }, 300);
+              
+            } else {
+                $('.has-sub ul').each(function(id,ele){
+                    var _that = $(this)
+                    if(_this.find('ul')[0] != ele) {
+                        setTimeout(function(){
+                            _that.attr("style","")
+                        }, 300);
+                    }
+                })
+            }
+        })
+        $('.user-info-menu .hidden-sm').click(function(){
+            if($('.sidebar-menu').hasClass('collapsed')) {
+                $('.has-sub.expanded > ul').attr("style","")
+            } else {
+                $('.has-sub.expanded > ul').show()
+            }
+        })
+        $("#main-menu li ul li").click(function() {
+            $(this).siblings('li').removeClass('active'); // 删除其他兄弟元素的样式
+            $(this).addClass('active'); // 添加当前元素的样式
+        });
+        $("a.smooth").click(function(ev) {
+            ev.preventDefault();
 
-  </main>
+            public_vars.$mainMenu.add(public_vars.$sidebarProfile).toggleClass('mobile-is-visible');
+            ps_destroy();
+            $("html, body").animate({
+                scrollTop: $($(this).attr("href")).offset().top - 30
+            }, {
+                duration: 500,
+                easing: "swing"
+            });
+        });
+        return false;
+    });
 
-  <div class="toast" id="toast" role="status" aria-live="polite">已复制</div>
-
-  <footer class="site-footer">
-    <p>© <span id="currentYear"></span> ZF2629</p>
-  </footer>
-  <script>
-const NAV_APIS = [
-  {"name":"云影空蒙","url":"https://gh-proxy.com/https://github.com/homezf/01json/raw/main/云影空蒙.json"},
-  {"name":"musicfree","url":"https://gh-proxy.com/https://github.com/homezf/01json/raw/main/musicfree.json"},
-  {"name":"ClashMeta[1]","url":"https://gh-proxy.com/https://github.com/homezf/01json/raw/main/v.json"},
-  {"name":"ClashMeta[2]","url":"https://gh-proxy.com/https://github.com/homezf/01json/raw/main/v1.json"}
-  ];
-const NAV_RESOURCES = [
-  {"title":"百度一下","desc":"全球最大的中文搜索引擎","url":"https://www.baidu.com/","icon":"https://www.baidu.com/favicon.ico"},
-  {"title":"海阔视界","desc":"海阔视界_V8.83","url":"https://gh-proxy.com/https://github.com/homezf/01app/raw/main/海阔视界.apk","icon":"./appimg/海阔视界.png"},
-  {"title":"影视仓","desc":"海阔视界_V8.83","url":"https://gh-proxy.com/https://github.com/homezf/01app/raw/main/影视仓.apk","icon":"./appimg/影视仓.png"},
-  {"title":"影视仓V3","desc":"影视仓V3","url":"https://gh-proxy.com/https://github.com/homezf/01app/raw/main/影视仓V3.apk","icon":"./appimg/影视仓.png"},
-  {"title":"阅读","desc":"阅读","url":"https://gh-proxy.com/https://github.com/homezf/01app/raw/main/阅读.apk","icon":"./appimg/阅读.png"},
-  {"title":"APK编辑器","desc":"APK编辑器","url":"https://gh-proxy.com/https://github.com/homezf/01app/raw/main/APK编辑器.apk","icon":"./appimg/APK编辑器.png"},
-  {"title":"ClashMeta","desc":"ClashMeta","url":"https://gh-proxy.com/https://github.com/homezf/01app/raw/main/ClashMeta.apk","icon":"./appimg/ClashMeta.png"},
-  {"title":"1DM","desc":"1DM","url":"https://gh-proxy.com/https://github.com/homezf/01app/raw/main/1DM.apk","icon":"./appimg/1DM.png"},
-  {"title":"黄鸟抓包","desc":"黄鸟抓包","url":"https://gh-proxy.com/https://github.com/homezf/01app/raw/main/黄鸟抓包.apk","icon":"./appimg/黄鸟抓包.png"},
-  {"title":"佳视通","desc":"佳视通","url":"https://gh-proxy.com/https://github.com/homezf/01app/raw/main/佳视通.apk","icon":"./appimg/佳视通.png"},
-  {"title":"小白文件管理器","desc":"小白文件管理器","url":"https://gh-proxy.com/https://github.com/homezf/01app/raw/main/小白文件管理器.apk","icon":"./appimg/小白文件管理器.png"},
-
-  {"title":"云影空蒙","desc":"云影空蒙","url":"https://gh-proxy.com/https://github.com/homezf/01app/raw/main/云影空蒙.apk","icon":"./appimg/云影空蒙.png"},
-  {"title":"智能K歌","desc":"智能K歌","url":"https://gh-proxy.com/https://github.com/homezf/01app/raw/main/智能K歌.apk","icon":"./appimg/智能K歌.png"},
-  {"title":"musicfree","desc":"musicfree","url":"https://gh-proxy.com/https://github.com/homezf/01app/raw/main/musicfree.apk","icon":"./appimg/musicfree.png"},
-  {"title":"MT管理器","desc":"MT管理器","url":"https://gh-proxy.com/https://github.com/homezf/01app/raw/main/MT管理器.apk","icon":"./appimg/MT管理器.png"},
-  {"title":"IKTV","desc":"IKTV","url":"https://gh-proxy.com/https://github.com/homezf/01app/raw/main/IKTV.apk","icon":"./appimg/IKTV.png"},
-
-  {"title":"我的音乐","desc":"音乐下载","url":"./music/index.html","icon":"./img/XPlayer.png"}];
-
-const apiGrid = document.querySelector("#apiGrid");
-const resourceGrid = document.querySelector("#resourceGrid");
-const toast = document.querySelector("#toast");
-const currentYear = document.querySelector("#currentYear");
-const meteorCanvas = document.querySelector("#meteorCanvas");
-const dailySaying = document.querySelector("#dailySaying");
-const apiCount = document.querySelector("#apiCount");
-let toastTimer;
-
-currentYear.textContent = new Date().getFullYear();
-
-function initMeteorRain() {
-  const ctx = meteorCanvas.getContext("2d");
-  const meteors = [];
-  const stars = [];
-  const meteorCount = 22;
-  const starCount = 88;
-  let width = 0;
-  let height = 0;
-  let pixelRatio = 1;
-  let resizeTimer;
-
-  function random(min, max) {
-    return Math.random() * (max - min) + min;
-  }
-
-  function resizeCanvas() {
-    const nextWidth = window.innerWidth;
-    const nextHeight = window.innerHeight;
-    const widthChanged = Math.abs(nextWidth - width) > 2;
-    const heightChanged = Math.abs(nextHeight - height) > 120;
-
-    if (width && !widthChanged && !heightChanged) {
-      return;
-    }
-
-    const previousWidth = width || nextWidth;
-    const previousHeight = height || nextHeight;
-    pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
-    width = nextWidth;
-    height = nextHeight;
-    meteorCanvas.width = Math.floor(width * pixelRatio);
-    meteorCanvas.height = Math.floor(height * pixelRatio);
-    meteorCanvas.style.width = `${width}px`;
-    meteorCanvas.style.height = `${height}px`;
-    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-
-    if (!stars.length) return;
-
-    const scaleX = width / previousWidth;
-    const scaleY = height / previousHeight;
-    for (const star of stars) {
-      star.x = Math.min(width, star.x * scaleX);
-      star.y = Math.min(height, star.y * scaleY);
-    }
-    for (const meteor of meteors) {
-      meteor.x *= scaleX;
-      meteor.y *= scaleY;
-    }
-  }
-
-  function createStars() {
-    stars.length = 0;
-    for (let index = 0; index < starCount; index += 1) {
-      stars.push({
-        x: random(0, width),
-        y: random(0, height),
-        radius: random(0.5, 1.8),
-        alpha: random(0.18, 0.78),
-        pulse: random(0.002, 0.008)
-      });
-    }
-  }
-
-  function resetMeteor(meteor, initial = false) {
-    meteor.x = initial ? random(0, width * 1.4) : random(width * 0.15, width * 1.15);
-    meteor.y = initial ? random(-height * 0.15, height) : random(-height * 0.25, height * 0.55);
-    meteor.length = random(110, 230);
-    meteor.speed = random(3.2, 6.8);
-    meteor.size = random(1.2, 2.8);
-    meteor.alpha = random(0.5, 0.92);
-  }
-
-  function createMeteors() {
-    meteors.length = 0;
-    for (let index = 0; index < meteorCount; index += 1) {
-      const meteor = {};
-      resetMeteor(meteor, true);
-      meteors.push(meteor);
-    }
-  }
-
-  function drawStars(time) {
-    for (const star of stars) {
-      const alpha = star.alpha + Math.sin(time * star.pulse) * 0.18;
-      ctx.beginPath();
-      ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0.08, alpha)})`;
-      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
-
-  function drawMeteors() {
-    ctx.lineCap = "round";
-
-    for (const meteor of meteors) {
-      const tailX = meteor.x + meteor.length;
-      const tailY = meteor.y - meteor.length * 0.56;
-      const gradient = ctx.createLinearGradient(meteor.x, meteor.y, tailX, tailY);
-      gradient.addColorStop(0, `rgba(255, 255, 255, ${meteor.alpha})`);
-      gradient.addColorStop(0.25, `rgba(84, 214, 255, ${meteor.alpha * 0.5})`);
-      gradient.addColorStop(1, "rgba(84, 214, 255, 0)");
-
-      ctx.strokeStyle = gradient;
-      ctx.lineWidth = meteor.size;
-      ctx.beginPath();
-      ctx.moveTo(meteor.x, meteor.y);
-      ctx.lineTo(tailX, tailY);
-      ctx.stroke();
-
-      meteor.x -= meteor.speed;
-      meteor.y += meteor.speed * 0.56;
-
-      if (meteor.x < -meteor.length || meteor.y > height + meteor.length) {
-        resetMeteor(meteor);
-      }
-    }
-  }
-
-  function animate(time) {
-    ctx.clearRect(0, 0, width, height);
-    drawStars(time);
-    drawMeteors();
-    window.requestAnimationFrame(animate);
-  }
-
-  resizeCanvas();
-  createStars();
-  createMeteors();
-  window.addEventListener("resize", () => {
-    window.clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(resizeCanvas, 120);
-  });
-  window.requestAnimationFrame(animate);
-}
-
-async function loadJson(path) {
-  const response = await fetch(path);
-  if (!response.ok) {
-    throw new Error(`Failed to load ${path}`);
-  }
-  return response.json();
-}
-
-async function loadDailySaying() {
-  try {
-    const data = await loadJson("./api/saying.php");
-    if (data.ok && data.text) {
-      dailySaying.textContent = data.text;
-    }
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-function showToast(message) {
-  toast.textContent = message;
-  toast.classList.add("is-visible");
-  clearTimeout(toastTimer);
-  toastTimer = window.setTimeout(() => {
-    toast.classList.remove("is-visible");
-  }, 1800);
-}
-
-async function copyText(text) {
-  try {
-    await navigator.clipboard.writeText(text);
-    showToast("已复制接口地址");
-  } catch {
-    const input = document.createElement("textarea");
-    input.value = text;
-    input.setAttribute("readonly", "");
-    input.style.position = "fixed";
-    input.style.opacity = "0";
-    document.body.append(input);
-    input.select();
-    document.execCommand("copy");
-    input.remove();
-    showToast("已复制接口地址");
-  }
-}
-
-function renderApis(apiItems) {
-  apiGrid.innerHTML = apiItems.map((item) => `
-    <button class="api-card" type="button" data-url="${item.url}" title="复制 ${item.name}">
-      <span class="api-card__name">${item.name}</span>
-    </button>
-  `).join("");
-
-  apiGrid.addEventListener("click", (event) => {
-    const button = event.target.closest(".api-card");
-    if (!button) return;
-    copyText(button.dataset.url);
-  });
-}
-
-function renderResources(resourceItems) {
-  resourceGrid.innerHTML = resourceItems.map((item) => `
-    <a class="resource-card" href="${item.url}" target="_blank" rel="noopener noreferrer">
-      <span class="resource-card__icon" aria-hidden="true">${renderResourceIcon(item.icon, item.title)}</span>
-      <span>
-        <h3>${item.title}</h3>
-        <p>${item.desc}</p>
-      </span>
-    </a>
-  `).join("");
-}
-
-function renderResourceIcon(icon, title) {
-  if (/^(https?:\/\/|\.\/|\/|assets\/)/i.test(icon)) {
-    return `<img src="${icon}" alt="${title} 图标" loading="lazy">`;
-  }
-
-  return icon;
-}
-
-function init() {
-  try {
-    if (!Array.isArray(NAV_APIS) || !Array.isArray(NAV_RESOURCES)) {
-      throw new Error("Navigation data is invalid");
-    }
-
-    apiCount.textContent = `${NAV_APIS.length} 个接口`;
-    renderApis(NAV_APIS);
-    renderResources(NAV_RESOURCES);
-  } catch (error) {
-    console.error(error);
-    showToast("数据加载失败");
-  }
-}
-
-initMeteorRain();
-loadDailySaying();
-init();
-
-
-
-
-
-
-
-  </script>
+    var href = "";
+    var pos = 0;
+    $("a.smooth").click(function(e) {
+        $("#main-menu li").each(function() {
+            $(this).removeClass("active");
+        });
+        $(this).parent("li").addClass("active");
+        e.preventDefault();
+        href = $(this).attr("href");
+        pos = $(href).position().top - 30;
+    });
+    </script>
+    <!-- Bottom Scripts -->
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/TweenMax.min.js"></script>
+    <script src="./assets/js/resizeable.js"></script>
+    <script src="./assets/js/joinable.js"></script>
+    <script src="./assets/js/xenon-api.js"></script>
+    <script src="./assets/js/xenon-toggles.js"></script>
+    <!-- JavaScripts initializations and stuff -->
+    <script src="./assets/js/xenon-custom.js"></script>
+    <script src="./assets/js/lozad.js"></script>
 
 </body>
+
 </html>

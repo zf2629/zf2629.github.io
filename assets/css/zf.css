@@ -1,0 +1,87 @@
+
+        .list-inline li{color:#a4a4a4;padding-bottom:30px}
+        /* .list-inline{ border-bottom:1px dashed #ebebeb; padding-bottom: 5px;} */
+        .list-inline-bg {
+        /*background-color:#F6F6F6;*/
+        line-height:25px;
+        padding:0 4px;
+    }
+    .list-inline-bg ul {
+        padding:10px;
+    
+    }
+    /*.footer-nav .list-inline-bg li{
+        width:24%;
+        line-height:28px;
+    }*/
+    .list-inline-bg li {
+        width: 19%;
+        display: block;
+        padding: 4px;
+        margin-bottom: 5px;
+        line-height: 1.42857143;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        -webkit-transition: border .2s ease-in-out;
+        -o-transition: border .2s ease-in-out;
+        transition: border .2s ease-in-out;
+        display: inline-block;
+        text-align: center;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .list-inline-bg li span {
+        display:inline-block;
+        width:4px;
+        height:4px;
+        border-radius:50%;
+        background:#999;
+        margin-right:6px;
+        margin-bottom:4px;
+    }
+    
+     .list-inline-bg li a {
+        color:#444;
+        font-size:14px;
+    
+    }
+    
+    h3 {
+        font-size: 16px;
+        line-height:30px;
+        margin-top:15px;
+    }
+     h3 span {
+        border-left:5px #4DC86F solid;
+        line-height:25px;
+        padding-left:10px;
+        font-weight:bold;
+        color:#333;
+    
+    }
+
+    .main-menu h3 span {
+    
+       
+     
+        color:#FFF;
+       
+    
+    }
+
+
+@media screen and (max-width: 670px) {
+    .text-center .btn{margin-bottom:3px}
+    #logo{padding-right:80px;}
+     .list-inline-bg li{
+        width:49%;
+        line-height:28px;
+        white-space:nowrap;
+        overflow:hidden;
+    }
+}
+
+
+
