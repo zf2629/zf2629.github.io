@@ -7,7 +7,7 @@
     "sites": [
         {"key":"csp_Douban","name":"豆瓣┃[ZF2629]","type":3,"api":"csp_Douban","searchable":0,"changeable":1,"indexs":1,"ext":"./set/douban.json"},
        
-        {"key":"ZF_商店","name":"商店┃[更新]","type":3,"api":"csp_Market","searchable":0,"changeable":0,"ext":"./set/商店2.json"},
+        {"key":"ZF_商店","name":"商店┃[更新]","type":3,"api":"csp_Market","searchable":0,"changeable":0,"ext":"Li9zZXQv5ZWG5bqXMi5qc29u"},
         {"key":"ZF_push_agent","name":"链接┃推送","type":3,"api":"csp_Push","searchable":0,"changeable":0,"hide":1,"timeout":60}
     ] 
 }
