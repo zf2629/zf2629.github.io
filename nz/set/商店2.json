@@ -1,0 +1,33 @@
+[
+    {
+      "name": "配置地址：file://小虎斑/tvbox/tvbox.json",
+      "list": [
+        {
+          "name": "小虎斑本地更新",
+          "url": "http:///43.248.128.118:25252/%E4%BB%85%E4%BE%9B%E6%B5%8B%E8%AF%95/%E5%B0%8F%E8%99%8E%E6%96%91.zip/%E5%B0%8F%E8%99%8E%E6%96%91.zip",
+          "icon": "https://img0.baidu.com/it/u=3253391263,4067854538&fm=253&app=138&f=JPEG?w=800&h=800",
+          "version": "26.8.27-仅供测试"
+        },
+        {
+          "name": "更新提示开关",
+          "url": "更新提示开关",
+          "icon": "https://img0.baidu.com/it/u=862538259,4150515719&fm=253&app=138&f=JPEG?w=800&h=800"
+        },
+        {
+          "name": "手动更新",
+          "url": "说明-https://pan.quark.cn/s/2cef1cbad0dd",
+          "icon": "https://img0.baidu.com/it/u=3253391263,4067854538&fm=253&app=138&f=JPEG?w=800&h=800"
+        },
+        {
+          "name": "本地弹幕LogvarApi",
+          "url": "说明-https://pan.quark.cn/s/8565c14e5943",
+          "icon": "https://i.mij.rip/2025/09/27/eedc7b701c0fa5c1f7c175b22f441ad9.jpeg"
+        }
+      ]
+    },
+    {
+      "name": "交流群：723822952",
+      "list": [
+      ]
+    }
+  ]
