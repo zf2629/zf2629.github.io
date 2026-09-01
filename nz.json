@@ -1,8 +1,10 @@
 {"urls": [
 
   
-  {"name": "app", "url": "https://zf2629.github.io/nz/app.json"},
+          {"name": "app", "url": "https://zf2629.github.io/nz/app.json"},
+          {"name": "短剧", "url": "clan://localhost/Download/dj/dj.json"},
           {"name": "本地B", "url": "clan://localhost/nz/b.json"},
+          
           {"name": "本地xbpq", "url": "clan://localhost/nz/xbpq.json"},
           {"name": "本地js", "url": "clan://localhost/nz/xbpq.json"},
           {"name": "酷佬", "url": "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg"},
