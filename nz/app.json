@@ -1,6 +1,8 @@
 {   
 
-    "spider": "./jar/vox.jar;md5;69cc0b9cbdf2c80e7f3162925666ceb1",
+    // "spider": "./jar/vox.jar;md5;69cc0b9cbdf2c80e7f3162925666ceb1",
+    "spider": "https://gitee.com/zfnote/000jar/raw/master/vox.jar;md5;69cc0b9cbdf2c80e7f3162925666ceb1",
+    
     "lives":[{"name":"📡咪咕直播","type":0,"url":"http://124.77.202.8:49155"}],
     "sites": [
         {"key":"csp_Douban","name":"豆瓣┃[ZF2629]","type":3,"api":"csp_Douban","searchable":0,"changeable":1,"indexs":1,"ext":"./set/douban.json"},
