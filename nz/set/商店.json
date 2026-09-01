@@ -12,6 +12,11 @@
         "list": [
             {"name":"短剧","url":"https://gh-proxy.com/github.com/zf2629/01nz/raw/main/dj.zip","icon":"https://gitee.com/zfnote/img/raw/master/logo/logo.png","version":"短剧包"},
             {"name":"vox本地包","url":"http://jiduo.rihou.cc:6250/jiduo.php/vox本地包.zip","icon":"http://jiduo.rihou.cc:6250/jiduo.php/23.jpg","copy":"","version":"最新本地包"},
+            {
+                "name": "手动更新",
+                "url": "说明-https://pan.quark.cn/s/2cef1cbad0dd",
+                "icon": "https://gitee.com/zfnote/img/raw/master/logo/logo.png"
+              },
             {"name":"说明","url":"https://gh-proxy.com/github.com/zf2629/01nz/raw/main/README.txt","icon":"https://gitee.com/zfnote/img/raw/master/logo/说明.jpg","copy":"","version":"README"}
         ]
     }
