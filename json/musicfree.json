@@ -19,7 +19,11 @@
             "url": "https://gh-proxy.com/https://github.com/homezf/01json/raw/main/弥音QQ.js",
             "version": "0.1.0"
         },
-
+        {
+            "name": "ZF",
+            "url": "https://zf2629.github.io/json/ZF-SVIP音源.js",
+            "version": "0.1.0"
+        },
         {
             "name": "WebDAV",
             "url": "https://gh-proxy.com/https://github.com/homezf/01json/raw/main/webdav.js",
