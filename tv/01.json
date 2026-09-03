@@ -1,25 +1,21 @@
 {
     
-    "spider": "https://gitee.com/zfnote/000jar/raw/master/vox.jar;md5;eb4744f4516e5c17f1bb8d225533491c",
-    // "spider": "./jar/vox.jar;md5;eb4744f4516e5c17f1bb8d225533491c",
+    // "spider": "https://gitee.com/zfnote/000jar/raw/master/vox.jar;md5;eb4744f4516e5c17f1bb8d225533491c",
+     "spider": "./jar/vox.jar;md5;eb4744f4516e5c17f1bb8d225533491c",
     "README": "",
     "warningText": "",
     "logo": "https://gitee.com/zfnote/img/raw/master/logo/logo.png",
     "wallpaper": "",
     "lives": [
-        {
-            "name": "📡咪咕直播",
-            "type": 0,
-            "url": "http://124.77.202.8:49155"
-        }
+        {"name":"ZF直播","type":0,"url":"http://124.77.202.8:49155"}
     ],
     "sites": [
         {"key":"csp_Douban","name":"豆瓣┃[ZF2629]","type":3,"api":"csp_Douban","searchable":0,"changeable":1,"indexs":1,"ext":"./set/douban.json"},
-        {"key":"csp_Config","name":"配置┃[设置]","type":3,"api":"csp_Config","searchable":0,"changeable":0},
+        {"key":"csp_Config","name":"配置┃[内置]","type":3,"api":"csp_Config","searchable":0,"changeable":0},
         
-        {"key":"csp_Jianpian","name":"荐片┃[秒播]","type":3,"api":"csp_Jianpian","searchable":1,"changeable":1,"ext":{"filters":"./json/jianpian.json","imgUrl":"https://img.zgbkz.com","sites":"https://api.ztcgi.com"}},
-        {"key":"csp_Guazi","name":"瓜子┃[秒播]","type":3,"api":"csp_Guazi","searchable":1,"changeable":1},
-        {"key":"csp_Hanxiaoquan","name":"韩剧┃[秒播]","type":3,"api":"csp_Hanxiaoquan","searchable":1,"quickSearch":1,"filterable":1},
+        {"key":"csp_Jianpian","name":"荐片┃[内置]","type":3,"api":"csp_Jianpian","searchable":1,"changeable":1,"ext":{"filters":"./json/jianpian.json","imgUrl":"https://img.zgbkz.com","sites":"https://api.ztcgi.com"}},
+        {"key":"csp_Guazi","name":"瓜子┃[内置]","type":3,"api":"csp_Guazi","searchable":1,"changeable":1},
+        {"key":"csp_Hanxiaoquan","name":"韩剧┃[内置]","type":3,"api":"csp_Hanxiaoquan","searchable":1,"quickSearch":1,"filterable":1},
 
 
 
@@ -27,16 +23,15 @@
         {"key":"八天App","name":"八天┃[APP]","type":3,"searchable":1,"changeable":1,"api":"csp_AppGet","ext":{"host":"https://dy.8ttv.cn/","datakey":"1111111111111111"}},
         {"key":"王子4K","name":"王子┃[APP]","type":3,"api":"csp_AppGet","ext":{"host":"https://app.95112475.xyz","datakey":"5a9w6x58dsq6z3a6"}},
 
-        {"key":"csp_AiWanMusic","name":"🎵爱玩┃[音乐]","type":3,"api":"csp_AiWanMusic","searchable":1,"changeable":0},
 
-        {"key":"泥泥视频","name":"🍋泥泥┃[秒播]","type":3,"api":"./set/drpy2.min.js","ext":"./js/泥泥视频.js"},
+        {"key":"泥泥视频","name":"🍋泥泥┃JS","type":3,"api":"./set/drpy2.min.js","ext":"./js/泥泥视频.js"},
 
         {"key":"官采","name":"🎫官采┃[采集]","type":1,"api":"https://cj.jusj.top/api.php/provide/vod/?ac=list","searchable":1,"changeable":1},
         {"key":"电影天堂","name":"🧞无广┃[采集]","type":1,"api":"http://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/json/?ac=list","searchable":1,"quickSearch":0,"filterable":0,"changeable":0,"playUrl":"","categories":["短剧","动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","国产剧","香港剧","韩国剧","欧美剧","记录片","台湾剧","日本剧","海外剧","泰国剧","大陆综艺","港台综艺","日韩综艺","欧美综艺","国产动漫","日韩动漫","欧美动漫","港台动漫","动画片"]},
         
         
-        {"key":"csp_IkanBot","name":"👀爱看┃[采集]","type":3,"api":"csp_IkanBot","searchable":1,"changeable":0,"ext":{"host":"https://www1.ikanbot.com/"}},
-        {"key":"csp_Cjhj","name":"🎿采集┃[采集]","type":3,"api":"csp_Cjhj","searchable":1,"changeable":0},
+        {"key":"csp_IkanBot","name":"👀爱看┃[内置]","type":3,"api":"csp_IkanBot","searchable":1,"changeable":0,"ext":{"host":"https://www1.ikanbot.com/"}},
+        {"key":"csp_Cjhj","name":"🎿采集┃[内置]","type":3,"api":"csp_Cjhj","searchable":1,"changeable":0},
        
   
 
@@ -47,17 +42,17 @@
         {"key":"酷酷","name":"酷酷┃[解析]","type":3,"api":"./set/drpy2.min.js","ext":"./js/酷酷.js"},
 
   
-
-
+        {"key":"csp_xq","name":"👹戏曲┃[内置]","type":3,"api":"csp_Lyxq","searchable":1,"changeable":0},
+        {"key":"csp_AiWanMusic","name":"🎵音乐┃[内置]","type":3,"api":"csp_AiWanMusic","searchable":1,"changeable":0},
+        {"key":"B演唱会","name":"演唱会┃🅱️","type":3,"api":"csp_BiliJs","filterable":1,"searchable":0,"changeable":0,"ext":{"type":"./B/演唱会.json"},"style":{"type":"rect","ratio":1.333}},
 
         {"key":"Bzfnz","name":"zfnz┃🅱️","type":3,"api":"csp_BiliJs","filterable":1,"searchable":0,"changeable":0,"ext":{"type":"./B/zfnz.json"},"style":{"type":"rect","ratio":1.333}},
         {"key":"B种植","name":"种植┃🅱️","type":3,"api":"csp_BiliJs","filterable":1,"searchable":0,"changeable":0,"ext":{"type":"./B/种植.json"},"style":{"type":"rect","ratio":1.333}},
-        {"key":"B演唱会","name":"演唱会┃🅱️","type":3,"api":"csp_BiliJs","filterable":1,"searchable":0,"changeable":0,"ext":{"type":"./B/演唱会.json"},"style":{"type":"rect","ratio":1.333}},
         
         {"key":"直播转点播","name":"电视┃[直播]","type":3,"searchable":0,"api":"./set/live2vod.js","ext":"./set/zb.json"},
         {"key":"采集之王","name":"采集┃之王","type":3,"api":"./set/drpy2.min.js","searchable":1,"quickSearch":1,"filterable":1,"order_num":1,"ext":"./set/采集之王.js?type=url&params=../set/采集.json"},
-        // {"key":"AList","name":"Alist┃[网络]","type":3,"api":"csp_AList","searchable":1,"filterable":1,"changeable":1,"timeout":60,"playerType":2,"ext":"./set/alist.json"},
-        // {"key":"WebDAV","name":"WEBDAV┃[网络]","type":3,"api":"csp_WebDAV","searchable":1,"filterable":1,"changeable":1,"timeout":60,"playerType":2,"ext":"./set/webdav.json"},       
+        // {"key":"ZF_AList","name":"Alist┃[网络]","type":3,"api":"csp_AList","searchable":1,"filterable":1,"changeable":1,"timeout":60,"playerType":2,"ext":"./set/alist.json"},
+        // {"key":"ZF_WebDAV","name":"WEBDAV┃[网络]","type":3,"api":"csp_WebDAV","searchable":1,"filterable":1,"changeable":1,"timeout":60,"playerType":2,"ext":"./set/webdav.json"},       
         {"key":"ZF_商店","name":"商店┃[更新]","type":3,"api":"csp_Market","searchable":0,"changeable":0,"ext":"./set/商店.json"},
         // {"key":"ZF_push_agent","name":"链接┃推送","type":3,"api":"csp_Push","searchable":0,"changeable":0,"hide":1,"timeout":60}
         {"key":"ZF_push_agent","name":"链接┃推送","type":3,"api":"csp_Push","searchable":0,"changeable":0,"timeout":60,"jar":"./jar/ts.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8"}
