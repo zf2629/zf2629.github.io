@@ -1,0 +1,33 @@
+{  
+    "class": [
+        {
+            "type_name": "MT管理器教程",
+            "type_id": "MT管理器教程"
+        },
+        {
+            "type_name": "HTML5+CSS3+JavaScript教程",
+            "type_id": "HTML5+CSS3+JavaScript教程"
+        },
+        {
+            "type_name": "Excel2024",
+            "type_id": "Excel2024教程"
+        },
+        {
+            "type_name": "海阔视界教程",
+            "type_id": "海阔视界教程"
+        },
+        {
+            "type_name": "开源阅读教程",
+            "type_id": "开源阅读教程"
+        },
+        {
+            "type_name": "TVBOX教程",
+            "type_id": "TVBOX教程"
+        },
+        
+        {
+            "type_name": "JavaScript教程",
+            "type_id": "JavaScript教程"
+        }
+    ]
+}

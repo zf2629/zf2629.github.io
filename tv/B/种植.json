@@ -1,0 +1,33 @@
+﻿{  
+    "class": [
+        {
+            "type_name": "花草种植",
+            "type_id": "花草种植"
+        },
+        {
+            "type_name": "黄瓜种植",
+            "type_id": "黄瓜种植"
+        },
+        {
+            "type_name": "茄子种植",
+            "type_id": "茄子种植"
+        },
+        {
+            "type_name": "西瓜种植",
+            "type_id": "西瓜种植"
+        },
+        {
+            "type_name": "樱桃种植",
+            "type_id": "樱桃种植"
+        },
+        {
+            "type_name": "草莓种植",
+            "type_id": "草莓种植"
+        },
+        
+        {
+            "type_name": "养花",
+            "type_id": "养花"
+        }
+    ]
+}

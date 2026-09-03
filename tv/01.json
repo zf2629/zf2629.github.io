@@ -1,0 +1,337 @@
+{
+    
+    "spider": "https://gitee.com/zfnote/000jar/raw/master/vox.jar;md5;eb4744f4516e5c17f1bb8d225533491c",
+    // "spider": "./jar/vox.jar;md5;eb4744f4516e5c17f1bb8d225533491c",
+    "README": "",
+    "warningText": "",
+    "logo": "https://gitee.com/zfnote/img/raw/master/logo/logo.png",
+    "wallpaper": "",
+    "lives": [
+        {
+            "name": "📡咪咕直播",
+            "type": 0,
+            "url": "http://124.77.202.8:49155"
+        }
+    ],
+    "sites": [
+        {"key":"csp_Douban","name":"豆瓣┃[ZF2629]","type":3,"api":"csp_Douban","searchable":0,"changeable":1,"indexs":1,"ext":"./set/douban.json"},
+        {"key":"csp_Config","name":"配置┃[设置]","type":3,"api":"csp_Config","searchable":0,"changeable":0},
+        
+        {"key":"csp_Jianpian","name":"荐片┃[秒播]","type":3,"api":"csp_Jianpian","searchable":1,"changeable":1,"ext":{"filters":"./json/jianpian.json","imgUrl":"https://img.zgbkz.com","sites":"https://api.ztcgi.com"}},
+        {"key":"csp_Guazi","name":"瓜子┃[秒播]","type":3,"api":"csp_Guazi","searchable":1,"changeable":1},
+        {"key":"csp_Hanxiaoquan","name":"韩剧┃[秒播]","type":3,"api":"csp_Hanxiaoquan","searchable":1,"quickSearch":1,"filterable":1},
+
+
+
+        {"key":"mifun","name":"mifun｜[APP]","type":3,"searchable":1,"changeable":1,"api":"csp_AppGet","ext":{"host":"https://miget-1313189639.cos.ap-guangzhou.myqcloud.com/mifun.txt","datakey":"GETMIFUNGEIMIFUN"}},
+        {"key":"八天App","name":"八天┃[APP]","type":3,"searchable":1,"changeable":1,"api":"csp_AppGet","ext":{"host":"https://dy.8ttv.cn/","datakey":"1111111111111111"}},
+        {"key":"王子4K","name":"王子┃[APP]","type":3,"api":"csp_AppGet","ext":{"host":"https://app.95112475.xyz","datakey":"5a9w6x58dsq6z3a6"}},
+
+        {"key":"csp_AiWanMusic","name":"🎵爱玩┃[音乐]","type":3,"api":"csp_AiWanMusic","searchable":1,"changeable":0},
+
+        {"key":"泥泥视频","name":"🍋泥泥┃[秒播]","type":3,"api":"./set/drpy2.min.js","ext":"./js/泥泥视频.js"},
+
+        {"key":"官采","name":"🎫官采┃[采集]","type":1,"api":"https://cj.jusj.top/api.php/provide/vod/?ac=list","searchable":1,"changeable":1},
+        {"key":"电影天堂","name":"🧞无广┃[采集]","type":1,"api":"http://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/json/?ac=list","searchable":1,"quickSearch":0,"filterable":0,"changeable":0,"playUrl":"","categories":["短剧","动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","国产剧","香港剧","韩国剧","欧美剧","记录片","台湾剧","日本剧","海外剧","泰国剧","大陆综艺","港台综艺","日韩综艺","欧美综艺","国产动漫","日韩动漫","欧美动漫","港台动漫","动画片"]},
+        
+        
+        {"key":"csp_IkanBot","name":"👀爱看┃[采集]","type":3,"api":"csp_IkanBot","searchable":1,"changeable":0,"ext":{"host":"https://www1.ikanbot.com/"}},
+        {"key":"csp_Cjhj","name":"🎿采集┃[采集]","type":3,"api":"csp_Cjhj","searchable":1,"changeable":0},
+       
+  
+
+
+        {"key":"腾腾","name":"腾腾┃[解析]","type":3,"api":"./set/drpy2.min.js","ext":"./js/腾腾.js"},
+        {"key":"奇奇","name":"奇奇┃[解析]","type":3,"api":"./set/drpy2.min.js","ext":"./js/奇奇.js"},
+        {"key":"果果","name":"果果┃[解析]","type":3,"api":"./set/drpy2.min.js","ext":"./js/果果.js"},
+        {"key":"酷酷","name":"酷酷┃[解析]","type":3,"api":"./set/drpy2.min.js","ext":"./js/酷酷.js"},
+
+  
+
+
+
+        {"key":"Bzfnz","name":"zfnz┃🅱️","type":3,"api":"csp_BiliJs","filterable":1,"searchable":0,"changeable":0,"ext":{"type":"./B/zfnz.json"},"style":{"type":"rect","ratio":1.333}},
+        {"key":"B种植","name":"种植┃🅱️","type":3,"api":"csp_BiliJs","filterable":1,"searchable":0,"changeable":0,"ext":{"type":"./B/种植.json"},"style":{"type":"rect","ratio":1.333}},
+        {"key":"B演唱会","name":"演唱会┃🅱️","type":3,"api":"csp_BiliJs","filterable":1,"searchable":0,"changeable":0,"ext":{"type":"./B/演唱会.json"},"style":{"type":"rect","ratio":1.333}},
+        
+        {"key":"直播转点播","name":"电视┃[直播]","type":3,"searchable":0,"api":"./set/live2vod.js","ext":"./set/zb.json"},
+        {"key":"采集之王","name":"采集┃之王","type":3,"api":"./set/drpy2.min.js","searchable":1,"quickSearch":1,"filterable":1,"order_num":1,"ext":"./set/采集之王.js?type=url&params=../set/采集.json"},
+        // {"key":"AList","name":"Alist┃[网络]","type":3,"api":"csp_AList","searchable":1,"filterable":1,"changeable":1,"timeout":60,"playerType":2,"ext":"./set/alist.json"},
+        // {"key":"WebDAV","name":"WEBDAV┃[网络]","type":3,"api":"csp_WebDAV","searchable":1,"filterable":1,"changeable":1,"timeout":60,"playerType":2,"ext":"./set/webdav.json"},       
+        {"key":"ZF_商店","name":"商店┃[更新]","type":3,"api":"csp_Market","searchable":0,"changeable":0,"ext":"./set/商店.json"},
+        // {"key":"ZF_push_agent","name":"链接┃推送","type":3,"api":"csp_Push","searchable":0,"changeable":0,"hide":1,"timeout":60}
+        {"key":"ZF_push_agent","name":"链接┃推送","type":3,"api":"csp_Push","searchable":0,"changeable":0,"timeout":60,"jar":"./jar/ts.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8"}
+
+    ],
+    "doh": [
+        {
+            "name": "DNSPod",
+            "url": "https://doh.pub/dns-query",
+            "ips": [
+                "119.29.29.29",
+                "119.28.28.28",
+                "2400:da00::6666",
+                "2400:da00:1::6666"
+            ]
+        },
+        {
+            "name": "Alidns",
+            "url": "https://dns.alidns.com/dns-query",
+            "ips": [
+                "223.5.5.5",
+                "223.6.6.6",
+                "2400:3200::1",
+                "2400:3200:baba::1"
+            ]
+        },
+        {
+            "name": "Google",
+            "url": "https://dns.google/dns-query",
+            "ips": [
+                "8.8.4.4",
+                "8.8.8.8",
+                "2001:4860:4860::8888",
+                "2001:4860:4860::8844"
+            ]
+        },
+        {
+            "name": "Cloudflare",
+            "url": "https://cloudflare-dns.com/dns-query",
+            "ips": [
+                "1.1.1.1",
+                "1.0.0.1",
+                "2606:4700:4700::1111",
+                "2606:4700:4700::1001"
+            ]
+        },
+        {
+            "name": "Tencent",
+            "url": "https://doh.pub/dns-query",
+            "ips": [
+                "1.12.12.12",
+                "120.53.53.53",
+                "2402:4e00::",
+                "2402:4e00:1::"
+            ]
+        },
+        {
+            "name": "360DNS",
+            "url": "https://doh.360.cn/dns-query",
+            "ips": [
+                "101.226.4.6",
+                "218.30.118.6",
+                "123.125.81.6",
+                "140.207.198.6"
+            ]
+        },
+        {
+            "name": "AdGuard",
+            "url": "https://dns.adguard.com/dns-query",
+            "ips": [
+                "94.140.14.140",
+                "94.140.14.141",
+                "2a10:50c0::ad1:ff",
+                "2a10:50c0::ad2:ff"
+            ]
+        },
+        {
+            "name": "DNSWatch",
+            "url": "https://dns.watch/dns-query",
+            "ips": [
+                "84.200.69.80",
+                "84.200.70.40",
+                "2001:67c:2354:2::64",
+                "2001:67c:2354:3::64"
+            ]
+        },
+        {
+            "name": "Quad9",
+            "url": "https://dns.quad9.net/dns-query",
+            "ips": [
+                "9.9.9.9",
+                "149.112.112.112",
+                "2620:fe::fe",
+                "2620:fe::9"
+            ]
+        }
+    ],
+    "proxy": [
+        "raw.githubusercontent.com",
+        "googlevideo.com",
+        "googleapis.com",
+        "youtube.com",
+        "www.youtube.com",
+        "m.youtube.com",
+        "youtu.be",
+        "ytimg.com",
+        "i.ytimg.com",
+        "ggpht.com",
+        "yt3.ggpht.com",
+        "youtubei.googleapis.com",
+        "gstatic.com",
+        "nhacmp3youtube.com",
+        "edgeware.tvb.com",
+        "cdn-2.ttvb.eu.org",
+        "yang-1989.eu.org",
+        "hinet.net",
+        "4gtv.tv",
+        "eu.org",
+        "15.204.105.50",
+        "7707bo.trustdeveloppment.com",
+        "1tv41.icu",
+        "lb59.xxip9.top",
+        "php.946985.filegear-sg.me",
+        "github.com",
+        "gcore.jsdelivr.net",
+        "iptv.852851.xyz",
+        "static.wikia.nocookie.net",
+        "static.hbo.com",
+        "cdn.jsdelivr.net",
+        "upload.wikimedia.org",
+        "get.perfecttv.net",
+        "tvlogo-282.pages.dev",
+        "logodownload.org",
+        "tvpnlogopus.samsungcloud.tv",
+        "provider-static.plex.tv",
+        "upload.wikimedia.org",
+        "tvpnlogopeu.samsungcloud.tv",
+        "schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com"
+    ],
+    "rules": [],
+    "headers": [
+        {
+            "host": "img\\d+.doubanio.com",
+            "header": {
+                "Referer": "https://movie.douban.com"
+            }
+        },
+        {
+            "host": "img1.doubanio.com",
+            "header": {
+                "Referer": "https://movie.douban.com"
+            }
+        },
+        {
+            "host": "img2.doubanio.com",
+            "header": {
+                "Referer": "https://movie.douban.com"
+            }
+        },
+        {
+            "host": "img3.doubanio.com",
+            "header": {
+                "Referer": "https://movie.douban.com"
+            }
+        },
+        {
+            "host": "img4.doubanio.com",
+            "header": {
+                "Referer": "https://movie.douban.com"
+            }
+        },
+        {
+            "host": "img5.doubanio.com",
+            "header": {
+                "Referer": "https://movie.douban.com"
+            }
+        },
+        {
+            "host": "img6.doubanio.com",
+            "header": {
+                "Referer": "https://movie.douban.com"
+            }
+        },
+        {
+            "host": "img7.doubanio.com",
+            "header": {
+                "Referer": "https://movie.douban.com"
+            }
+        },
+        {
+            "host": "img8.doubanio.com",
+            "header": {
+                "Referer": "https://movie.douban.com"
+            }
+        },
+        {
+            "host": "img9.doubanio.com",
+            "header": {
+                "Referer": "https://movie.douban.com"
+            }
+        }
+    ],
+    "hosts": [],
+    "parses": [
+        {
+            "name": "测试解析",
+            "type": 1,
+            "url": "http://127.0.0.1:9978/proxy?do=voxjx&url="
+        },
+        {
+            "name": "手动解析①",
+            "type": 0,
+            "url": "https://jx.xmflv.com/?url=",
+            "ext": {
+                "header": {
+                    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57"
+                }
+            }
+        },
+        {
+            "name": "手动解析②",
+            "type": 0,
+            "url": "https://jx.nnxv.cn/tv.php?url=",
+            "ext": {
+                "header": {
+                    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57"
+                }
+            }
+        },
+        {
+            "name": "手动解析③",
+            "type": 0,
+            "url": "https://jx.m3u8.tv/jiexi/?url=",
+            "ext": {
+                "header": {
+                    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57"
+                }
+            }
+        },
+        {
+            "name": "手动解析④",
+            "type": 0,
+            "url": "https://www.ckplayer.vip/jiexi/?url=",
+            "ext": {
+                "header": {
+                    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57"
+                }
+            }
+        },
+        {
+            "name": "手动解析⑤",
+            "type": 0,
+            "url": "https://okjx.cc/?url=",
+            "ext": {
+                "header": {
+                    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57"
+                }
+            }
+        }
+    ],
+    "flags": [
+        "youku",
+        "qq",
+        "iqiyi",
+        "qiyi",
+        "letv",
+        "sohu",
+        "tudou",
+        "pptv",
+        "mgtv",
+        "wasu"
+    ],
+    "ads": [
+        "static-mozai.4gtv.tv",
+        "s3t3d2y8.afcdn.net"
+    ]
+}
