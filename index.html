@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>免费资源导航</title>
+    <script src="./css/1.js"></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="./css/font-awesome.min.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4ade80',
+                        dark: '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-card {
+                background: rgba(30, 41, 59, 0.5);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 20px 40px rgba(74, 222, 128, 0.15);
+                border-color: rgba(74, 222, 128, 0.3);
+            }
+            .meteor {
+                position: absolute;
+                width: 2px;
+                height: 2px;
+                background: white;
+                border-radius: 50%;
+                box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
+                animation: meteor linear infinite;
+            }
+            .meteor::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100px;
+                height: 1px;
+                background: linear-gradient(90deg, #4ade80, transparent);
+            }
+            @keyframes meteor {
+                0% {
+                    opacity: 1;
+                    transform: translate(0, 0);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translate(-300px, 300px);
+                }
+            }
+            @keyframes star-twinkle {
+                0%, 100% { opacity: 0.3; }
+                50% { opacity: 1; }
+            }
+            @keyframes fadeInUp {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .star {
+                position: absolute;
+                width: 2px;
+                height: 2px;
+                background: white;
+                border-radius: 50%;
+                animation: star-twinkle 3s ease-in-out infinite;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen text-white overflow-x-hidden">
+    <!-- 星空背景画布 -->
+    <canvas id="starCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+    
+    <!-- 流星容器 -->
+    <div id="meteorContainer" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 顶部导航 -->
+    <nav class="relative z-10 px-6 py-5 max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <!-- <i class="fa fa-compass text-primary text-2xl"></i> -->
+            <h1 class="text-xl font-bold bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">ZF2629网址导航</h1>
+        </div>
+        <div class="hidden md:flex items-center gap-6 text-slate-300 text-sm">
+            <a href="#" class="hover:text-primary transition-colors">首页</a>
+            <a href="#" class="hover:text-primary transition-colors">常用工具</a>
+            <a href="#" class="hover:text-primary transition-colors">开发资源</a>
+            <a href="#" class="hover:text-primary transition-colors">设计素材</a>
+            <a href="#" class="hover:text-primary transition-colors">关于我们</a>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="relative z-10 max-w-7xl mx-auto px-6 pb-20">
+        <!-- 页面大标题 -->
+        <div class="mb-12 mt-6 flex flex-col md:flex-row md:items-center justify-between">
+            <div>
+            
+                <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold">澹泊明志·宁静致远</h2>
+                <br>
+            </div>
+            <div class="mt-4 md:mt-0 text-slate-400 text-xl font-medium flex items-center gap-2">
+                <img src="./img/logo.png" alt="" width="100" height="100">
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- 分类容器 -->
+        <div id="categoryContainer" class="space-y-12"></div>
+    </main>
+
+    <footer class="relative z-10 text-center py-8 text-slate-500 text-sm border-t border-slate-800">
+        <p>© 2026 免费资源导航 | 持续更新优质免费资源</p>
+    </footer>
+
+    <script>
+        // ===================== 网站分类数据（支持二级子分类） =====================
+        // 在这里添加/修改/删除分类和网站，页面自动渲染
+        const categories = [
+            {
+                title: "常用入口",
+                subCategories: [
+                    {
+                        subtitle: "常用推荐",
+                        sites: [
+                            {
+                                name: "百度一下",
+                                desc: "全球最大的中文搜索引擎、致力于让网民更便捷地获取信息,找到所求",
+                                icon: "https://www.baidu.com/favicon.ico",
+                                url: "https://www.baidu.com",
+                                // bgColor: "bg-blue-600"
+                                bgColor: "bg-white text-slate-500"
+                            },
+                            {
+                                name: "GitHub",
+                                desc: "全球最大的代码托管与开发者协作平台",
+                                icon: "https://github.com/favicon.ico",
+                                url: "https://github.com",
+                                // bgColor: "bg-slate-800"
+                                bgColor: "bg-white text-slate-500"
+                            },
+                            {
+                                name: "Gitee",
+                                desc: "中国境内规模最大的代码托管平台，访问速度快",
+                                icon: "https://gitee.com/favicon.ico",                       
+                                url: "https://gitee.com",
+                                bgColor: "bg-red-600"
+                            },
+                            {
+                                name: "Gitee",
+                                desc: "中国境内规模最大的代码托管平台，访问速度快",
+                                icon: "https://gitee.com/favicon.ico",                       
+                                url: "https://gitee.com",
+                                bgColor: "bg-red-600"
+                                // bgColor: "bg-white text-slate-500"
+                            },
+                            {
+                                name: "蓝奏云",
+                                desc: "真正的云加速下载，对下载不做任何限制，小文件存储首选",
+                                icon: "https://pc.woozooo.com/favicon.ico",
+                                url: "https://www.lanzou.com",
+                                bgColor: "bg-orange-500"
+                            },
+                            {
+                                name: "neocities",
+                                desc: "中国境内规模最大的代码托管平台，访问速度快",
+                                icon: "https://neocities.org/favicon.ico",
+                                url: "https://zf2629.neocities.org/",
+                                bgColor: "bg-white text-slate-500"
+                                // bgColor: "bg-red-600"
+                            }
+                        ]
+                    },
+                    {
+                        subtitle: "代码托管",
+                        sites: [
+                            {
+                                name: "GitHub",
+                                desc: "全球最大的代码托管与开发者协作平台",
+                                icon: "https://github.com/favicon.ico",
+                                url: "https://github.com",
+                                bgColor: "bg-slate-800"
+                            },
+                            {
+                                name: "Gitee",
+                                desc: "中国境内规模最大的代码托管平台，访问速度快",
+                                icon: "https://gitee.com/favicon.ico",
+                                url: "https://gitee.com",
+                                bgColor: "bg-red-600"
+                            },
+                            {
+                                name: "GitLab",
+                                desc: "开源代码托管平台，支持私有部署和完整DevOps流程",
+                                icon: "https://gitlab.com/favicon.ico",
+                                url: "https://gitlab.com",
+                                bgColor: "bg-orange-500"
+                            }
+                        ]
+                    },
+                    {
+                        subtitle: "存储下载",
+                        sites: [
+                            {
+                                name: "蓝奏云",
+                                desc: "真正的云加速下载，对下载不做任何限制，小文件存储首选",
+                                icon: "https://pc.woozooo.com/favicon.ico",
+                                url: "https://www.lanzou.com",
+                                bgColor: "bg-orange-500"
+                            },
+                            {
+                                name: "阿里云盘",
+                                desc: "不限速的个人云盘，大容量免费存储空间",
+                                icon: "https://www.aliyundrive.com/favicon.ico",
+                                url: "https://www.aliyundrive.com",
+                                bgColor: "bg-blue-500"
+                            }
+                        ]
+                    },
+                    {
+                        subtitle: "影音娱乐",
+                        sites: [
+                            {
+                                name: "音乐下载",
+                                desc: "免费无损音乐下载站点，全网音乐资源一站式获取",
+                                icon: "https://music.163.com/favicon.ico",
+                                url: "https://music.163.com",
+                                bgColor: "bg-red-500"
+                            },
+                            {
+                                name: "影视资源",
+                                desc: "免费高清影视资源，在线观看无广告",
+                                icon: "https://v.qq.com/favicon.ico",
+                                url: "https://v.qq.com",
+                                bgColor: "bg-blue-700"
+                            }
+                        ]
+                    }
+                ]
+            }
+
+
+
+
+
+
+
+
+          
+        
+        ];
+
+        // ===================== 渲染逻辑 =====================
+        function createSiteCard(site, index) {
+            const card = document.createElement('a');
+            card.href = site.url;
+            card.target = "_blank";
+            card.rel = "noopener noreferrer";
+            card.className = "glass-card card-hover group rounded-xl p-4 flex flex-col gap-2 opacity-0 translate-y-4";
+            card.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.05}s`;
+            
+            // 图标容错：加载失败显示首字母
+            const iconHtml = `
+                <div class="w-12 h-12 rounded-lg ${site.bgColor} flex items-center justify-center overflow-hidden shrink-0">
+                    <img src="${site.icon}" alt="${site.name}" class="w-7 h-7 object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <span class="text-xl font-bold text-white w-full h-full items-center justify-center" style="display:none">${site.name.charAt(0)}</span>
+                </div>
+            `;
+            
+            card.innerHTML = `
+                <div class="flex items-center gap-3">
+                    ${iconHtml}
+                    <div class="flex-1 min-w-0">
+                        <h3 class="text-lg font-bold text-white mb-1 flex items-center justify-between truncate">
+                            ${site.name}
+                            <i class="fa fa-external-link text-slate-400 text-xs ml-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0"></i>
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-snug line-clamp-2">${site.desc}</p>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('categoryContainer');
+            container.innerHTML = '';
+            
+            categories.forEach((category, catIndex) => {
+                // 一级分类区块
+                const catSection = document.createElement('div');
+                catSection.className = "category-section";
+                catSection.style.animationDelay = `${catIndex * 0.1}s`;
+                
+                catSection.innerHTML = `
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
+                        <span class="w-1 h-8 bg-primary rounded-full"></span>
+                        ${category.title}
+                    </h2>
+                `;
+
+            
+                    // 渲染Tab按钮栏
+                    const tabBar = document.createElement('div');
+                    tabBar.className = "flex flex-wrap gap-3 mb-6 border-b border-slate-700/50 pb-3";
+                    
+                    // 渲染Tab内容容器
+                    const tabContent = document.createElement('div');
+                    tabContent.className = "tab-content-area";
+
+                    category.subCategories.forEach((sub, subIdx) => {
+                        // 创建Tab按钮
+                        const tabBtn = document.createElement('button');
+                        tabBtn.className = `px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                            subIdx === 0 
+                                ? 'bg-primary/20 text-primary border border-primary/30' 
+                                : 'bg-slate-800/50 text-slate-400 border border-transparent hover:text-white hover:bg-slate-700/50'
+                        }`;
+                        tabBtn.textContent = sub.subtitle;
+                        tabBtn.dataset.tabIndex = subIdx;
+                        
+                        // 点击Tab切换内容
+                        tabBtn.addEventListener('click', () => {
+                            // 切换按钮状态
+                            tabBar.querySelectorAll('button').forEach(btn => {
+                                btn.className = 'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-slate-800/50 text-slate-400 border border-transparent hover:text-white hover:bg-slate-700/50';
+                            });
+                            tabBtn.className = 'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-primary/20 text-primary border border-primary/30';
+                            
+                            // 切换网站内容
+                            renderTabSites(tabContent, sub.sites);
+                        });
+                        
+                        tabBar.appendChild(tabBtn);
+
+                        // 默认显示第一个分类的内容
+                        if (subIdx === 0) {
+                            renderTabSites(tabContent, sub.sites);
+                        }
+                    });
+
+                    catSection.appendChild(tabBar);
+                    catSection.appendChild(tabContent);
+                
+                
+                container.appendChild(catSection);
+            });
+        }
+
+        // 渲染Tab切换时的网站卡片
+        function renderTabSites(container, sites) {
+            container.innerHTML = '';
+            const sitesGrid = document.createElement('div');
+            sitesGrid.className = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4";
+            sitesGrid.style.animation = "fadeIn 0.3s ease";
+            
+            sites.forEach((site, idx) => {
+                sitesGrid.appendChild(createSiteCard(site, idx));
+            });
+            
+            container.appendChild(sitesGrid);
+        }
+
+        // ===================== 星空背景效果 =====================
+        function initStars() {
+            const canvas = document.getElementById('starCanvas');
+            const ctx = canvas.getContext('2d');
+            let stars = [];
+            
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                stars = [];
+                for (let i = 0; i < 200; i++) {
+                    stars.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        radius: Math.random() * 1.5,
+                        opacity: Math.random(),
+                        speed: Math.random() * 0.02
+                    });
+                }
+            }
+            
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                stars.forEach(star => {
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+                    ctx.fill();
+                    star.opacity += star.speed;
+                    if (star.opacity > 1 || star.opacity < 0.2) star.speed = -star.speed;
+                });
+                requestAnimationFrame(draw);
+            }
+            
+            resize();
+            draw();
+            window.addEventListener('resize', resize);
+        }
+
+        // ===================== 流星效果 =====================
+        function initMeteors() {
+            const container = document.getElementById('meteorContainer');
+            function createMeteor() {
+                const meteor = document.createElement('div');
+                meteor.className = 'meteor';
+                meteor.style.left = Math.random() * window.innerWidth + 'px';
+                meteor.style.top = Math.random() * window.innerHeight * 0.5 + 'px';
+                meteor.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                container.appendChild(meteor);
+                
+                setTimeout(() => meteor.remove(), 3000);
+            }
+            setInterval(createMeteor, 2500);
+            // 初始化创建几个
+            for (let i = 0; i < 3; i++) setTimeout(createMeteor, i * 800);
+        }
+
+        // 添加入场动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            initStars();
+            initMeteors();
+        });
+    </script>
+</body>
+</html>
