@@ -1,155 +1,202 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StarNav - 极简星空导航</title>
-    <!-- Tailwind CSS -->
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <!-- Font Awesome -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
-
-    <script src="./css/1.js"></script>
-    <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <title>ZF2629网址导航</title>
     <style>
-        /* 自定义滚动条 */
-        ::-webkit-scrollbar {
-            width: 8px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        ::-webkit-scrollbar-track {
-            background: #000; 
+        body {
+            background: #0f0f0f;
+            color: #fff;
+            font-family: system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            padding: 2rem 1rem;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #333; 
-            border-radius: 4px;
+        /* 导航搜索区 */
+        .header {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555; 
+        .search-bar {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
         }
-
-        /* 星空画布样式 */
-        #star-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .search-input {
+            flex: 1;
+            padding: 0.9rem 1.2rem;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+        }
+        .search-btn {
+            padding: 0 1.5rem;
+            background: #2d2d2d;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .search-btn:hover {
+            background: #3d3d3d;
+        }
+        /* 分类标签区 */
+        .tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .tag {
+            padding: 0.5rem 1.2rem;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .tag.active {
+            background: #3a3a3a;
+            border-color: #4a4a4a;
+        }
+        /* 卡片网格区 */
+        .card-grid {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+        .card {
+            background: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .card:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.3);
+        }
+        .card a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            background-color: #000000; /* 纯黑背景 */
+        }
+        /* 底部区 */
+        footer {
+            text-align: left;
+            color: #666;
+            padding: 2rem 4rem; 
+            border-top: 1px solid #222;
         }
 
-        /* 卡片悬停动效优化 */
-        .nav-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .nav-card:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.1), 0 8px 10px -6px rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.3);
+        footer .p{
+            text-align: left;
+            color: #666;
+            padding: 2rem 4rem; 
+            border-top: 1px solid #222;
         }
 
-        /* 搜索框聚焦效果 */
-        .search-input:focus {
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+        /* 响应式适配：大屏一行5卡 */
+        @media (min-width: 1200px) {
+            .card-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
         }
+        /* 减少动效适配 */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+
+
+
+
     </style>
 </head>
-<body class="bg-black text-gray-200 min-h-screen font-sans antialiased selection:bg-white selection:text-black">
+<body>
 
-    <!-- 星空背景画布 -->
-    <canvas id="star-canvas"></canvas>
 
-    <!-- 头部导航 -->
-    <header class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                    <i class="fa-solid fa-star text-yellow-400 text-xl animate-pulse"></i>
-                    <span class="font-bold text-xl tracking-wider text-white">StarNav</span>
-                </div>
-                
-                <!-- 搜索框 (桌面端显示) -->
-                <div class="hidden md:block flex-1 max-w-lg mx-8">
-                    <div class="relative group">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <i class="fa-solid fa-search text-gray-500 group-focus-within:text-white transition-colors"></i>
-                        </div>
-                        <input type="text" id="search-input" 
-                            class="search-input block w-full pl-10 pr-3 py-2 border border-white/10 rounded-full leading-5 bg-white/5 text-gray-300 placeholder-gray-500 focus:outline-none focus:bg-white/10 focus:border-white/30 focus:text-white sm:text-sm transition-all duration-300" 
-                            placeholder="搜索网址或描述...">
-                    </div>
-                </div>
 
-                <!-- 右侧工具栏 -->
-                <div class="flex items-center gap-4">
-                    <button id="theme-toggle" class="p-2 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-colors" title="切换星星密度">
-                        <i class="fa-solid fa-moon"></i>
-                    </button>
-                    <a href="https://github.com" target="_blank" class="p-2 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
-                        <i class="fa-brands fa-github text-xl"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- 移动端搜索框 -->
-            <div class="md:hidden pb-4">
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <i class="fa-solid fa-search text-gray-500"></i>
-                    </div>
-                    <input type="text" id="mobile-search-input" 
-                        class="block w-full pl-10 pr-3 py-2 border border-white/10 rounded-lg leading-5 bg-white/5 text-gray-300 placeholder-gray-500 focus:outline-none focus:bg-white/10 focus:border-white/30 sm:text-sm" 
-                        placeholder="搜索...">
-                </div>
-            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="header">
+        <div class="search-bar">
+            <input type="text" class="search-input" id="searchInput" placeholder="搜索本地网站，按回车全网百度搜索">
+            <button class="search-btn" id="searchBtn">搜索</button>
         </div>
-    </header>
+        <div class="tags" id="tagsContainer"></div>
+    </div>
 
-    <!-- 主内容区域 -->
-    <main class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="card-grid" id="cardGrid"></div>
+
+    <!-- <footer>
+        <p>ZF2629网址导航</p>
+    </footer> -->
+    <!-- <footer class="site-footer">
+        <p>
+          点击复制：<a href="https://gh-proxy.com/" class="copy-link" onclick="copyText('https://gh-proxy.com/'); return false;" style="color: #FF9800;">gh-proxy</a>、
+          <a href="https://toolb.cn/favicon/" class="copy-link" onclick="copyText('https://toolb.cn/favicon/'); return false;" style="color: #FF9800;">favicon查看</a>、
+          <a href="view-source:" class="copy-link" onclick="copyText('view-source:'); return false;" style="color: #FF9800;">查看源代码</a>、
+          <a href="clan://localhost/nz/" class="copy-link" onclick="copyText('clan://localhost/nz/'); return false;" style="color: #FF9800;">clan://localhost/nz/</a>、
+          <a href="ftp://192.168.1.7:2122/" class="copy-link" onclick="copyText('ftp://192.168.1.7:2122/'); return false;" style="color: #FF9800;">ftp://192.168.1.7:2122/</a>、
+          <a href="https://zf2629.neocities.org/ysc.json" class="copy-link" onclick="copyText('https://zf2629.neocities.org/ysc.json'); return false;" style="color: #FF9800;">多仓</a>、
+          <a href="https://zf2629.github.io/fm.json" class="copy-link" onclick="copyText('https://zf2629.github.io/fm.json'); return false;" style="color: #FF9800;">FM.JSON</a>、
+          </p>
+          <p><a href="https://neocities.org/" target="_blank">neocities</a>、
+            <a href="https://github.com/" target="_blank">github</a>、ZF2629网址导航</p> 
         
-        <!-- 欢迎语 -->
-        <div class="mb-10 text-center">
-            <h1 class="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tight">探索数字宇宙</h1>
-            <p class="text-gray-400 text-sm md:text-base">精选优质资源，助力高效工作与生活</p>
-        </div>
+        </footer> -->
 
-        <!-- 分类标签栏 -->
-        <div class="flex flex-wrap justify-center gap-2 mb-8" id="category-filters">
-            <button class="filter-btn active px-4 py-1.5 rounded-full text-sm font-medium bg-white text-black transition-all" data-category="all">全部</button>
-            <!-- 动态生成其他分类 -->
-        </div>
-
-        <!-- 网址卡片网格 -->
-        <!-- 核心布局要求：大屏一行5个 (lg:grid-cols-5)，小屏一行1个 (grid-cols-1) -->
-        <div id="links-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- 卡片将通过 JS 动态插入 -->
-        </div>
-
-        <!-- 空状态提示 -->
-        <div id="empty-state" class="hidden text-center py-20">
-            <i class="fa-solid fa-rocket text-4xl text-gray-600 mb-4"></i>
-            <p class="text-gray-500">未找到相关网址</p>
-        </div>
-    </main>
-
-    <!-- 页脚 -->
-    <footer class="border-t border-white/10 bg-black/50 backdrop-blur-sm mt-auto">
-        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-gray-500 text-sm">
-                &copy; 2026 StarNav. All rights reserved.
-            </div>
-            <div class="flex space-x-6 text-sm text-gray-500">
-                <a href="#" class="hover:text-white transition-colors">关于</a>
-                <a href="#" class="hover:text-white transition-colors">提交收录</a>
-                <a href="#" class="hover:text-white transition-colors">隐私政策</a>
-            </div>
-        </div>
+            <!-- 页脚 -->
+        
+    <footer >
+        <p>
+            点击复制：<a href="https://gh-proxy.com/" class="copy-link" onclick="copyText('https://gh-proxy.com/'); return false;" style="color: #FFF;">gh-proxy</a>、
+            <a href="https://toolb.cn/favicon/" class="copy-link" onclick="copyText('https://toolb.cn/favicon/'); return false;" style="color: #FFF;">favicon查看</a>、
+            <a href="view-source:" class="copy-link" onclick="copyText('view-source:'); return false;" style="color: #FFF;">查看源代码</a>、
+            <a href="clan://localhost/nz/" class="copy-link" onclick="copyText('clan://localhost/nz/'); return false;" style="color: #FFF;">clan://localhost/nz/</a>、
+            <a href="ftp://192.168.1.7:2122/" class="copy-link" onclick="copyText('ftp://192.168.1.7:2122/'); return false;" style="color: #FFF;">ftp://192.168.1.7:2122/</a>、
+            <a href="https://zf2629.neocities.org/ysc.json" class="copy-link" onclick="copyText('https://zf2629.neocities.org/ysc.json'); return false;" style="color: #FFF;">多仓</a>、
+            <a href="https://zf2629.github.io/fm.json" class="copy-link" onclick="copyText('https://zf2629.github.io/fm.json'); return false;" style="color: #FFF;">FM.JSON</a>、
+            </p>
+            <br>
+          <p>&copy; 2026 ZF2629网址导航. All rights reserved.</p>
+                
+            
+          
+       
     </footer>
 
-    <!-- JavaScript 逻辑 -->
-    <script src="script.js"></script>
+<script src="index.json"></script>
 </body>
 </html>

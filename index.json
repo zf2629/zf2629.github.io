@@ -1,0 +1,114 @@
+
+async function copyText(text) {
+try {
+await navigator.clipboard.writeText(text);
+showToast("已复制接口地址");
+} catch {
+const input = document.createElement("textarea");
+input.value = text;
+input.setAttribute("readonly", "");
+input.style.position = "fixed";
+input.style.opacity = "0";
+document.body.append(input);
+input.select();
+document.execCommand("copy");
+input.remove();
+showToast("已复制接口地址");
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 所有网站数据集中在此处，后续添加修改仅需改动该数组
+const websites = [
+    { name: "百度", url: "https://www.baidu.com", category: "常用" },
+    { name: "GitHub", url: "https://github.com", category: "常用" },
+    { name: "Gitee", url: "https://gitee.com", category: "常用" },
+
+    { name: "我的音乐", url: "./music/index.html", category: "常用" }
+];
+
+let currentActiveTag = "全部";
+
+// 渲染分类标签
+function renderTags() {
+    const categories = ["全部", ...new Set(websites.map(item => item.category))];
+    const container = document.getElementById("tagsContainer");
+    container.innerHTML = "";
+    categories.forEach(tag => {
+        const tagEl = document.createElement("div");
+        tagEl.className = `tag ${tag === currentActiveTag ? "active" : ""}`;
+        tagEl.textContent = tag;
+        tagEl.addEventListener("click", () => {
+            currentActiveTag = tag;
+            renderTags();
+            renderCards();
+        });
+        container.appendChild(tagEl);
+    });
+}
+
+// 渲染网站卡片，绑定整卡点击跳转事件
+function renderCards(filterKeyword = "") {
+    const grid = document.getElementById("cardGrid");
+    grid.innerHTML = "";
+    let filteredList = websites;
+    
+    // 分类筛选
+    if (currentActiveTag !== "全部") {
+        filteredList = filteredList.filter(item => item.category === currentActiveTag);
+    }
+    // 关键词搜索筛选
+    if (filterKeyword.trim()) {
+        const kw = filterKeyword.toLowerCase();
+        filteredList = filteredList.filter(item => 
+            item.name.toLowerCase().includes(kw) || 
+            item.url.toLowerCase().includes(kw)
+        );
+    }
+
+    filteredList.forEach(site => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.textContent = site.name;
+        // 整卡点击新窗口打开网站
+        card.addEventListener("click", () => {
+            window.open(site.url, "_blank");
+        });
+        grid.appendChild(card);
+    });
+}
+
+// 搜索功能
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+
+// 本地实时过滤
+searchInput.addEventListener("input", (e) => {
+    renderCards(e.target.value);
+});
+
+// 回车/按钮触发百度全网搜索
+function doBaiduSearch() {
+    const kw = searchInput.value.trim();
+    if (kw) window.open(`https://www.baidu.com/s?wd=${encodeURIComponent(kw)}`);
+}
+searchBtn.addEventListener("click", doBaiduSearch);
+searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") doBaiduSearch();
+});
+
+// 页面初始化
+renderTags();
+renderCards();
