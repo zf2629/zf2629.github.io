@@ -71,7 +71,7 @@ const websites = [
 
 
 
-    { name: "酷我音乐", url: "./html/music.html", category: "音乐" }
+    { name: "音乐下载", url: "./html/music.html", category: "音乐" }
 ];
 
 let currentActiveTag = "全部";
