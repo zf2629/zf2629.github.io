@@ -18,20 +18,20 @@ class Spider(Spider):
     # ==========================================================================
     # 📂 【配置区】
     # ==========================================================================
-    PY_DIR    = "/storage/emulated/0/tvbox/py"
-    JS_DIR    = "/storage/emulated/0/tvbox/js"
-    CAT_DIR   = "/storage/emulated/0/tvbox/cat"
-    JAR_DIR   = "/storage/emulated/0/tvbox/jar"
-    LIVE_DIR  = "/storage/emulated/0/tvbox/live"
-    XBPQ_DIR  = "/storage/emulated/0/tvbox/xbpq"
-    SAVE_PATH = "/storage/emulated/0/tvbox/自动加载.json"
+    PY_DIR    = "/storage/emulated/0/詹影视/本地01/py"
+    JS_DIR    = "/storage/emulated/0/詹影视/本地01/js"
+    CAT_DIR   = "/storage/emulated/0/詹影视/本地01/cat"
+    JAR_DIR   = "/storage/emulated/0/詹影视/本地01/jar"
+    LIVE_DIR  = "/storage/emulated/0/詹影视/本地01/live"
+    XBPQ_DIR  = "/storage/emulated/0/詹影视/本地01/xbpq"
+    SAVE_PATH = "/storage/emulated/0/詹影视/本地01/自动加载.json"
     LOGO_PATH = "./gif/logo.gif"
     # PY、JS、CAT、XBPQ、LIVE专属封面图链接，可自行替换本地路径/网络图
-    PY_ICON = "file://tvbox/icon/py.png"
-    JS_ICON = "file://tvbox/icon/js.png"
-    CAT_ICON = "file://tvbox/icon/cat.png"
-    XBPQ_ICON = "file://tvbox/icon/xbpq.png"
-    LIVE_ICON = "file://tvbox/icon/live.png"
+    PY_ICON = "file://詹影视/本地01/icon/py.png"
+    JS_ICON = "file://詹影视/本地01/icon/js.png"
+    CAT_ICON = "file://詹影视/本地01/icon/cat.png"
+    XBPQ_ICON = "file://詹影视/本地01/icon/xbpq.png"
+    LIVE_ICON = "file://詹影视/本地01/icon/live.png"
 
     # JS引擎API固定值
     JS_API = "./lib/drpy2.min.js"
