@@ -1,0 +1,12 @@
+{
+  "logo": "",
+  "spider": "./z-jar/xs.jar",
+  "sites": [
+    {
+      "name": "自动加载",
+      "key": "自动加载",
+      "type": 3,
+      "api": "./z-jar/自动加载.py"
+    } 
+  ]
+}
