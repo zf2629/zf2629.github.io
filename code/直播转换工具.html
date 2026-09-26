@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>在线 TXT/M3U 转换工具 - Catvod.com</title>
+  <meta name="description" content="一个简单的在线TXT转M3U格式工具，纯前端处理，无需上传txt文件粘贴即转换，安全不偷源。" />
+  <meta name="keywords" content="txt转m3u,txt转换,m3u生成,Catvod.com,LIVE" />
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --text: #212529;
+      --primary: #0d6efd;
+      --primary-dark: #0a58ca;
+      --border: #dee2e6;
+    }
+    [data-theme='dark'] {
+      --bg: #181a1b;
+      --card: #222426;
+      --text: #f1f3f5;
+      --primary: #3d8bfd;
+      --primary-dark: #2c6ed5;
+      --border: #343a40;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      padding: 16px 24px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      background-color: var(--primary);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .theme-btn {
+      background: transparent;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 8px;
+      background: transparent;
+    }
+
+    .tab-btn {
+      padding: 10px 16px;
+      border: none;
+      border-bottom: 2px solid transparent;
+      background: none;
+      color: var(--text);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+      user-select: none;
+    }
+
+    .tab-btn.active {
+      border-color: var(--primary);
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .tab {
+      display: none;
+      padding: 24px;
+      max-width: 950px;
+      margin: 0 auto;
+      background: var(--card);
+      border-radius: 12px;
+      margin-top: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      animation: fadeIn 0.2s ease-in-out;
+    }
+
+    .tab.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    textarea, input[type="file"], input[type="text"], select {
+      width: 100%;
+      margin: 8px 0 16px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.4;
+      font-family: monospace, monospace;
+    }
+
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    button {
+      padding: 8px 14px;
+      margin: 4px 4px 4px 0;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      user-select: none;
+    }
+
+    button:hover {
+      background: var(--primary-dark);
+    }
+
+    h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+      border-left: 4px solid var(--primary);
+      padding-left: 8px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #888;
+      padding: 20px;
+      margin-top: 30px;
+      user-select: none;
+    }
+
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>在线 TXT/M3U 转换工具</div>
+    <button class="theme-btn" onclick="toggleTheme()">切换主题</button>
+  </header>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="selectTab('config')">配置</button>
+    <button class="tab-btn" onclick="selectTab('txt2m3u')">TXT 转 M3U</button>
+    <button class="tab-btn" onclick="selectTab('m3u2txt')">M3U 转 TXT</button>
+  </div>
+
+  <div id="config" class="tab active">
+    <h3>EPG 地址</h3>
+    <input type="text" id="epgUrl" placeholder="如 https://epg.catvod.com/epg.xml" />
+    <h3>分组规则（每行 格式：关键字,分组名）</h3>
+    <textarea id="ruleInput" placeholder="例如：CCTV,央视"></textarea>
+    <div class="flex">
+      <button onclick="applyRules()">应用规则</button>
+      <button onclick="downloadRules()">导出规则</button>
+      <button onclick="importRules()">导入规则</button>
+      <button onclick="clearRules()">清空规则</button>
+    </div>
+  </div>
+
+  <div id="txt2m3u" class="tab">
+    <h3>TXT 内容</h3>
+    <input type="file" accept=".txt" onchange="loadFile(event,'txtArea')"/>
+    <textarea id="txtArea" placeholder="频道名,链接 或 分组名,#genre#"></textarea>
+    <div class="flex">
+      <button onclick="runTxtToM3u()">转换为 M3U</button>
+      <button onclick="clearFields('txtArea','m3uArea')">清除</button>
+      <button onclick="copyArea('m3uArea')">复制</button>
+      <button onclick="saveArea('m3uArea','playlist.m3u')">保存文件</button>
+    </div>
+    <input type="text" id="filterTxt2M3u" placeholder="输入关键字过滤频道" oninput="filterOutput('m3uArea', this.value)" />
+    <textarea id="m3uArea" readonly></textarea>
+  </div>
+
+  <div id="m3u2txt" class="tab">
+    <h3>M3U 内容</h3>
+    <input type="file" accept=".m3u" onchange="loadFile(event,'m3uAreaIn')"/>
+    <textarea id="m3uAreaIn" placeholder="粘贴 M3U 内容"></textarea>
+    <div class="flex">
+      <button onclick="runM3uToTxt()">转换为 TXT</button>
+      <button onclick="clearFields('m3uAreaIn','txtAreaOut')">清除</button>
+      <button onclick="copyArea('txtAreaOut')">复制</button>
+      <button onclick="saveArea('txtAreaOut','channels.txt')">保存文件</button>
+    </div>
+    <input type="text" id="filterTxt" placeholder="输入关键字过滤频道" oninput="filterOutput('txtAreaOut', this.value)" />
+    <textarea id="txtAreaOut" readonly></textarea>
+  </div>
+
+  <footer>© 2025 Catvod.com - 所有权利保留</footer>
+
+  <script>
+    let rules = [];
+    const originalContents = {};
+
+    function selectTab(id) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelector(`.tab-btn[onclick*="${id}"]`).classList.add('active');
+      document.getElementById(id).classList.add('active');
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+    }
+
+    function loadFile(e, id) {
+      const f = e.target.files[0];
+      if (!f) return;
+      const r = new FileReader();
+      r.onload = () => {
+        document.getElementById(id).value = r.result;
+        originalContents[id] = null;
+      };
+      r.readAsText(f);
+    }
+
+    function applyRules() {
+      const lines = document.getElementById('ruleInput').value.split('\n');
+      rules = lines.map(l => l.trim())
+                   .filter(l => l.includes(','))
+                   .map(l => {
+                     const [k, g] = l.split(',').map(x => x.trim());
+                     return { key: k, group: g };
+                   });
+      alert(`已应用规则：${rules.length} 条`);
+    }
+
+    function downloadRules() {
+      if (rules.length === 0) {
+        alert('当前没有规则可导出');
+        return;
+      }
+      const blob = new Blob([JSON.stringify(rules, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'rules.json';
+      a.click();
+    }
+
+    function importRules() {
+      const inp = document.createElement('input');
+      inp.type = 'file';
+      inp.accept = '.json';
+      inp.onchange = () => {
+        const f = inp.files[0];
+        if (!f) return;
+        const r = new FileReader();
+        r.onload = () => {
+          try {
+            const data = JSON.parse(r.result);
+            if (!Array.isArray(data) || data.some(item => !item.key || !item.group)) {
+              alert('导入文件格式不正确，请检查');
+              return;
+            }
+            rules = data;
+            document.getElementById('ruleInput').value = rules.map(r => r.key + ',' + r.group).join('\n');
+            alert('导入成功');
+          } catch {
+            alert('格式错误，无法解析');
+          }
+        };
+        r.readAsText(f);
+      };
+      inp.click();
+    }
+
+    function clearRules() {
+      if (confirm('确定清空所有分组规则吗？')) {
+        rules = [];
+        document.getElementById('ruleInput').value = '';
+        alert('规则已清空');
+      }
+    }
+
+    function runTxtToM3u() {
+      const lines = document.getElementById('txtArea').value.split('\n');
+      let epg = document.getElementById('epgUrl').value.trim();
+      if (!epg) epg = 'https://epg.catvod.com/epg.xml';
+      let out = '#EXTM3U x-tvg-url="' + epg + '"\n';
+      let currentGroup = null;
+      let validCount = 0;
+      let skipCount = 0;
+
+      for (let line of lines) {
+        line = line.trim();
+        if (!line) continue;
+
+        if (line.includes('#genre#')) {
+          currentGroup = line.split(',')[0].trim();
+          continue;
+        }
+
+        const parts = line.split(',').map(x => x.trim());
+        if (parts.length < 2) {
+          skipCount++;
+          continue;
+        }
+
+        const name = parts[0];
+        const url = parts[1];
+        if (!name || !url) {
+          skipCount++;
+          continue;
+        }
+
+        let group = currentGroup;
+        if (!group) {
+          const match = rules.find(r => name.includes(r.key));
+          group = match ? match.group : '未分组';
+        }
+
+        const display = name.replace(/(CCTV|CETV)-?(\d+).*/, '$1$2');
+
+        out += `#EXTINF:-1 tvg-name="${display}" tvg-logo="https://logo.catvod.com/${display}.png" group-title="${group}",${name}\n${url}\n`;
+        validCount++;
+      }
+      document.getElementById('m3uArea').value = out;
+      originalContents['m3uArea'] = out;
+
+      alert(`转换完成！有效条目：${validCount}，跳过条目：${skipCount}`);
+    }
+
+    function runM3uToTxt() {
+      const lines = document.getElementById('m3uAreaIn').value.split('\n');
+      let out = '';
+      let currentGroup = null;
+      let validCount = 0;
+      let skipCount = 0;
+
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (line.startsWith('#EXTINF:')) {
+          const groupMatch = line.match(/group-title="([^"]+)"/);
+          const nameMatch = line.match(/,(.*)$/);
+          const url = lines[i + 1]?.trim();
+
+          if (!url) {
+            skipCount++;
+            continue;
+          }
+
+          if (groupMatch) {
+            if (groupMatch[1] !== currentGroup) {
+              currentGroup = groupMatch[1];
+              out += currentGroup + ',#genre#\n';
+            }
+          } else {
+            currentGroup = null;
+          }
+
+          if (nameMatch) {
+            out += nameMatch[1] + ',' + url + '\n';
+            validCount++;
+          } else {
+            skipCount++;
+          }
+          i++;
+        }
+      }
+      document.getElementById('txtAreaOut').value = out;
+      originalContents['txtAreaOut'] = out;
+
+      alert(`转换完成！有效条目：${validCount}，跳过条目：${skipCount}`);
+    }
+
+    function clearFields(...ids) {
+      ids.forEach(id => {
+        document.getElementById(id).value = '';
+        originalContents[id] = null;
+      });
+    }
+
+    async function copyArea(id) {
+      const textarea = document.getElementById(id);
+      try {
+        await navigator.clipboard.writeText(textarea.value);
+        alert('已复制到剪贴板');
+      } catch {
+        textarea.select();
+        document.execCommand('copy');
+        alert('已复制到剪贴板（降级）');
+      }
+    }
+
+    function saveArea(id, filename) {
+      const content = document.getElementById(id).value;
+      if (!content) {
+        alert('内容为空，无法保存');
+        return;
+      }
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    function filterOutput(id, keyword) {
+      const area = document.getElementById(id);
+      if (!originalContents[id]) {
+        originalContents[id] = area.value;
+      }
+      if (!keyword) {
+        area.value = originalContents[id];
+        return;
+      }
+      const filteredLines = originalContents[id]
+        .split('\n')
+        .filter(line => line.toLowerCase().includes(keyword.toLowerCase()));
+      area.value = filteredLines.join('\n');
+    }
+  </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"d0e3129d913346389402a34f062dee92","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>

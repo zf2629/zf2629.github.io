@@ -33,17 +33,25 @@ showToast("已复制接口地址");
 // 所有网站数据集中在此处，后续添加修改仅需改动该数组
 const websites = [
     { name: "百度", url: "https://www.baidu.com", category: "常用" },
+    { name: "小草助手", url: "https://yecao.app/", category: "常用" },
+    
     { name: "GitHub", url: "https://github.com", category: "空间网盘" },
     { name: "Gitee", url: "https://gitee.com", category: "空间网盘" },
     { name: "蓝奏云", url: "https://accounts.woozooo.com/", category: "空间网盘" },
-
+    
+    { name: "凯速网", url: "https://kstore.cc/", category: "空间网盘" },
 
 
     { name: "JSON校验格式化", url: "./code/JSON校验格式化.html", category: "工具" },
+    { name: "base64", url: "./code/base64.html", category: "工具" },
+    { name: "直播转换工具", url: "./code/直播转换工具.html", category: "工具" },
+
+
+   
     { name: "利息收益", url: "./code/利息收益.html", category: "工具" },
-
+    { name: "SaltyLeo的书架", url: "https://tstrs.me/search", category: "书" },
     
-
+    
     { name: "专用音乐", url: "./html/mymusic.html", category: "音乐" },
 
 
