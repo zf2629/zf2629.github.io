@@ -57,8 +57,8 @@ const websites = [
 
 
 
-
-
+    { name: "自动加载", url: "https://gh-proxy.com/https://github.com/zf2629/000zip/raw/main/自动加载.zip", category: "下载" },
+   
 
 
 
