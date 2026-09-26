@@ -193,7 +193,8 @@ class Spider(Spider):
         """保存 TVBox config.json"""
         config = {
             "logo": self.LOGO_PATH,
-            "spider": self._build_spider_value(),
+            # "spider": self._build_spider_value(),
+            "spider": "./z-jar/xs.jar",
             "sites": []
         }
         for cat in self.cache["categories"]:
