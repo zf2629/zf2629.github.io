@@ -54,8 +54,12 @@ const websites = [
     
     { name: "专用音乐", url: "./html/mymusic.html", category: "音乐" },
 
+    { name: "东篱", url: "https://chigua.eu.org/", category: "TVBOX官网" },
 
+    { name: "东篱接口", url: "https://16151.kstore.space/", category: "TVBOX接口" },
+    
 
+    
 
     { name: "自动加载", url: "https://gh-proxy.com/https://github.com/zf2629/000zip/raw/main/自动加载.zip", category: "下载" },
    
