@@ -58,6 +58,8 @@ const websites = [
     { name: "SaltyLeo的书架", url: "https://tstrs.me/search", category: "书" },
     
     
+    { name: "ZF2629音乐网", url: "./html/音乐网/index.html", category: "音乐" },
+
     { name: "专用音乐", url: "./html/mymusic.html", category: "音乐" },
 
     { name: "东篱", url: "https://chigua.eu.org/", category: "TVBOX官网" },
