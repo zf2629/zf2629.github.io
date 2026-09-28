@@ -37,6 +37,8 @@ const websites = [
     
     { name: "GitHub", url: "https://github.com", category: "空间网盘" },
     { name: "Gitee", url: "https://gitee.com", category: "空间网盘" },
+    { name: "netlify", url: "https://www.netlify.com", category: "空间网盘" },
+
     { name: "蓝奏云", url: "https://accounts.woozooo.com/", category: "空间网盘" },
     
     { name: "凯速网", url: "https://kstore.cc/", category: "空间网盘" },
