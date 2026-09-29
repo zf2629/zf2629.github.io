@@ -321,6 +321,12 @@
                 grid-template-columns: repeat(5, 1fr);
             }
         }
+
+        /* text-sm */
+.text-zf {
+  font-size: 1.25rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+}
     </style>
 </head>
 <body>
@@ -392,16 +398,21 @@
                 <span class="footer-link" data-copy="https://gh-proxy.com/">gh-proxy</span>
                 <span class="footer-link" data-copy="view-source:">查网站源码</span>
                 <span class="footer-link" data-copy="https://sub.445569.xyz/">酷佬节点</span>
+                <span class="footer-link" data-copy="https://cdn.jsdelivr.net/gh/jifeng250/free-nodes@main/clash.yaml">节点01</span>
+                <span class="footer-link" data-copy="https://gh-proxy.com/raw.githubusercontent.com/yy1588133/proxy-pool/main/clash.yaml">节点02</span>
+                <span class="footer-link" data-copy="https://cdn.jsdelivr.net/gh/yy1588133/proxy-pool@main/clash.yaml">节点02</span>
+
+                
                 <span class="footer-link" data-copy="ftp://192.168.1.7:2122/">本地IP</span>
                 <span class="footer-link" data-copy="https://zf2629.github.io/ysc.json">多仓接口</span>
-          
+                
             </div>
             
             <!-- 版权信息 -->
-            <p class="text-neutral-600 text-sm">
+            <p class="text-neutral-600 text-zf">
                <b>© 2026 zf2629导航网站</b> 
             </p>
-            <p class="text-neutral-700 text-xs mt-2">
+            <p class="text-neutral-700 text-zf mt-2">
                <b>提示：点击卡片直接访问网站，点击页脚链接可复制对应内容</b> 
             </p>
         </div>
@@ -424,7 +435,6 @@
             
             // 常用
             { title: "百度", url: "https://www.baidu.com", category: "常用" },
-            { title: "小草助手", url: "https://yecao.app/", category: "常用" },
     
 
             { title: "GitHub", url: "https://github.com", category: "空间网盘" },
@@ -432,13 +442,14 @@
             { title: "netlify", url: "https://www.netlify.com", category: "空间网盘" },
             { title: "蓝奏云", url: "https://accounts.woozooo.com/", category: "空间网盘" },
             { title: "凯速网", url: "https://kstore.cc/", category: "空间网盘" },
-            { title: "Wormhole文件分享", url: "https://wormhole.app/", category: "空间网盘" },
             { title: "SaltyLeo的书架", url: "https://tstrs.me/search", category: "书" },
-    
-    
-            { title: "Wormhole文件分享", url: "https://crud.bbroot.com/", category: "空间网盘" },
+            
+            // 工具
+            { title: "小草助手", url: "https://yecao.app/", category: "文件分享" },
+            { title: "Wormhole文件分享", url: "https://wormhole.app/", category: "文件分享" },
+            { title: "文件快递柜", url: "https://crud.bbroot.com/", category: "文件分享" },
 
-             // 工具
+            // 工具
             { title: "直播转换工具", url: "./code/直播转换工具.html", category: "工具" },
             { title: "JSON校验格式化", url: "./code/JSON校验格式化.html", category: "工具" },
             { title: "base64", url: "./code/base64.html", category: "工具" },
@@ -450,6 +461,8 @@
             { title: "东篱接口", url: "https://16151.kstore.space/", category: "TVBOX接口" },
         
             // 下载
+            { title:"FongMi","url":"https://github.com/FongMi/Release/releases",category: "下载" },
+            { title:"webhtv","url":"https://github.com/webhtv/webhtv/releases",category: "下载" },
             { title: "可用py", url: "https://gh-proxy.com/https://github.com/zf2629/000zip/raw/main/可用py.zip", category: "下载" },
             { title: "自动加载", url: "https://gh-proxy.com/https://github.com/zf2629/000zip/raw/main/自动加载.zip", category: "下载" },
         
@@ -458,10 +471,63 @@
             { title: "ZF2629音乐网", url: "./html/音乐网/index.html", category: "音乐" },
             { title: "专用音乐", url: "./html/mymusic.html", category: "音乐" },     
 
+
+
+        
+            // 采集
+            {title:"OK采集","url":"https://okzyw.cc/api.php/provide/vod", category: "采集" },
+            {title:"猫眼采集","url":"https://www.maoyanzy.com/api.php/provide/vod", category: "采集" },
+            {title:"天涯影视采集","url":"https://tyyszy.com/api.php/provide/vod", category: "采集" },
+            {title:"非凡采集","url":"http://www.ffzy.tv/api.php/provide/vod", category: "采集" },
+            {title:"量子采集","url":"https://www.lzzy.tv/api.php/provide/vod", category: "采集" },
+            {title:"牛牛采集","url":"https://niuniuzy6.com/api.php/provide/vod", category: "采集" },
+            {title:"索尼采集","url":"https://suonizy.cc/api.php/provide/vod", category: "采集" },
+            {title:"闪电采集","url":"https://shandianzy.com/api.php/provide/vod", category: "采集" },
+            {title:"快车采集","url":"https://kuaichezy.com/api.php/provide/vod", category: "采集" },
+            {title:"最大采集","url":"https://www.zuidazy.co/api.php/provide/vod", category: "采集" },
+            {title:"如意采集","url":"https://www.ryzy.tv/api.php/provide/vod", category: "采集" },
+            {title:"豆瓣采集","url":"https://dbzy.tv/api.php/provide/vod", category: "采集" },
+            {title:"魔都采集","url":"https://www.moduzy6.com/api.php/provide/vod", category: "采集" },
+            {title:"爱奇艺","url":"https://iqiyizy.cc/api.php/provide/vod", category: "采集" },
+            {title:"豪华采集","url":"http://www.haohuazy.com/api.php/provide/vod", category: "采集" },
+            {title:"电影天堂","url":"http://dyttzyw.tv/api.php/provide/vod", category: "采集" },
+            {title:"极速采集","url":"https://www.jisuzy.com/api.php/provide/vod", category: "采集" },
+            {title:"速播采集","url":"https://www.subozy.com/api.php/provide/vod", category: "采集" },
+            {title:"爱坤采集","url":"https://ikunzy.cc/api.php/provide/vod", category: "采集" },
+            {title:"樱花采集","url":"https://yhzy.cc/api.php/provide/vod", category: "采集" },
+            {title:"艾旦采集","url":"https://lovedan.net/api.php/provide/vod", category: "采集" },
+
+            {title:"无尽采集","url":"https://api.wujinapi.me/api.php/provide/vod", category: "采集" },
+            {title:"优质采集","url":"https://api.yyzy-tv.vip/inc/api_mac10.php", category: "采集" },
+            {title:"人人影视","url":"http://43.139.196.163:31308/gather/jso", category: "采集" },
+            {title:"红牛采集","url":"https://www.hongniuzy2.com/api.php/provide/vod/at/josn/", category: "采集" },
+            {title:"新浪采集","url":"https://api.xinlangapi.com/xinlangapi.php/provide/vod/josn", category: "采集" },
+            {title:"暴风采集","url":"https://bfzyapi.com/api.php/provide/vod/", category: "采集" },
+            {title:"U酷采集","url":"https://api.ukuapi88.com/api.php/provide/vod/",category: "采集" },
+            {title:"360采集","url":"https://360zyzz.com/api.php/provide/vod", category: "采集" },
+
+
+
+
+
+            // github
+            {title:"gh-proxy","url":"https://gh-proxy.com/",category: "GITHUB" },
+          
+            {title:"phu889","url":"https://github.com/phu889/kjh998",category: "GITHUB" },
+            {title:"潇洒","url":"https://github.com/PizazzGY",category: "GITHUB" },
+            {title:"东璃","url":"https://github.com/chitue/dongliTV",category: "GITHUB" },
+            {title:"雨呢","url":"https://github.com/cluntop/tvbox",category: "GITHUB" },
+            {title:"AVBOX","url":"https://github.com/xiaochangxu",category: "GITHUB" },
+            
+            
+
+            
+
             // 邮箱服务
             { title: 'QQ邮箱', url: 'https://mail.qq.com', category: '邮箱' },
             { title: '网易邮箱', url: 'https://mail.163.com', category: '邮箱' },
-   
+            { title: '节点GITHUB', url: 'https://github.com/yy1588133/proxy-pool', category: '节点' },
+
             
 
         ];
