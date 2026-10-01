@@ -7,7 +7,7 @@
             "hide": 1,
             "size": 113975296,
             "sha256": "9c8ec53492541b907f1a40b43acbb887b04565dc7d1d60617cfb6becf0a79b6f",
-            "path": "https://v6.gh-proxy.org/https://github.com/chitue/dongliTV/releases/download/databases-20260130/song_9c8ec.db",
+            "path": "https://gh-proxy.com/https://github.com/chitue/dongliTV/releases/download/databases-20260130/song_9c8ec.db",
             "count_query": "SELECT COUNT(*) FROM song",
             "category_count_query": "SELECT type_id, COUNT(*) FROM song GROUP BY type_id",
             "categories_query": "SELECT id, name FROM song_type ORDER BY id",
