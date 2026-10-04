@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>极简网址导航</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{min-height:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(255,255,255,.02),transparent 30%),
+    radial-gradient(circle at 90% 0%,rgba(255,255,255,.015),transparent 25%),
+    linear-gradient(180deg,#1a1a1a 0%,#171717 50%,#121212 100%);
+  color:#d4d4d4;
+  min-height:100vh;
+  opacity:0;
+  animation:pageIn .5s ease forwards;
+  padding-bottom:20px;
+}
+@keyframes pageIn{to{opacity:1;transform:translateY(0)}from{opacity:0;transform:translateY(10px)}}
+.app{max-width:1200px;margin:0 auto;padding:0 16px 40px}
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:linear-gradient(to bottom,rgba(23,23,23,.98),rgba(23,23,23,.75) 80%,transparent);
+  padding:24px 0 14px;
+  margin-bottom:24px;
+}
+.topbar::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent 8%,rgba(255,255,255,.25) 50%,transparent 92%);
+}
+.title-row{display:flex;align-items:center;margin-bottom:18px}
+h1{font-size:clamp(20px,3vw,27px);font-weight:600;letter-spacing:.5px;
+  background:linear-gradient(180deg,#e2e2e2 0%,#999 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.search{display:flex;gap:8px;margin-bottom:14px}
+.search input{
+  flex:1;height:42px;padding:0 16px;border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.02);color:#d4d4d4;font-size:14px;outline:none;transition:all .2s;border-radius:6px;
+}
+.search input:focus{border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.04)}
+.search button{
+  height:42px;padding:0 22px;border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.03);color:#bdbdbd;cursor:pointer;font-weight:500;transition:all .2s;border-radius:6px;
+}
+.search button:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);color:#fff}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.tab-btn{
+  padding:6px 16px;border:1px solid rgba(255,255,255,.1);
+  background:transparent;color:#888;cursor:pointer;font-size:13px;transition:all .2s;border-radius:6px;
+}
+.tab-btn:hover{color:#ccc;border-color:rgba(255,255,255,.2)}
+.tab-btn.active{color:#171717;background:#bdbdbd;border-color:#bdbdbd;font-weight:500}
+#content{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:10px;
+}
+@media(max-width:767px){
+  #content{grid-template-columns:1fr}
+  .search button{padding:0 14px}
+}
+.site-card{
+  display:flex;align-items:center;gap:12px;padding:12px 14px;
+  border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.015);
+  text-decoration:none;color:#d4d4d4;transition:all .2s;position:relative;overflow:hidden;border-radius:6px;
+}
+.site-card::before{
+  content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.03),transparent);
+  transition:left .5s;pointer-events:none;
+}
+.site-card:hover::before{left:100%}
+.site-card:hover{
+  border-color:rgba(255,255,255,.2);transform:translateY(-2px);
+  box-shadow:0 6px 18px rgba(0,0,0,.4);
+  background:rgba(255,255,255,.03);
+}
+.site-icon{
+  flex-shrink:0;width:38px;height:38px;display:flex;align-items:center;justify-content:center;
+  font-size:17px;font-weight:600;border-radius:6px;
+  background:linear-gradient(135deg,#2a2a2a 0%,#222 100%);color:#bbb;
+  border:1px solid rgba(255,255,255,.08);transition:all .25s;
+}
+.site-card:hover .site-icon{
+  background:#d4d4d4;color:#171717;border-color:#d4d4d4;transform:rotate(-3deg) scale(1.03);
+}
+.site-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.site-name{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.site-domain{font-size:12px;color:#777}
+.site-arrow{opacity:0;transform:translateX(-4px);transition:all .2s;font-size:16px;color:#777}
+.site-card:hover .site-arrow{opacity:1;transform:translateX(0);color:#bbb}
+.empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:#666}
+.empty .t1{font-size:18px;margin-bottom:8px;color:#888}
+/* 返回顶部按钮 */
+.back-to-top{
+  position:fixed;bottom:30px;right:24px;width:42px;height:42px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(30,30,30,.88);
+  color:#aaa;border-radius:8px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;opacity:0;visibility:hidden;
+  transition:all .25s ease;backdrop-filter:blur(8px);
+  z-index:999;
+}
+.back-to-top.show{opacity:1;visibility:visible}
+.back-to-top:hover{
+  background:rgba(50,50,50,.95);
+  color:#fff;border-color:rgba(255,255,255,.25);
+  transform:translateY(-2px);
+}
+/* 美化后的底部 */
+.footer{
+  margin-top:70px;padding:28px 0 8px;position:relative;
+  text-align:left;color:#777;font-size:13px;line-height:2;
+  background:linear-gradient(to top,rgba(0,0,0,.2),transparent);
+  border-top:1px solid transparent;
+}
+.footer::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:1px;
+  background:linear-gradient(90deg,transparent 5%,rgba(255,255,255,.22) 50%,transparent 95%);
+}
+.footer-block{margin-bottom:22px}
+.footer-title{
+  font-size:16px;color:#999;margin-bottom:10px;font-weight:500;
+  display:flex;align-items:center;gap:6px;
+}
+.footer-title::before{
+  content:"";width:3px;height:12px;background:#999;border-radius:1px;
+  display:inline-block;
+}
+/* 可复制链接样式 */
+.copy-links{
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+.copy-link{
+  padding:5px 12px;border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.02);color:#888;cursor:pointer;
+  font-size:16px;border-radius:6px;transition:all .2s;
+  user-select:none;
+}
+.copy-link:hover{
+  border-color:rgba(255,255,255,.2);color:#bbb;
+  background:rgba(255,255,255,.04);
+}
+.copy-link.copied{
+  border-color:rgba(100,200,100,.3);color:#88cc88;
+  background:rgba(100,200,100,.08);
+}
+/* 友情链接样式 */
+.friend-links{
+  display:flex;flex-wrap:wrap;gap:4px 0;
+}
+.friend-links a{
+  display:inline-block;margin-right:20px;margin-bottom:6px;color:#777;
+  text-decoration:none;transition:color .2s;font-size:16px;
+}
+.friend-links a:hover{color:#bbb}
+.copyright{color:#666;line-height:1.8;font-size:16px;padding-top:10px;border-top:1px dashed rgba(255,255,255,.06);margin-top:8px}
+.copy-tip{
+  position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(10px);
+  background:rgba(30,30,30,.95);color:#ccc;padding:8px 18px;border-radius:6px;
+  font-size:13px;opacity:0;visibility:hidden;transition:all .2s;z-index:1000;
+  border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);
+}
+.copy-tip.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+@media(max-width:600px){
+  .back-to-top{bottom:20px;right:16px;width:40px;height:40px}
+  .friend-links a{margin-right:14px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="title-row">
+      <h1>极简导航</h1>
+    </div>
+    <div class="search">
+      <input id="keyword" type="search" placeholder="输入关键词，回车或点击搜索直接百度">
+      <button id="searchBtn">百度搜索</button>
+    </div>
+    <div class="tabs" id="tabContainer"></div>
+  </header>
+  <main id="content"></main>
+  <footer class="footer">
+    <!-- 可点击复制链接区 -->
+    <div class="footer-block">
+      <div class="footer-title">快捷复制</div>
+      <div class="copy-links" id="copyLinks">
+        <span class="copy-link" data-text="https://www.baidu.com">百度</span>
+        <span class="copy-link" data-text="https://github.com">GitHub</span>
+        <span class="copy-link" data-text="https://www.bilibili.com">B站</span>
+        <span class="copy-link" data-text="https://www.zhihu.com">知乎</span>
+        <span class="copy-link" data-text="https://www.iconfont.cn">Iconfont</span>
+        <span class="copy-link" data-text="https://pixabay.com">Pixabay</span>
+      </div>
+    </div>
+    <!-- 友情链接 -->
+    <div class="footer-block">
+      <div class="footer-title">友情链接</div>
+      <div class="friend-links">
+        <a href="https://www.baidu.com" target="_blank">百度</a>
+        <a href="https://www.bilibili.com" target="_blank">哔哩哔哩</a>
+        <a href="https://github.com" target="_blank">GitHub</a>
+        <a href="https://www.zhihu.com" target="_blank">知乎</a>
+        <a href="https://juejin.cn" target="_blank">掘金</a>
+        <a href="https://www.runoob.com" target="_blank">菜鸟教程</a>
+        <a href="https://www.iconfont.cn" target="_blank">Iconfont</a>
+        <a href="https://pixabay.com" target="_blank">Pixabay</a>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>极简黑白导航 · 纯粹高效的上网入口</p>
+      <p>数据完全本地存储 · 单文件即可使用 · © 2026</p>
+    </div>
+  </footer>
+</div>
+
+<!-- 返回顶部按钮 -->
+<button class="back-to-top" id="backToTop" title="返回顶部">↑</button>
+<!-- 复制提示 -->
+<div class="copy-tip" id="copyTip">已复制到剪贴板</div>
+
+<script>
+// 网站数据：只需要name,url,category三个字段即可添加网站
+const siteData = [
+  // 常用工具
+  {name:"百度",url:"https://www.baidu.com",category:"常用工具"},
+  {name:"谷歌搜索",url:"https://www.google.com",category:"常用工具"},
+  {name:"必应搜索",url:"https://www.bing.com",category:"常用工具"},
+  {name:"知乎",url:"https://www.zhihu.com",category:"常用工具"},
+  {name:"微博",url:"https://weibo.com",category:"常用工具"},
+  {name:"豆瓣",url:"https://www.douban.com",category:"常用工具"},
+  {name:"B站",url:"https://www.bilibili.com",category:"常用工具"},
+  {name:"百度翻译",url:"https://fanyi.baidu.com",category:"常用工具"},
+  {name:"有道翻译",url:"https://www.youdao.com",category:"常用工具"},
+  {name:"石墨文档",url:"https://shimo.im",category:"常用工具"},
+  {name:"腾讯文档",url:"https://docs.qq.com",category:"常用工具"},
+  {name:"阿里云盘",url:"https://www.alipan.com",category:"常用工具"},
+  
+  // 编程开发
+  {name:"GitHub",url:"https://github.com",category:"编程开发"},
+  {name:"Gitee",url:"https://gitee.com",category:"编程开发"},
+  {name:"CSDN",url:"https://www.csdn.net",category:"编程开发"},
+  {name:"掘金",url:"https://juejin.cn",category:"编程开发"},
+  {name:"Stack Overflow",url:"https://stackoverflow.com",category:"编程开发"},
+  {name:"MDN",url:"https://developer.mozilla.org",category:"编程开发"},
+  {name:"NPM",url:"https://www.npmjs.com",category:"编程开发"},
+  {name:"菜鸟教程",url:"https://www.runoob.com",category:"编程开发"},
+  {name:"W3School",url:"https://www.w3school.com.cn",category:"编程开发"},
+  {name:"V2EX",url:"https://www.v2ex.com",category:"编程开发"},
+  
+  // 设计素材
+  {name:"站酷",url:"https://www.zcool.com.cn",category:"设计素材"},
+  {name:"花瓣网",url:"https://huaban.com",category:"设计素材"},
+  {name:"Pexels",url:"https://www.pexels.com",category:"设计素材"},
+  {name:"Unsplash",url:"https://unsplash.com",category:"设计素材"},
+  {name:"Pixabay",url:"https://pixabay.com",category:"设计素材"},
+  {name:"Iconfont",url:"https://www.iconfont.cn",category:"设计素材"},
+  {name:"Figma",url:"https://www.figma.com",category:"设计素材"},
+  {name:"Dribbble",url:"https://dribbble.com",category:"设计素材"},
+  {name:"Behance",url:"https://www.behance.net",category:"设计素材"},
+  
+  // 学习教育
+  {name:"中国大学MOOC",url:"https://www.icourse163.org",category:"学习教育"},
+  {name:"网易云课堂",url:"https://study.163.com",category:"学习教育"},
+  {name:"B站课堂",url:"https://www.bilibili.com/cheese",category:"学习教育"},
+  {name:"Coursera",url:"https://www.coursera.org",category:"学习教育"},
+  {name:"B站知识区",url:"https://www.bilibili.com/v/knowledge",category:"学习教育"},
+  {name:"知网",url:"https://www.cnki.net",category:"学习教育"},
+  {name:"维基百科",url:"https://zh.wikipedia.org",category:"学习教育"},
+  
+  // 娱乐休闲
+  {name:"优酷",url:"https://www.youku.com",category:"娱乐休闲"},
+  {name:"爱奇艺",url:"https://www.iqiyi.com",category:"娱乐休闲"},
+  {name:"腾讯视频",url:"https://v.qq.com",category:"娱乐休闲"},
+  {name:"芒果TV",url:"https://www.mgtv.com",category:"娱乐休闲"},
+  {name:"抖音",url:"https://www.douyin.com",category:"娱乐休闲"},
+  {name:"网易云音乐",url:"https://music.163.com",category:"娱乐休闲"},
+  {name:"QQ音乐",url:"https://y.qq.com",category:"娱乐休闲"},
+  {name:"斗鱼",url:"https://www.douyu.com",category:"娱乐休闲"},
+  {name:"虎牙",url:"https://www.huya.com",category:"娱乐休闲"},
+  
+  // 购物消费
+  {name:"淘宝",url:"https://www.taobao.com",category:"购物消费"},
+  {name:"天猫",url:"https://www.tmall.com",category:"购物消费"},
+  {name:"京东",url:"https://www.jd.com",category:"购物消费"},
+  {name:"拼多多",url:"https://www.pinduoduo.com",category:"购物消费"},
+  {name:"什么值得买",url:"https://www.smzdm.com",category:"购物消费"},
+];
+
+const tabs = [...new Set(siteData.map(item => item.category))];
+let currentTab = "全部";
+
+// 提取域名
+function getDomain(url) {
+  try { return new URL(url).hostname.replace("www.", ""); }
+  catch { return url; }
+}
+// 提取首字
+function getFirstChar(name) {
+  return name.trim().charAt(0);
+}
+// 渲染分类标签
+function renderTabs() {
+  const container = document.getElementById("tabContainer");
+  container.innerHTML = `<button class="tab-btn ${currentTab === "全部" ? "active" : ""}" data-cat="全部">全部</button>`;
+  tabs.forEach(cat => {
+    container.innerHTML += `<button class="tab-btn ${currentTab === cat ? "active" : ""}" data-cat="${cat}">${cat}</button>`;
+  });
+  container.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentTab = btn.dataset.cat;
+      renderTabs();
+      renderSites();
+    });
+  });
+}
+// 渲染网站列表
+function renderSites() {
+  const container = document.getElementById("content");
+  let list = siteData;
+  if (currentTab !== "全部") list = list.filter(i => i.category === currentTab);
+  if (list.length === 0) {
+    container.innerHTML = `<div class="empty"><div class="t1">该分类暂无网站</div></div>`;
+    return;
+  }
+  container.innerHTML = list.map(site => `
+    <a class="site-card" href="${site.url}" target="_blank" rel="noopener noreferrer">
+      <div class="site-icon">${getFirstChar(site.name)}</div>
+      <div class="site-info">
+        <div class="site-name">${site.name}</div>
+        <div class="site-domain">${getDomain(site.url)}</div>
+      </div>
+      <div class="site-arrow">→</div>
+    </a>
+  `).join("");
+}
+// 搜索功能：点击或回车直接跳百度搜索
+function doSearch() {
+  const kw = document.getElementById("keyword").value.trim();
+  if (kw) {
+    window.open(`https://www.baidu.com/s?wd=${encodeURIComponent(kw)}`, "_blank");
+  }
+}
+document.getElementById("searchBtn").addEventListener("click", doSearch);
+document.getElementById("keyword").addEventListener("keydown", e => {
+  if (e.key === "Enter") doSearch();
+});
+
+// 返回顶部
+const backToTop = document.getElementById("backToTop");
+window.addEventListener("scroll", () => {
+  backToTop.classList.toggle("show", window.scrollY > 300);
+});
+backToTop.addEventListener("click", () => {
+  window.scrollTo({top: 0, behavior: "smooth"});
+});
+
+// 复制功能
+const copyTip = document.getElementById("copyTip");
+document.querySelectorAll(".copy-link").forEach(el => {
+  el.addEventListener("click", async () => {
+    const text = el.dataset.text;
+    try {
+      await navigator.clipboard.writeText(text);
+      el.classList.add("copied");
+      copyTip.textContent = "已复制：" + text;
+      copyTip.classList.add("show");
+      setTimeout(() => {
+        el.classList.remove("copied");
+        copyTip.classList.remove("show");
+      }, 1500);
+    } catch(e) {
+      // 降级兼容
+      const input = document.createElement("input");
+      input.value = text;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand("copy");
+      document.body.removeChild(input);
+      el.classList.add("copied");
+      copyTip.textContent = "已复制：" + text;
+      copyTip.classList.add("show");
+      setTimeout(() => {
+        el.classList.remove("copied");
+        copyTip.classList.remove("show");
+      }, 1500);
+    }
+  });
+});
+
+renderTabs();
+renderSites();
+</script>
+</body>
+</html><!--23431070982573747210100416-->
