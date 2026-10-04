@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zf2629导航网站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #fff;
+        }
+        
+        /* 橙色渐变光晕背景 */
+        .glow-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+        }
+        
+        .glow-orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #f97316 0%, transparent 70%);
+            top: -200px;
+            left: -100px;
+        }
+        
+        .glow-orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #ea580c 0%, transparent 70%);
+            top: 30%;
+            right: -150px;
+        }
+        
+        .glow-orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #fb923c 0%, transparent 70%);
+            bottom: -100px;
+            left: 30%;
+        }
+        
+        /* 毛玻璃导航 */
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* 圆角卡片网格 */
+        .card {
+            background: linear-gradient(135deg, #111 0%, #0a0a0a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 16px;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f97316, transparent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(249, 115, 22, 0.15), 0 0 30px rgba(249, 115, 22, 0.1);
+            border-color: rgba(249, 115, 22, 0.3);
+        }
+        
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .card-title {
+            color: #e5e5e5;
+            font-size: 15px;
+            font-weight: 500;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            transition: color 0.3s ease;
+        }
+        
+        .card:hover .card-title {
+            color: #fb923c;
+        }
+        
+        /* 分类标签 */
+        .tag {
+            padding: 8px 20px;
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            color: #a3a3a3;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        .tag:hover {
+            border-color: rgba(249, 115, 22, 0.5);
+            color: #fb923c;
+        }
+        
+        .tag.active {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-color: #f97316;
+            color: #fff;
+        }
+        
+        /* 搜索框 */
+        .search-input {
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            color: #fff;
+            transition: all 0.2s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #f97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+        }
+        
+        .search-input::placeholder {
+            color: #525252;
+        }
+        
+        .search-btn {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .search-btn:hover {
+            background: linear-gradient(135deg, #fb923c, #f97316);
+            transform: translateY(-1px);
+        }
+        
+        /* 滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #404040;
+        }
+        
+        /* 标签横向滚动 */
+        .tags-scroll {
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .tags-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* 页脚链接 */
+        .footer-link {
+            color: #737373;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            padding: 4px 10px;
+            background: #111;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .zf-link {
+            color: #FFF;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            padding: 4px 10px;
+           
+         
+        }
+
+
+
+
+
+
+
+
+
+
+        .footer-link:hover {
+            color: #fb923c;
+            border-color: rgba(249, 115, 22, 0.3);
+            background: rgba(249, 115, 22, 0.05);
+        }
+        
+        /* 复制提示 */
+        .copy-toast {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 9999;
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
+        }
+        
+        .copy-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        /* 返回顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.9);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+        
+        .back-to-top:hover {
+            background: linear-gradient(135deg, #262626, #1a1a1a);
+            border-color: #f97316;
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(249, 115, 22, 0.2);
+        }
+        
+        .back-to-top svg {
+            width: 22px;
+            height: 22px;
+            stroke: #f97316;
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        /* 响应式网格 */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        @media (min-width: 768px) {
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .cards-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        /* text-sm */
+.text-zf {
+  font-size: 1.25rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+}
+    </style>
+</head>
+<body>
+    <!-- 背景光晕 -->
+    <div class="glow-bg">
+        <div class="glow-orb glow-orb-1"></div>
+        <div class="glow-orb glow-orb-2"></div>
+        <div class="glow-orb glow-orb-3"></div>
+    </div>
+    
+    <!-- 导航区 -->
+    <nav class="glass-nav fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <!-- Logo 和计数 -->
+                <div class="flex items-center gap-4">
+                    <h1 class="text-xl font-bold bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent">
+                        澹泊明志·宁静致远
+                    </h1>
+                    <span id="siteCount" class="text-sm text-neutral-500 px-2 py-1 bg-neutral-900 border border-neutral-800 rounded">
+                        0 个网站
+                    </span>
+                </div>
+                
+                <!-- 搜索框 -->
+                <div class="flex gap-2 flex-1 max-w-xl">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input flex-1 px-4 py-2.5 text-sm"
+                        placeholder="搜索网站，按回车百度搜索..."
+                    >
+                    <button id="searchBtn" class="search-btn px-5 py-2.5 text-sm font-medium text-white">
+                        搜索
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 内容区 -->
+    <main class="relative z-10 pt-28 pb-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <!-- 分类标签 -->
+            <div class="tags-scroll mb-8">
+                <div id="tagsContainer" class="flex gap-2 w-max">
+                    <!-- 标签由JS生成 -->
+                </div>
+            </div>
+            
+            <!-- 卡片网格 -->
+            <div id="cardsGrid" class="cards-grid">
+                <!-- 卡片由JS生成 -->
+            </div>
+            
+            <!-- 无结果提示 -->
+            <div id="noResult" class="hidden text-center py-20">
+                <p class="text-neutral-500 text-lg mb-4">未找到相关网站</p>
+                <p class="text-neutral-600 text-sm">按回车键或点击搜索按钮使用百度全网搜索</p>
+            </div>
+        </div>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer class="relative z-10 border-t border-neutral-900 py-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- 横向链接栏 -->
+            <div class="flex flex-wrap gap-2 mb-5"><b class="zf-link">点击复制➡</b>
+                <span class="footer-link" data-copy="https://gh-proxy.com/">gh-proxy</span>
+                <span class="footer-link" data-copy="view-source:">查网站源码</span>
+                <span class="footer-link" data-copy="https://sub.445569.xyz/">酷佬节点</span>
+                <span class="footer-link" data-copy="https://cdn.jsdelivr.net/gh/jifeng250/free-nodes@main/clash.yaml">节点01</span>
+                <span class="footer-link" data-copy="https://gh-proxy.com/raw.githubusercontent.com/yy1588133/proxy-pool/main/clash.yaml">节点02</span>
+                <span class="footer-link" data-copy="https://cdn.jsdelivr.net/gh/yy1588133/proxy-pool@main/clash.yaml">节点02</span>
+
+                
+                <span class="footer-link" data-copy="ftp://192.168.1.7:2122/">本地IP</span>
+                <span class="footer-link" data-copy="https://zf2629.github.io/ysc.json">多仓接口</span>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-5"><b class="zf-link">点击下载➡</b>
+                <span class="footer-link"><a href="https://gh-proxy.com/https://github.com/webhtv/webhtv/releases/download/v5.6.0-202609241253/mobile-arm64_v8a.apk">WHT影视</a></span>
+
+            </div>
+            <!-- 版权信息 -->
+            <p class="text-neutral-600 text-zf">
+               <b>© 2026 zf2629导航网站</b> 
+            </p>
+            <p class="text-neutral-700 text-zf mt-2">
+               <b>提示：点击卡片直接访问网站，点击页脚链接可复制对应内容</b> 
+            </p>
+        </div>
+    </footer>
+    
+    <!-- 复制提示弹窗 -->
+    <div id="copyToast" class="copy-toast">复制成功！</div>
+    
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="back-to-top" title="返回顶部">
+        <svg viewBox="0 0 24 24">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <script>
+        // ==================== 网站数据配置区 ====================
+        // 在这里添加/修改网址，格式：{ title: '网站名称', url: '网址', category: '分类' }
+        const websites = [
+            
+            // 常用
+            { title: "百度", url: "https://www.baidu.com", category: "常用" },
+           // 游戏
+           { title: "小霸王", url: "./html/小霸王.html", category: "常用" },    
+
+            { title: "我的永硕E盘", url: "https://zf2629.ysepan.com/", category: "空间网盘" },
+            { title: "GitHub", url: "https://github.com", category: "空间网盘" },
+            { title: "Gitee", url: "https://gitee.com", category: "空间网盘" },
+            { title: "netlify", url: "https://www.netlify.com", category: "空间网盘" },
+            { title: "蓝奏云", url: "https://accounts.woozooo.com/", category: "空间网盘" },
+            { title: "凯速网", url: "https://kstore.cc/", category: "空间网盘" },
+            { title: "neocities", url: "https://neocities.org/", category: "空间网盘" },
+
+
+            
+            { title: "SaltyLeo的书架", url: "https://tstrs.me/search", category: "书" },
+            
+            // 工具
+            { title: "小草助手", url: "https://yecao.app/", category: "文件分享" },
+            { title: "Wormhole文件分享", url: "https://wormhole.app/", category: "文件分享" },
+            { title: "文件快递柜", url: "https://crud.bbroot.com/", category: "文件分享" },
+
+            // 工具
+            { title: "直播转换工具", url: "./code/直播转换工具.html", category: "工具" },
+            { title: "JSON校验格式化", url: "./code/JSON校验格式化.html", category: "工具" },
+            { title: "base64", url: "./code/base64.html", category: "工具" },
+            { title: "图片转Base64", url: "./code/图片转Base64.html", category: "工具" },
+            { title: "JS加密解密", url: "./code/JS加密解密.html", category: "工具" },
+            { title: "利息收益", url: "./code/利息收益.html", category: "工具" },
+
+
+            { title: "我不是.摸鱼儿.cc", url: "https://xn--ihqu10cn4c.xn--v4q818bf34b.cc/", category: "TVBOX官网" },
+            { title: "junchao.tang", url: "https://cnb.cool/junchao.tang", category: "TVBOX官网" },
+            
+            { title: "酷佬", url: "https://jsnzkpg.com/", category: "TVBOX官网" },
+            { title: "东篱", url: "https://chigua.eu.org/", category: "TVBOX官网" },
+            { title: "东篱接口", url: "https://16151.kstore.space/", category: "TVBOX接口" },
+            { title: "潇洒接口", url: "https://qist.ugigc.dpdns.org/xiaosa/api.json", category: "TVBOX接口" },
+            { title: "王二小接口", url: "https://9280.kstore.vip/newwex.json", category: "TVBOX接口" },
+            { title: "茶茶接口", url: "https://y.cczi.cc/cham/cha.json", category: "TVBOX接口" },
+            
+            
+
+
+            // 下载
+            { title:"FongMi","url":"https://github.com/FongMi/Release/releases",category: "下载" },
+            { title:"webhtv","url":"https://github.com/webhtv/webhtv/releases",category: "下载" },
+            { title: "可用py", url: "https://gh-proxy.com/https://github.com/zf2629/000zip/raw/main/可用py.zip", category: "下载" },
+            { title: "自动加载1", url: "https://gh-proxy.com/https://github.com/zf2629/000zip/raw/main/自动加载.zip", category: "下载" },
+            { title: "自动加载", url: "https://gh-proxy.com/https://github.com/zf2629/000zip/raw/main/zf-main.zip", category: "下载" },
+            { title: "影视+", url: "https://gh-proxy.com/https://github.com/zf2629/01app/raw/main/影视+.apk", category: "下载" },
+
+            
+        
+            // 音乐
+            { title: "音乐下载", url: "./html/music.html", category: "音乐" },
+            { title: "ZF2629音乐网", url: "./html/音乐网/index.html", category: "音乐" },
+            { title: "专用音乐", url: "./html/mymusic.html", category: "音乐" },     
+            { title: "音乐解析器", url: "https://musicjx.com/", category: "音乐" },     
+            { title: "无损音乐下载", url: "https://flac.music.hi.cn/", category: "音乐" },     
+           
+        
+            // 采集
+            {title:"OK采集","url":"https://okzyw.cc/api.php/provide/vod", category: "采集" },
+            {title:"猫眼采集","url":"https://www.maoyanzy.com/api.php/provide/vod", category: "采集" },
+            {title:"天涯影视采集","url":"https://tyyszy.com/api.php/provide/vod", category: "采集" },
+            {title:"非凡采集","url":"http://www.ffzy.tv/api.php/provide/vod", category: "采集" },
+            {title:"量子采集","url":"https://www.lzzy.tv/api.php/provide/vod", category: "采集" },
+            {title:"牛牛采集","url":"https://niuniuzy6.com/api.php/provide/vod", category: "采集" },
+            {title:"索尼采集","url":"https://suonizy.cc/api.php/provide/vod", category: "采集" },
+            {title:"闪电采集","url":"https://shandianzy.com/api.php/provide/vod", category: "采集" },
+            {title:"快车采集","url":"https://kuaichezy.com/api.php/provide/vod", category: "采集" },
+            {title:"最大采集","url":"https://www.zuidazy.co/api.php/provide/vod", category: "采集" },
+            {title:"如意采集","url":"https://www.ryzy.tv/api.php/provide/vod", category: "采集" },
+            {title:"豆瓣采集","url":"https://dbzy.tv/api.php/provide/vod", category: "采集" },
+            {title:"魔都采集","url":"https://www.moduzy6.com/api.php/provide/vod", category: "采集" },
+            {title:"爱奇艺","url":"https://iqiyizy.cc/api.php/provide/vod", category: "采集" },
+            {title:"豪华采集","url":"http://www.haohuazy.com/api.php/provide/vod", category: "采集" },
+            {title:"电影天堂","url":"http://dyttzyw.tv/api.php/provide/vod", category: "采集" },
+            {title:"极速采集","url":"https://www.jisuzy.com/api.php/provide/vod", category: "采集" },
+            {title:"速播采集","url":"https://www.subozy.com/api.php/provide/vod", category: "采集" },
+            {title:"爱坤采集","url":"https://ikunzy.cc/api.php/provide/vod", category: "采集" },
+            {title:"樱花采集","url":"https://yhzy.cc/api.php/provide/vod", category: "采集" },
+            {title:"艾旦采集","url":"https://lovedan.net/api.php/provide/vod", category: "采集" },
+
+            {title:"无尽采集","url":"https://api.wujinapi.me/api.php/provide/vod", category: "采集" },
+            {title:"优质采集","url":"https://api.yyzy-tv.vip/inc/api_mac10.php", category: "采集" },
+            {title:"人人影视","url":"http://43.139.196.163:31308/gather/jso", category: "采集" },
+            {title:"红牛采集","url":"https://www.hongniuzy2.com/api.php/provide/vod/at/josn/", category: "采集" },
+            {title:"新浪采集","url":"https://api.xinlangapi.com/xinlangapi.php/provide/vod/josn", category: "采集" },
+            {title:"暴风采集","url":"https://bfzyapi.com/api.php/provide/vod/", category: "采集" },
+            {title:"U酷采集","url":"https://api.ukuapi88.com/api.php/provide/vod/",category: "采集" },
+            {title:"360采集","url":"https://360zyzz.com/api.php/provide/vod", category: "采集" },
+
+
+
+
+
+            // github
+            {title:"gh-proxy","url":"https://gh-proxy.com/",category: "GITHUB" },
+          
+            {title:"phu889","url":"https://github.com/phu889/kjh998",category: "GITHUB" },
+            {title:"潇洒","url":"https://github.com/PizazzGY",category: "GITHUB" },
+            {title:"东璃","url":"https://github.com/chitue/dongliTV",category: "GITHUB" },
+            {title:"雨呢","url":"https://github.com/cluntop/tvbox",category: "GITHUB" },
+            {title:"AVBOX","url":"https://github.com/xiaochangxu",category: "GITHUB" },
+            
+            
+
+            
+
+            // 邮箱服务
+            { title: 'QQ邮箱', url: 'https://mail.qq.com', category: '邮箱' },
+            { title: '网易邮箱', url: 'https://mail.163.com', category: '邮箱' },
+            { title: '节点GITHUB', url: 'https://github.com/yy1588133/proxy-pool', category: '节点' },
+
+            
+
+        ];
+        // ==================== 网站数据配置区结束 ====================
+
+        // 当前状态
+        let currentCategory = '全部';
+        let currentKeyword = '';
+
+        // DOM元素
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const tagsContainer = document.getElementById('tagsContainer');
+        const cardsGrid = document.getElementById('cardsGrid');
+        const siteCount = document.getElementById('siteCount');
+        const noResult = document.getElementById('noResult');
+        const copyToast = document.getElementById('copyToast');
+        const backToTop = document.getElementById('backToTop');
+
+        // 初始化
+        function init() {
+            renderTags();
+            renderCards();
+            updateCount();
+            bindEvents();
+        }
+
+        // 渲染分类标签
+        function renderTags() {
+            // 提取所有分类
+            const categories = ['全部', ...new Set(websites.map(site => site.category))];
+            
+            tagsContainer.innerHTML = categories.map(cat => `
+                <button class="tag ${cat === currentCategory ? 'active' : ''}" data-category="${cat}">
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        // 渲染卡片
+        function renderCards() {
+            let filteredSites = websites;
+            
+            // 分类筛选
+            if (currentCategory !== '全部') {
+                filteredSites = filteredSites.filter(site => site.category === currentCategory);
+            }
+            
+            // 关键词筛选
+            if (currentKeyword) {
+                const keyword = currentKeyword.toLowerCase();
+                filteredSites = filteredSites.filter(site => 
+                    site.title.toLowerCase().includes(keyword) || 
+                    site.url.toLowerCase().includes(keyword)
+                );
+            }
+            
+            // 无结果提示
+            if (filteredSites.length === 0) {
+                cardsGrid.innerHTML = '';
+                noResult.classList.remove('hidden');
+            } else {
+                noResult.classList.add('hidden');
+                cardsGrid.innerHTML = filteredSites.map(site => `
+                    <div class="card" data-url="${site.url}" title="${site.title} - ${site.url}">
+                        <span class="card-title">${site.title}</span>
+                    </div>
+                `).join('');
+            }
+            
+            // 更新计数
+            siteCount.textContent = `${filteredSites.length} 个网站`;
+        }
+
+        // 更新计数
+        function updateCount() {
+            siteCount.textContent = `${websites.length} 个网站`;
+        }
+
+        // 百度搜索
+        function baiduSearch(keyword) {
+            if (keyword.trim()) {
+                window.open(`https://www.baidu.com/s?wd=${encodeURIComponent(keyword)}`, '_blank');
+            }
+        }
+
+        // 绑定事件
+        function bindEvents() {
+            // 实时搜索
+            searchInput.addEventListener('input', (e) => {
+                currentKeyword = e.target.value.trim();
+                renderCards();
+            });
+            
+            // 回车搜索
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    baiduSearch(searchInput.value);
+                }
+            });
+            
+            // 点击搜索按钮
+            searchBtn.addEventListener('click', () => {
+                baiduSearch(searchInput.value);
+            });
+            
+            // 标签点击 - 事件委托
+            tagsContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('tag')) {
+                    currentCategory = e.target.dataset.category;
+                    document.querySelectorAll('.tag').forEach(tag => tag.classList.remove('active'));
+                    e.target.classList.add('active');
+                    renderCards();
+                }
+            });
+            
+            // 卡片点击 - 事件委托
+            cardsGrid.addEventListener('click', (e) => {
+                const card = e.target.closest('.card');
+                if (card) {
+                    window.open(card.dataset.url, '_blank');
+                }
+            });
+            
+            // 页脚链接点击复制 - 事件委托
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('footer-link')) {
+                    const text = e.target.dataset.copy;
+                    copyToClipboard(text);
+                }
+            });
+            
+            // 滚动监听 - 显示/隐藏返回顶部按钮
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+            
+            // 返回顶部点击
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // 复制到剪贴板
+        function copyToClipboard(text) {
+            // 创建临时输入框
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopyToast();
+            } catch (err) {
+                // 降级方案
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopyToast();
+                }).catch(() => {
+                    console.error('复制失败');
+                });
+            }
+            
+            document.body.removeChild(textarea);
+        }
+        
+        // 显示复制提示
+        function showCopyToast() {
+            copyToast.classList.add('show');
+            setTimeout(() => {
+                copyToast.classList.remove('show');
+            }, 2000);
+        }
+
+        // 启动应用
+        init();
+    </script>
+</body>
+</html>
