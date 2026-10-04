@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>极简导航</title>
+<title>ZF2629</title>
 <style>
 /* ============ 基础变量 ============ */
 :root {
@@ -358,7 +358,7 @@ body {
   border-radius: 8px;
   padding: 7px 16px;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 18px;
   transition: all 0.25s cubic-bezier(.2,.8,.2,1);
   white-space: nowrap;
   font-family: inherit;
@@ -378,7 +378,7 @@ body {
 .friend-link {
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 18px;
   transition: color 0.2s;
 }
 .friend-link:hover { color: var(--text-primary); }
@@ -492,7 +492,8 @@ body {
 
     <!-- 快捷复制区 -->
     <div class="mb-8">
-      <div class="text-13 mb-4 font-medium" style="color:var(--text-muted);">快捷复制</div>
+      <!-- <div class="text-20 mb-4 font-medium" style="color:var(--text-muted);">快捷复制</div> -->
+      <div class="text-20 mb-4 font-medium" style="color:#FFF">点击复制：</div>
       <div id="copyArea" class="flex flex-wrap gap-2"></div>
     </div>
 
@@ -500,16 +501,17 @@ body {
 
     <!-- 友情链接 -->
     <div class="mt-8">
-      <div class="text-13 mb-4 font-medium" style="color:var(--text-muted);">友情链接</div>
+      <!-- <div class="text-20 mb-4 font-medium" style="color:var(--text-muted);">友情链接</div> -->
+      <div class="text-20 mb-4 font-medium" style="color:#FFF">友情链接：</div>
       <div id="friendLinks" class="flex flex-wrap" style="gap: 8px 24px;"></div>
     </div>
 
     <hr class="dashed-divider mt-8">
 
     <!-- 版权 -->
-    <div class="mt-6 text-13 leading-relaxed" style="color:var(--text-muted);">
-      <p>ZF2629 的网址导航</p>
-      <p class="mt-1">© 2026 ZF2629 </p>
+    <div class="mt-6 text-22 leading-relaxed" style="color:var(--text-muted);">
+      <p style="color:#FFF">© ZF2629 的网址导航</p>
+   
     </div>
   </div>
 </footer>
@@ -895,4 +897,3 @@ document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
 </html>
-<!--12696654612573747210100419--><!--18500691332573747210100419--><!--21014585142395614730100419--><!--24973363322395614730100419--><!--25099550972395614730100419-->
