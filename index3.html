@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>极简导航</title>
+<title>ZF2629</title>
 <style>
 /* ============ 基础变量 ============ */
 :root {
@@ -84,7 +84,6 @@ body {
 .text-13 { font-size: 13px; }
 .text-14 { font-size: 14px; }
 .text-15 { font-size: 15px; }
-.text-16 { font-size: 16px; }
 
 /* ============ 网格布局（响应式） ============ */
 .card-grid {
@@ -136,60 +135,6 @@ body {
 .dashed-divider {
   border: none;
   border-top: 1px dashed rgba(255,255,255,0.08);
-}
-
-/* ============ 页脚行：标签+内容一排 ============ */
-.footer-row {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.footer-label {
-
-
-  padding-left: 14px;
-
-  color: #FF9800;
-
-}
-
-
-/* .footer-label {
-  flex-shrink: 0;
-  position: relative;
-  padding-left: 14px;
-  font-size: 16px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.75);
-  letter-spacing: 2px;
-}
-.footer-label::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.6);
-  box-shadow: 0 0 6px rgba(255,255,255,0.35);
-} */
-.footer-content {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-@media (max-width: 640px) {
-  .footer-row { gap: 12px; }
-  .footer-label {
-    padding-left: 12px;
-    margin-bottom: 4px;
-    width: 100%;
-  }
 }
 
 /* ============ 标题 ============ */
@@ -378,10 +323,10 @@ body {
   color: var(--text-secondary);
 }
 
-/* ============ 返回顶部 / 返回底部 ============ */
+/* ============ 返回顶部 ============ */
 .back-top {
   position: fixed;
-  right: 28px; bottom: 88px;
+  right: 28px; bottom: 28px;
   width: 48px; height: 48px;
   border-radius: 50%;
   background: rgba(255,255,255,0.06);
@@ -401,97 +346,42 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
-.back-bottom {
-  position: fixed;
-  right: 28px; bottom: 28px;
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer;
-  z-index: 100;
-  transition: all 0.3s cubic-bezier(.2,.8,.2,1);
-  color: var(--text-secondary);
-}
-.back-bottom:hover {
-  background: rgba(255,255,255,0.14);
-  color: var(--text-primary);
-  border-color: rgba(255,255,255,0.22);
-  transform: translateY(2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-}
 @media (max-width: 640px) {
-  .back-top { right: 18px; bottom: 70px; width: 42px; height: 42px; }
-  .back-bottom { right: 18px; bottom: 18px; width: 42px; height: 42px; }
+  .back-top { right: 18px; bottom: 18px; width: 42px; height: 42px; }
 }
 
 /* ============ 快捷复制按钮 ============ */
 .copy-btn {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
   border-radius: 8px;
-  padding: 6px 15px;
+  padding: 7px 16px;
   cursor: pointer;
-  font-size: 16px;
-  letter-spacing: 0.5px;
-  transition: all 0.3s cubic-bezier(.2,.8,.2,1);
+  font-size: 18px;
+  transition: all 0.25s cubic-bezier(.2,.8,.2,1);
   white-space: nowrap;
   font-family: inherit;
-  position: relative;
-  overflow: hidden;
-}
-.copy-btn::before {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-  transition: left 0.5s ease;
 }
 .copy-btn:hover {
-  background: rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.95);
-  border-color: rgba(255,255,255,0.2);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  background: rgba(255,255,255,0.1);
+  color: var(--text-primary);
+  border-color: rgba(255,255,255,0.16);
 }
-.copy-btn:hover::before { left: 100%; }
 .copy-btn.copied {
-  background: rgba(255,255,255,0.9);
-  color: #1a1a1e;
-  border-color: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border-color: rgba(255,255,255,0.25);
 }
 
 /* ============ 友情链接 ============ */
-.friend-links-list {
-  gap: 6px 22px;
-}
 .friend-link {
-  color: rgba(255,255,255,0.5);
+  color: var(--text-muted);
   text-decoration: none;
-  font-size: 16px;
-  letter-spacing: 0.5px;
-  position: relative;
-  padding: 4px 0;
-  transition: all 0.3s cubic-bezier(.2,.8,.2,1);
+  font-size: 18px;
+  transition: color 0.2s;
 }
-.friend-link::after {
- 
-  content: '';
-  position: absolute;
-  left: 0; bottom: 0;
-  width: 0; height: 1px;
-  background: #FF9800;
-  transition: width 0.3s cubic-bezier(.2,.8,.2,1);
-}
-.friend-link:hover {
-  color: #FF9800;
-}
-.friend-link:hover::after { width: 100%; }
+.friend-link:hover { color: var(--text-primary); }
 
 /* ============ 空状态 ============ */
 .empty-state {
@@ -560,7 +450,7 @@ body {
       <div class="left-block">
         <h1 class="site-title">极简导航</h1>
         <div class="search-wrap">
-          <input type="text" id="searchInput" class="search-input" placeholder="输入关键词站内搜索，回车/点搜索跳百度..." autocomplete="off">
+          <input type="text" id="searchInput" class="search-input" placeholder="搜索网站或百度搜索..." autocomplete="off">
           <button id="searchBtn" class="search-btn">搜索</button>
         </div>
       </div>
@@ -585,16 +475,10 @@ body {
   </div>
 </main>
 
-<!-- 返回顶部（永久固定，上方） -->
+<!-- 返回顶部（永久固定） -->
 <button id="backTop" class="back-top" title="返回顶部" aria-label="返回顶部">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="18 15 12 9 6 15"></polyline>
-  </svg>
-</button>
-<!-- 返回底部（永久固定，下方） -->
-<button id="backBottom" class="back-bottom" title="返回底部" aria-label="返回底部">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="6 9 12 15 18 9"></polyline>
   </svg>
 </button>
 
@@ -603,31 +487,31 @@ body {
 
 <!-- 页脚 -->
 <footer>
-  <div class="container" >
-    <!-- py-10 mt-10" 类边距外边距-->
+  <div class="container py-10 mt-10">
     <div class="neon-divider mb-8"></div>
 
     <!-- 快捷复制区 -->
-    <div class="mb-3 footer-row">
-      <div class="footer-label">点击复制：</div>
-      <div id="copyArea" class="flex flex-wrap gap-2 footer-content "></div>
+    <div class="mb-8">
+      <!-- <div class="text-20 mb-4 font-medium" style="color:var(--text-muted);">快捷复制</div> -->
+      <div class="text-20 mb-4 font-medium" style="color:#FFF">点击复制：</div>
+      <div id="copyArea" class="flex flex-wrap gap-2"></div>
     </div>
 
-    <!-- <hr class="dashed-divider"> -->
+    <hr class="dashed-divider">
 
     <!-- 友情链接 -->
-    <div class="mt-3 footer-row">
-      <div class="footer-label">友情链接：</div>
-      <div id="friendLinks" class="flex flex-wrap footer-content friend-links-list"></div>
+    <div class="mt-8">
+      <!-- <div class="text-20 mb-4 font-medium" style="color:var(--text-muted);">友情链接</div> -->
+      <div class="text-20 mb-4 font-medium" style="color:#FFF">友情链接：</div>
+      <div id="friendLinks" class="flex flex-wrap" style="gap: 8px 24px;"></div>
     </div>
 
-    <hr class="dashed-divider mt-1">
+    <hr class="dashed-divider mt-8">
 
     <!-- 版权 -->
-    <div class="mt-1 text-20 leading-relaxed" style="color:#FF9800">
-      <p class="mt-1">Copyright ©2026 ZF2629.GITHUB.IO All Rights Reserved.</p>
-      <p>声明：本站非营利性网站，如果发布的内容若侵犯到您的权益，请联系我们，我们将及时处理。</p>
-
+    <div class="mt-6 text-22 leading-relaxed" style="color:var(--text-muted);">
+      <p style="color:#FFF">© ZF2629 的网址导航</p>
+   
     </div>
   </div>
 </footer>
@@ -635,8 +519,9 @@ body {
 <script>
 // ============ 网站数据（添加网站只需加一条：name / url / category） ============
 const sites = [
- // 常用
- { name: "百度", url: "https://www.baidu.com", category: "常用" },
+ 
+   // 常用
+   { name: "百度", url: "https://www.baidu.com", category: "常用" },
            // 游戏
            { name: "小霸王", url: "./html/小霸王.html", category: "常用" },    
 
@@ -750,6 +635,8 @@ const sites = [
             { name: 'QQ邮箱', url: 'https://mail.qq.com', category: '邮箱' },
             { name: '网易邮箱', url: 'https://mail.163.com', category: '邮箱' },
             { name: '节点GITHUB', url: 'https://github.com/yy1588133/proxy-pool', category: '节点' },
+
+            
 ];
 
 // ============ 右侧顶部功能菜单 ============
@@ -763,12 +650,12 @@ const topMenus = [
 
 // ============ 快捷复制区 ============
 const copyList = [
-{ name: 'gh-proxy', url: 'https://gh-proxy.com/' },
+  { name: 'gh-proxy', url: 'https://gh-proxy.com/' },
+
 ];
 
 // ============ 友情链接 ============
 const friendLinks = [
-  { name: '百度', url: 'https://www.baidu.com' },
   { name: 'neocities', url: 'https://neocities.org/' },
   { name: 'GitHub', url: 'https://github.com' },
   { name: 'Gitee', url: 'https://gitee.com' },
@@ -904,7 +791,7 @@ function renderCards() {
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <p>站内没有找到「${currentKeyword}」相关网站，按回车/点搜索去百度找找 ↵</p>
+        <p>没有找到「${currentKeyword}」相关网站，按回车去百度搜索 ↵</p>
       </div>`;
     return;
   }
@@ -956,23 +843,25 @@ function doBaiduSearch(kw) {
   window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(kw), '_blank');
 }
 
-// mode: 'site'  = 输入时实时做站内搜索（只筛选卡片，不跳转）
-//       'baidu' = 点击按钮/回车，直接新开标签页跳百度搜索对应关键词
-function handleSearch(mode) {
+function handleSearch(goBaiduIfEmpty) {
   const kw = document.getElementById('searchInput').value.trim();
   currentKeyword = kw;
-  renderCards();                 // 输入即做站内搜索
-  if (mode === 'baidu' && kw) {
-    doBaiduSearch(kw);           // 按钮/回车：直接新开标签页跳百度
+  renderCards();
+  // 如果是按回车/点按钮、且站内无结果，跳百度
+  if (goBaiduIfEmpty && kw) {
+    let list = sites;
+    if (currentCategory !== '全部') list = list.filter(s => s.category === currentCategory);
+    const hit = list.some(s =>
+      s.name.toLowerCase().includes(kw.toLowerCase()) ||
+      s.url.toLowerCase().includes(kw.toLowerCase())
+    );
+    if (!hit) doBaiduSearch(kw);
   }
 }
 
-// ============ 返回顶部 / 返回底部 ============
+// ============ 返回顶部 ============
 document.getElementById('backTop').addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-document.getElementById('backBottom').addEventListener('click', () => {
-  window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
 });
 
 // ============ 初始化 ============
@@ -986,10 +875,10 @@ function init() {
   const input = document.getElementById('searchInput');
   const btn = document.getElementById('searchBtn');
 
-  input.addEventListener('input', () => handleSearch('site'));
-  btn.addEventListener('click', () => handleSearch('baidu'));
+  input.addEventListener('input', () => handleSearch(false));
+  btn.addEventListener('click', () => handleSearch(true));
   input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') { e.preventDefault(); handleSearch('baidu'); }
+    if (e.key === 'Enter') { e.preventDefault(); handleSearch(true); }
   });
 }
 
