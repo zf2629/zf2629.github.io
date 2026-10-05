@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>极简导航</title>
+<title>ZF269导航</title>
 <style>
 /* ============ 基础变量 ============ */
 :root {
@@ -196,7 +196,7 @@ body {
 .site-title {
   font-size: 24px;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #FF9800;
   letter-spacing: 4px;
   margin-bottom: 16px;
 }
@@ -238,7 +238,9 @@ body {
   font-family: inherit;
 }
 .search-btn:hover {
-  background: rgba(255,255,255,0.18);
+  /* background: rgba(255,255,255,0.18); */
+    background: #FF9800;
+
   border-color: rgba(255,255,255,0.2);
 }
 
@@ -558,7 +560,7 @@ body {
 
       <!-- 左侧：标题 + 搜索 -->
       <div class="left-block">
-        <h1 class="site-title">ZF2629</h1>
+        <h1 class="site-title">ZF2629-詹詹自喜网</h1>
         <div class="search-wrap">
           <input type="text" id="searchInput" class="search-input" placeholder="输入关键词站内搜索，回车/点搜索跳百度..." autocomplete="off">
           <button id="searchBtn" class="search-btn">搜索</button>
@@ -625,7 +627,7 @@ body {
 
     <!-- 版权 -->
     <div class="mt-1 text-20 leading-relaxed" style="color:#FF9800">
-      <p class="mt-1">Copyright ©2026 ZF2629.GITHUB.IO All Rights Reserved.</p>
+      <p class="mt-1">Copyright ©2026 ZF2629.GITHUB.IO All Rights Reserved.--詹詹自喜网</p>
       <p>声明：本站非营利性网站，如果发布的内容若侵犯到您的权益，请联系我们，我们将及时处理。</p>
 
     </div>
@@ -666,8 +668,11 @@ const sites = [
             { name: "利息收益", url: "./code/利息收益.html", category: "工具" },
 
 
-            { name: "我不是.摸鱼儿.cc", url: "https://xn--ihqu10cn4c.xn--v4q818bf34b.cc/", category: "TVBOX官网" },
+            { name: "我不是.摸鱼儿.cc", url: "https://我不是.摸鱼儿.cc", category: "TVBOX官网" },
+            { name: "英格里希嗷呜", url: "http://www.英格里希嗷呜.top/", category: "TVBOX官网" },
             { name: "junchao.tang", url: "https://cnb.cool/junchao.tang", category: "TVBOX官网" },
+          
+            
             
             { name: "酷佬", url: "https://jsnzkpg.com/", category: "TVBOX官网" },
             { name: "东篱", url: "https://chigua.eu.org/", category: "TVBOX官网" },
@@ -862,9 +867,9 @@ function renderTopMenu() {
         renderCards();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (key === 'about') {
-        showToast('极简导航 v1.0 · 干净无广告的本地导航');
+        showToast('ZF2629网址导航');
       } else if (key === 'fav') {
-        showToast('FAV 干净无广告的本地导航');  
+        showToast('该功能敬请期待');  
       } else {
         showToast('该功能敬请期待');
       }
