@@ -194,7 +194,7 @@ const friendLinks = [
   { name: '影视2629', url: 'https://lz0.qaiu.top/parser?url=https://wwaqx.lanzouc.com/imSEM4b245da&pwd=1230' },
   { name: 'hyperphp', url: 'https://zf2629.hyperphp.com' },
   { name: 'wasmer', url: 'https://zf2629.wasmer.app/' },
-  
+  { name: '自动加载包', url: 'https://zf2629.github.io/zf-main/本地01.zip' },
   
   
 ];
