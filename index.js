@@ -178,6 +178,7 @@ const copyList = [
 { name: 'zf2629接口', url: 'https://zf2629.github.io/zf-main/1.json' },
 { name: '在线本地02', url: 'https://zf2629.github.io/01zf-main/本地02/本地02.json' },
 { name: 'NZ多仓', url: 'https://zf2629.github.io/nz.json' },
+{ name: '直播接口', url: 'https://zf2629.github.io/live.json' },
 
 
 
