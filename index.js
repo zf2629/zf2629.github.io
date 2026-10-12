@@ -176,6 +176,7 @@ const copyList = [
 { name: 'view-source:', url: 'view-source:' },
 { name: '自动加载', url: 'https://zf2629.github.io/zf-main/自动加载.json' },
 { name: 'zf2629接口', url: 'https://zf2629.github.io/zf-main/1.json' },
+{ name: '在线本地02', url: 'https://gh-proxy.com/https://raw.githubusercontent.com/zf2629/01zf-main/refs/heads/main/本地02/本地02.json' },
 
 
 
