@@ -151,7 +151,7 @@ const sites = [
             { name: 'skymail', url: 'https://skymail.ink/', category: '邮箱' },
             
             // 节点
-            { name: 'yy1588133', url: 'https://raw.githubusercontent.com/yy1588133/proxy-pool/main/clash.yaml', category: '节点' },
+            { name: 'yy1588133', url: 'https://gh-proxy.com/raw.githubusercontent.com/yy1588133/proxy-pool/main/clash.yaml', category: '节点' },
             { name: '酷佬节点', url: 'https://sub.445569.xyz/', category: '节点' },
 
             
