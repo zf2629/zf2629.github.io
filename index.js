@@ -90,6 +90,8 @@ const sites = [
             // 音乐
             { name: "自用音乐", url: "https://zf2629.github.io/01MP3/music.html", category: "音乐" },     
             { name: "音乐下载", url: "./html/music.html", category: "音乐" },
+            
+            { name: "QQ音乐", url: "https://zf2629.neocities.org/qqmusic/", category: "音乐" },
             { name: "ZF2629音乐网", url: "./html/音乐网/index.html", category: "音乐" },
             
             { name: "音乐解析器", url: "https://musicjx.com/", category: "音乐" },     
