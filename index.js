@@ -156,8 +156,9 @@ const sites = [
             // 节点
             { name: 'yy1588133', url: 'https://gh-proxy.com/raw.githubusercontent.com/yy1588133/proxy-pool/main/clash.yaml', category: '节点' },
             { name: '酷佬节点', url: 'https://sub.445569.xyz/', category: '节点' },
+            // 其他
+            { name: '装机助理', url: 'http://www.ntdvf.com/', category: '其他' },
 
-            
             
             
 ];
