@@ -1,4 +1,7 @@
 {"urls":[   
+    {"name":"┃PY┃自动推送","url":"https://zf2629.github.io/json/自动推送/自动推送.json"},     
+
+
 {"name":"┃本地01┃自动加载","url":"file://zf-main/本地01/本地01.json"},       
 {"name":"┃本地02┃","url":"file://zf-main/本地02/本地02.json"}, 
 {"name":"┃本地数据库┃","url":"file://zf-main/数据库/数据库.json"}, 
