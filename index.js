@@ -3,6 +3,9 @@
 const sites = [
  // 常用
  { name: "百度", url: "https://www.baidu.com", category: "常用" },
+ { name: "MT远程管理", url: "http://192.168.1.7:8082/", category: "常用" },
+
+ 
            // 游戏
            { name: "小霸王", url: "./html/小霸王.html", category: "常用" }, 
            { name: "自动加载", url: "https://zf2629.github.io/zf-main/自动加载.json", category: "常用" }, 
@@ -17,6 +20,24 @@ const sites = [
             { name: "neocities", url: "https://neocities.org/", category: "空间网盘" },
 
 
+
+            { name: "大白外链网盘", url: "https://pan.gt68.cn/", category: "空间网盘" },
+            { name: "免费公益外链网盘", url: "https://pan.29o.cn/", category: "空间网盘" },
+            { name: "惜染外链网盘", url: "https://mpimg.cn/", category: "空间网盘" },
+            { name: "彩虹外链网盘", url: "https://cccimg.com/", category: "空间网盘" },
+            { name: "乐趣享外链网盘", url: "https://www.lequxiang.com.cn/", category: "空间网盘" },
+            { name: "松子云盘", url: "https://pan.szfx.top/", category: "空间网盘" },
+            { name: "免费文件外链网盘", url: "http://pan.daliutv.top:2025/", category: "空间网盘" },
+
+            { name: "月下独酌网盘", url: "https://wpty.ccccocccc.cc/", category: "空间网盘" },
+            { name: "玖伴外链网盘", url: "https://www.panurl.cn/", category: "空间网盘" },
+            { name: "咖咖云盘", url: "https://wp.kayyw.com/", category: "空间网盘" },
+
+
+
+
+
+            
             
             { name: "SaltyLeo的书架", url: "https://tstrs.me/search", category: "书" },
             
@@ -37,6 +58,8 @@ const sites = [
 
             
             // 官
+            
+            { name: 'MT管理器[官]', url: 'https://mt.cc/', category: '官' },
             { name: '节点聚合[官]', url: 'https://github.com/yy1588133/proxy-pool', category: '官' },
             { name:"FongMi","url":"https://github.com/FongMi/Release/releases",category: "官" },
             { name:"webhtv","url":"https://github.com/webhtv/webhtv/releases",category: "官" },
@@ -65,19 +88,14 @@ const sites = [
             
 
 
-            // 下载
+
             
-            { name:"xs.jar","url":"https://zf2629.github.io/zf-main/z-jar/xs.jar",category: "下载" },
        
-            { name: "可用py", url: "https://gh-proxy.com/https://github.com/zf2629/000zip/raw/main/可用py.zip", category: "下载" },
-            { name: "自动加载1", url: "https://gh-proxy.com/https://github.com/zf2629/000zip/raw/main/自动加载.zip", category: "下载" },
-            { name: "自动加载", url: "https://gh-proxy.com/https://github.com/zf2629/000zip/raw/main/zf-main.zip", category: "下载" },
-            { name: "影视+", url: "https://gh-proxy.com/https://github.com/zf2629/01app/raw/main/影视+.apk", category: "下载" },
+       
+  
 
-            { name: "影视2629", url: "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzouc.com/imSEM4b245da&pwd=1230", category: "下载" },
-            { name: "自动加载", url: "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzouc.com/ijMNQ4b2605e&pwd=1230", category: "下载" },
 
-            { name: "zf-main.zip", url: "https://zf2629.hyperphp.com/01zip/zf-main.zip", category: "下载" },
+   
 
 
 
@@ -97,6 +115,39 @@ const sites = [
             { name: "音乐解析器", url: "https://musicjx.com/", category: "音乐" },     
             { name: "无损音乐下载", url: "https://flac.music.hi.cn/", category: "音乐" }, 
             { name: "世纪音乐网", url: "https://www.4c44.com/", category: "音乐" },      
+           
+
+
+              //APP 下载
+            {"name":"1DM+","url":"https://ys-e.ysepan.com/wap/zf2629/BBO5IfCV83JFkjH/Cc6gA75q4ISHV4T8nf7hFfC5ha9MC/1DM+.apk" , category: "APP" }, 
+            {"name":"黄鸟抓包","url":"https://ys-e.ysepan.com/wap/zf2629/BBO5IfCV83JFkjH/9c6gA75q4ISIGAa4ds2IbHc7FR1lG8/黄鸟抓包.apk" , category: "APP" }, 
+            {"name":"mt管理器","url":"https://ys-e.ysepan.com/wap/zf2629/BBO5IfCV83JFkjH/9c6gA75q4ISIDSaAds2IbHc7FE1lG8/mt.apk" , category: "APP" }, 
+            {"name":"musicfree","url":"https://ys-e.ysepan.com/wap/zf2629/BBO5IfCV83JFkjH/9c6gA75q4ISIT8a7Ds2IbHc7FS1lG8/musicfree.apk" , category: "APP" }, 
+            {"name":"APK编辑器","url":"https://ys-e.ysepan.com/wap/zf2629/BBO5IfCV83JFkjH/Cc6gA75q4ISHFTaA4s2IbHc7FD1lG8/APK编辑器.apk" , category: "APP" }, 
+            {"name":"咪咕爱唱","url":"https://ys-g.ysepan.com/wap/zf2629/BBO5IfCV83JFkjH/2c5fT8Kq4HEHFTa7As2HCdb7jA1lG8/咪咕爱唱.apk" , category: "APP" }, 
+            {"name":"小白文件管理器","url":"https://ys-e.ysepan.com/wap/zf2629/BBO5IfCV83JFkjH/9c6gA75q4JBeD8a9ds2IbHc7FU1lG8/小白文件管理器.apk" , category: "APP" }, 
+
+            { "name": "影视+", url: "https://gh-proxy.com/https://github.com/zf2629/01app/raw/main/影视+.apk", category: "APP" },
+            { "name": "影视2629", url: "https://lz0.qaiu.top/parser?url=https://wwaqx.lanzouc.com/imSEM4b245da&pwd=1230", category: "APP" },
+
+
+              //ZIP 下载
+            {"name":"自动推送.zip","url":"https://ys-e.ysepan.com/wap/zf2629/BPN0IfCV83JFkjH/M5G9c4V0jUh8fdqKL2hSlRKH8gmSPi/%E8%87%AA%E5%8A%A8%E6%8E%A8%E9%80%81.zip" , category: "ZIP" }, 
+            {"name":"应用商店.zip","url":"https://ys-e.ysepan.com/wap/zf2629/BPN0IfCV83JFkjH/J5G9c4V0jUh7iaqkM2hSlRKH8fmSPi/%E5%BA%94%E7%94%A8%E5%95%86%E5%BA%97.zip" , category: "ZIP" }, 
+            {"name":"数据库.zip","url":"https://ys-e.ysepan.com/wap/zf2629/BPN0IfCV83JFkjH/M5G9c4V0jUh7hdqkK2hSlRKH8emSPi/%E6%95%B0%E6%8D%AE%E5%BA%93.zip" , category: "ZIP" }, 
+            {"name":"本地01.zip","url":"https://ys-e.ysepan.com/wap/zf2629/BPN0IfCV83JFkjH/M5G9c4V0jUh7hdqI62hSlRKH8dmSPi/%E6%9C%AC%E5%9C%B001.zip" , category: "ZIP" }, 
+            {"name":"CMS.zip","url":"https://ys-e.ysepan.com/wap/zf2629/BPN0IfCV83JFkjH/M5G9c4V0jUh7gCqlj2hSlRKH8cmSPi/CMS.zip" , category: "ZIP" }, 
+            {"name":"b.zip","url":"https://ys-e.ysepan.com/wap/zf2629/BPN0IfCV83JFkjH/M5G9c4V0jUh7fAqLM2hSlRKGTGmSPi/b.zip" , category: "ZIP" }, 
+
+            
+
+
+
+
+
+
+
+
             
            
             // 采集
@@ -152,6 +203,9 @@ const sites = [
             { name: 'QQ邮箱', url: 'https://mail.qq.com', category: '邮箱' },
             { name: '网易邮箱', url: 'https://mail.163.com', category: '邮箱' },
             { name: 'skymail', url: 'https://skymail.ink/', category: '邮箱' },
+            { name: '临时邮箱', url: './html/临时邮箱.html', category: '邮箱' },
+
+            
             
             // 节点
             { name: 'yy1588133', url: 'https://gh-proxy.com/raw.githubusercontent.com/yy1588133/proxy-pool/main/clash.yaml', category: '节点' },
