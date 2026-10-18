@@ -231,10 +231,9 @@ const copyList = [
 { name: '内网IP', url: 'ftp://192.168.1.7:2122/' },
 { name: 'gh-proxy', url: 'https://gh-proxy.com/' },
 { name: 'view-source:', url: 'view-source:' },
-{ name: '自动加载', url: 'https://zf2629.github.io/zf-main/自动加载.json' },
-{ name: 'zf2629接口', url: 'https://zf2629.github.io/zf-main/1.json' },
-{ name: '在线本地02', url: 'https://zf2629.github.io/01zf-main/本地02/本地02.json' },
-{ name: 'NZ多仓', url: 'https://zf2629.github.io/nz.json' },
+{ name: '自动推送', url: 'https://zf2629.github.io/01zf-main/自动推送/自动推送.json' },
+{ name: '在线zf-main', url: 'https://zf2629.github.io/01zf-main/zf-main/zf-main.json' },
+{ name: 'NZ多仓', url: 'https://zf2629.github.io/01zf-main/nz.json' },
 { name: '直播接口', url: 'https://zf2629.github.io/live.json' },
 
 
@@ -248,11 +247,10 @@ const friendLinks = [
   { name: 'neocities', url: 'https://neocities.org/' },
   { name: 'GitHub', url: 'https://github.com' },
   { name: 'Gitee', url: 'https://gitee.com' },
-  { name: 'xs.jar', url: 'https://zf2629.github.io/zf-main/z-jar/xs.jar' },
   { name: '影视2629', url: 'https://lz0.qaiu.top/parser?url=https://wwaqx.lanzouc.com/imSEM4b245da&pwd=1230' },
   { name: 'hyperphp', url: 'https://zf2629.hyperphp.com' },
   { name: 'wasmer', url: 'https://zf2629.wasmer.app/' },
-  { name: '自动加载包', url: 'https://zf2629.github.io/01zf-main/本地01.zip' },
+  { name: 'NZ多仓', url: 'https://zf2629.github.io/01zf-main/nz.json' },
   
   
 ];
