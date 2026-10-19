@@ -251,6 +251,8 @@ const friendLinks = [
   { name: 'hyperphp', url: 'https://zf2629.hyperphp.com' },
   { name: 'wasmer', url: 'https://zf2629.wasmer.app/' },
   { name: 'NZ多仓', url: 'https://zf2629.github.io/01zf-main/nz.json' },
+  { name: '海阔主题', url: 'https://zf2629.github.io/01hiker/zf2629/hiker/zf2629%E4%B8%BB%E9%A2%98.hiker' },
+  
   
   
 ];
