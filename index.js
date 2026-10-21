@@ -6,10 +6,43 @@ const sites = [
  { name: "MT远程管理", url: "http://192.168.1.7:8082/", category: "常用" },
 
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
            // 游戏
            { name: "小霸王", url: "./html/小霸王.html", category: "常用" }, 
            { name: "自动加载", url: "https://zf2629.github.io/01zf-main/自动推送/自动推送.json", category: "常用" }, 
            
+          // 音乐
+          { name: "自用音乐", url: "https://zf2629.github.io/01MP3/index.html", category: "音乐" },     
+          { name: "音乐下载", url: "./html/music.html", category: "音乐" },
+          
+          { name: "QQ音乐", url: "https://zf2629.neocities.org/qqmusic/", category: "音乐" },
+          { name: "ZF2629音乐网", url: "./html/音乐网/index.html", category: "音乐" },
+          
+          { name: "音乐解析器", url: "https://musicjx.com/", category: "音乐" },     
+          { name: "无损音乐下载", url: "https://flac.music.hi.cn/", category: "音乐" }, 
+          { name: "世纪音乐网", url: "https://www.4c44.com/", category: "音乐" },      
+         
+
+
+
+
+
+
+
+
 
             { name: "我的永硕E盘", url: "https://zf2629.ysepan.com/", category: "空间网盘" },
             { name: "GitHub", url: "https://github.com", category: "空间网盘" },
@@ -105,17 +138,7 @@ const sites = [
 
 
         
-            // 音乐
-            { name: "自用音乐", url: "https://zf2629.github.io/01MP3/music.html", category: "音乐" },     
-            { name: "音乐下载", url: "./html/music.html", category: "音乐" },
-            
-            { name: "QQ音乐", url: "https://zf2629.neocities.org/qqmusic/", category: "音乐" },
-            { name: "ZF2629音乐网", url: "./html/音乐网/index.html", category: "音乐" },
-            
-            { name: "音乐解析器", url: "https://musicjx.com/", category: "音乐" },     
-            { name: "无损音乐下载", url: "https://flac.music.hi.cn/", category: "音乐" }, 
-            { name: "世纪音乐网", url: "https://www.4c44.com/", category: "音乐" },      
-           
+  
 
 
               //APP 下载
