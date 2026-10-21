@@ -294,7 +294,7 @@ const friendLinks = [
   { name: 'NZ多仓', url: 'https://zf2629.github.io/01zf-main/nz.json' },
   { name: 'musicfree插件', url: 'https://zf2629.github.io/01json/musicfree/musicfree.json' },
   { name: '海阔仓库', url: 'https://raw.githubusercontent.com/zf2629/02hiker/refs/heads/main/ZF仓库.hiker' },
-  
+  { name: 'ZF2629接口', url: 'https://zf2629.neocities.org/zx001/1.json' },
 ];
 
 // ============ 工具函数 ============
