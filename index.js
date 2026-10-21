@@ -8,7 +8,7 @@ const sites = [
  
            // 游戏
            { name: "小霸王", url: "./html/小霸王.html", category: "常用" }, 
-           { name: "自动加载", url: "https://zf2629.github.io/zf-main/自动加载.json", category: "常用" }, 
+           { name: "自动加载", url: "https://zf2629.github.io/01zf-main/自动推送/自动推送.json", category: "常用" }, 
            
 
             { name: "我的永硕E盘", url: "https://zf2629.ysepan.com/", category: "空间网盘" },
@@ -135,7 +135,7 @@ const sites = [
             {"name":"自动推送.zip","url":"https://ys-e.ysepan.com/wap/zf2629/BPN0IfCV83JFkjH/M5G9c4V0jUh8fdqKL2hSlRKH8gmSPi/%E8%87%AA%E5%8A%A8%E6%8E%A8%E9%80%81.zip" , category: "ZIP" }, 
             {"name":"应用商店.zip","url":"https://ys-e.ysepan.com/wap/zf2629/BPN0IfCV83JFkjH/J5G9c4V0jUh7iaqkM2hSlRKH8fmSPi/%E5%BA%94%E7%94%A8%E5%95%86%E5%BA%97.zip" , category: "ZIP" }, 
             {"name":"数据库.zip","url":"https://ys-e.ysepan.com/wap/zf2629/BPN0IfCV83JFkjH/M5G9c4V0jUh7hdqkK2hSlRKH8emSPi/%E6%95%B0%E6%8D%AE%E5%BA%93.zip" , category: "ZIP" }, 
-            {"name":"本地01.zip","url":"https://ys-e.ysepan.com/wap/zf2629/BPN0IfCV83JFkjH/M5G9c4V0jUh7hdqI62hSlRKH8dmSPi/%E6%9C%AC%E5%9C%B001.zip" , category: "ZIP" }, 
+            {"name":"本地01.zip","url":"https://ys-e.ysepan.com/wap/zf2629/BPN0IfCV83JFkjH/J5G9caC0jCgShaqj62hSlRMHRFmSPi/本地01.zip" , category: "ZIP" }, 
             {"name":"CMS.zip","url":"https://ys-e.ysepan.com/wap/zf2629/BPN0IfCV83JFkjH/M5G9c4V0jUh7gCqlj2hSlRKH8cmSPi/CMS.zip" , category: "ZIP" }, 
             {"name":"b.zip","url":"https://ys-e.ysepan.com/wap/zf2629/BPN0IfCV83JFkjH/M5G9c4V0jUh7fAqLM2hSlRKGTGmSPi/b.zip" , category: "ZIP" }, 
 
