@@ -5,7 +5,7 @@
 {"name":"┃本地01┃自动加载","url":"file://zf-main/本地01/本地01.json"},       
 {"name":"┃本地02┃","url":"file://zf-main/本地02/本地02.json"}, 
 {"name":"┃本地数据库┃","url":"file://zf-main/数据库/数据库.json"}, 
-
+{"name":"┃XYQ┃","url":"https://gh-proxy.com/https://raw.githubusercontent.com/xyq254245/xyqonlinerule/main/XYQTVBox.json"}, 
 
 
 {"name":"┃在线01┃","url":"https://zf2629.github.io/01zf-main/本地01/本地01.json"},  

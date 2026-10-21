@@ -98,6 +98,10 @@ const sites = [
             { name:"webhtv","url":"https://github.com/webhtv/webhtv/releases",category: "官" },
             { name: "alantang1977", url: "https://github.com/alantang1977", category: "官" },
             { name: "天神", url: "https://github.com/IY-CPU", category: "官" },
+            { name: "香雅情", url: "https://github.com/xyq254245", category: "官" },
+            
+
+
 
             { name: "我不是.摸鱼儿.cc", url: "https://我不是.摸鱼儿.cc", category: "官" },
             { name: "英格里希嗷呜", url: "http://www.英格里希嗷呜.top/", category: "官" },
