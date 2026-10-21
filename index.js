@@ -156,6 +156,7 @@ const sites = [
 
             { "name": "影视+", url: "https://gh-proxy.com/https://github.com/zf2629/01app/raw/main/影视+.apk", category: "APP" },
             { "name": "ClashMeta", url: "https://gh-proxy.com/https://github.com/zf2629/01app/raw/main/ClashMeta.apk", category: "APP" },
+            { "name": "詹詹KTV", url: "https://gh-proxy.com/https://github.com/zf2629/01app/raw/main/詹詹KTV.apk", category: "APP" },
 
             
 
