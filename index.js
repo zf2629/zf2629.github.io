@@ -82,6 +82,7 @@ const sites = [
             // 工具
             { name: "直播转换工具", url: "./code/直播转换工具.html", category: "工具" },
             { name: "JSON校验格式化", url: "./code/JSON校验格式化.html", category: "工具" },
+            { name: "tvbox解密", url: "./code/tvbox解密.html", category: "工具" },
             { name: "base64", url: "./code/base64.html", category: "工具" },
             { name: "图片转Base64", url: "./code/图片转Base64.html", category: "工具" },
             { name: "JS加密解密", url: "./code/JS加密解密.html", category: "工具" },
