@@ -80,6 +80,7 @@ const sites = [
             { name: "文件快递柜", url: "https://crud.bbroot.com/", category: "文件分享" },
 
             // 工具
+            { name: "接口编辑器", url: "./code/tvbox编辑器/index.html", category: "工具" },
             { name: "直播转换工具", url: "./code/直播转换工具.html", category: "工具" },
             { name: "JSON校验格式化", url: "./code/JSON校验格式化.html", category: "工具" },
             { name: "tvbox解密", url: "./code/tvbox解密.html", category: "工具" },
@@ -115,6 +116,8 @@ const sites = [
             // 接口
             
             { name: "TVBox接口编辑器", url: "https://bjq.catvod.site/", category: "接口" },
+       
+            
 
             { name: "CCSH[直播]", url: "https://seep.eu.org/https://raw.githubusercontent.com/CCSH/IPTV/refs/heads/main/live.txt", category: "接口" },
 
@@ -164,8 +167,9 @@ const sites = [
 
 
 
+            { "name": "WEBHTV", url: "https://github.com/webhtv/webhtv/releases/download/v5.6.0-202609241253/mobile-arm64_v8a.apk", category: "APP" },
 
-
+            
 
 
 
@@ -261,8 +265,8 @@ const sites = [
 // ============ 右侧顶部功能菜单 ============
 const topMenus = [
   { key: 'home', label: '<a href="index.html" style="text-decoration: none;color: inherit;">首页</a>', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>' },
-  { key: 'fav', label: '<a href="index.html" target="_blank" style="text-decoration: none;color: inherit;">FAV</a>', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>' },
-  { key: 'tool', label: '<a href="index.html"  style="text-decoration: none;color: inherit;">工具</a>', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>' },
+  { key: 'neocities', label: '<a href="https://neocities.org/" target="_blank" style="text-decoration: none;color: inherit;">neocities</a>', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>' },
+  { key: 'GitHub', label: '<a href="https://github.com/"  target="_blank" style="text-decoration: none;color: inherit;">GitHub</a>', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>' },
   { key: 'setting', label: '设置', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>' },
   { key: 'about', label: '关于', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>' },
 ];
