@@ -167,7 +167,7 @@ const sites = [
 
 
 
-            {"name":"小白文件管理器","url":"https://gh-proxy.com/https://github.com/zf2629/01app/raw/main/白盒-java32.apk" , category: "APP" }, 
+            {"name":"白盒-java32","url":"https://gh-proxy.com/https://github.com/zf2629/01app/raw/main/白盒-java32.apk" , category: "APP" }, 
 
 
 
