@@ -164,6 +164,14 @@ const sites = [
             {"name":"咪咕爱唱","url":"https://ys-g.ysepan.com/wap/zf2629/BBO5IfCV83JFkjH/2c5fT8Kq4HEHFTa7As2HCdb7jA1lG8/咪咕爱唱.apk" , category: "APP" }, 
             {"name":"小白文件管理器","url":"https://ys-e.ysepan.com/wap/zf2629/BBO5IfCV83JFkjH/9c6gA75q4JBeD8a9ds2IbHc7FU1lG8/小白文件管理器.apk" , category: "APP" }, 
 
+
+
+
+            {"name":"小白文件管理器","url":"https://gh-proxy.com/https://github.com/zf2629/01app/raw/main/白盒-java32.apk" , category: "APP" }, 
+
+
+
+
             { "name": "影视+", url: "https://gh-proxy.com/https://github.com/zf2629/01app/raw/main/影视+.apk", category: "APP" },
             { "name": "ClashMeta", url: "https://gh-proxy.com/https://github.com/zf2629/01app/raw/main/ClashMeta.apk", category: "APP" },
             { "name": "詹詹KTV", url: "https://gh-proxy.com/https://github.com/zf2629/01app/raw/main/詹詹KTV.apk", category: "APP" },
