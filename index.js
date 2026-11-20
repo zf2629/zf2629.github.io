@@ -98,6 +98,13 @@ const sites = [
             { name: '节点聚合[官]', url: 'https://github.com/yy1588133/proxy-pool', category: '官' },
             { name:"FongMi","url":"https://github.com/FongMi/Release/releases",category: "官" },
             { name:"webhtv","url":"https://github.com/webhtv/webhtv/releases",category: "官" },
+            { name: "白盒下载", url: "https://github.com/j4Uq/TVBoxOSC", category: "官" },
+            { name: "Simon影视", url: "https://github.com/SimonWang911/simon-tv-release", category: "官" },
+            
+
+
+
+
             { name: "alantang1977", url: "https://github.com/alantang1977", category: "官" },
             { name: "天神", url: "https://github.com/IY-CPU", category: "官" },
             { name: "香雅情", url: "https://github.com/xyq254245", category: "官" },
@@ -110,8 +117,7 @@ const sites = [
             { name: "junchao.tang", url: "https://cnb.cool/junchao.tang", category: "官" },
             { name: "酷佬", url: "https://jsnzkpg.com/", category: "官" },
             { name: "东篱", url: "https://chigua.eu.org/", category: "官" },
-
-
+            
 
             // 接口
             
